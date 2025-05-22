@@ -1,0 +1,25 @@
+## Interface: 110105
+## Title: Percursus
+## Author: diomsg (Diom-Antonidas EU)
+
+## Version: @project-version@
+## IconTexture: Interface\AddOns\Percursus\media\icon.blp
+## LoadOnDemand: 0
+## DefaultState: enabled
+## AllowLoadGameType: mainline
+
+## Notes: A World of Warcraft addon to display the current race time during a skyriding race and provide an overview of all race times. 
+## Notes-deDE: Ein World of Warcraft Addon, das die aktuelle Rennzeit während eines Himmelsreiterrennen anzeigt und einen Überblick über alle Rennzeiten bietet.
+## Notes-ruRU: Отображает текущее время гонки во время гонок на Драконах
+
+## LoadSavedVariablesFirst: 1
+## SavedVariables: Percursus_Options
+
+## X-Flavor: Retail
+## X-BuildDate: @build-date@
+## X-E-Mail: feedback@wow-addon.dev
+## X-Github: https://github.com/wow-addon-dev/Percursus
+## X-Curseforge: https://www.curseforge.com/wow/addons/Percursus
+
+Percursus.xml
+Percursus.lua
