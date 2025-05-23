@@ -1,10 +1,10 @@
-local _, SRT = ...
+local _, PER = ...
 
-if SRT.RACE_DATA == nil then
-    SRT.RACE_DATA = {}
+if PER.RACE_DATA == nil then
+    PER.RACE_DATA = {}
 end
 
-local raceDataTable = SRT.RACE_DATA
+local raceDataTable = PER.RACE_DATA
 
 -- Kalimdor Cup
 -- Felwood Flyover R1 (Teufelswaldtour) - R-11.0.7

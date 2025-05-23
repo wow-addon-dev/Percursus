@@ -1,7 +1,7 @@
-local _, SRT = ...
+local _, PER = ...
 
-local L =  SRT.localization
-local Utils = SRT.utils
+local L =  PER.localization
+local Utils = PER.utils
 
 local Dialog = {}
 
@@ -17,7 +17,7 @@ local resetOptionsDialog
 ---------------------
 
 function Dialog:InitializeDialog()
-    copyAddressDialog = CreateFrame("Frame", "SRT_CopyAddressDialog", UIParent, "TranslucentFrameTemplate")
+    copyAddressDialog = CreateFrame("Frame", "PER_CopyAddressDialog", UIParent, "TranslucentFrameTemplate")
     copyAddressDialog:SetSize(400, 10)
     copyAddressDialog:SetPoint("CENTER", 0, 200)
 
@@ -54,7 +54,7 @@ function Dialog:InitializeDialog()
 
     copyAddressDialog:SetHeight(copyAddressDialog:GetTop() - buttonClose:GetBottom() + 20)
 
-    resetOptionsDialog = CreateFrame("Frame", "SRT_ResetOptionsDialog", UIParent, "TranslucentFrameTemplate")
+    resetOptionsDialog = CreateFrame("Frame", "PER_ResetOptionsDialog", UIParent, "TranslucentFrameTemplate")
     resetOptionsDialog:SetSize(350, 10)
     resetOptionsDialog:SetPoint("CENTER", 0, 200)
 
@@ -78,7 +78,7 @@ function Dialog:InitializeDialog()
     buttonYes:SetSize(100, 22)
     buttonYes:SetText(YES)
     buttonYes:SetScript("OnClick", function()
-        local options = SRT.data.options
+        local options = PER.data.options
         options["race-tracker"] = true
         options["race-tracker-mode"] = 0
         options["race-tracker-gliding-speed"] = false
@@ -119,4 +119,4 @@ function Dialog:ShowResetOptionsDialog()
     end
 end
 
-SRT.dialog = Dialog
+PER.dialog = Dialog

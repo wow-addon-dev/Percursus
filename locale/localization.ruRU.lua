@@ -1,8 +1,8 @@
-local _, SRT = ...
+local _, PER = ...
 
 if GetLocale() ~= "ruRU" then return end
 
-local L = SRT.localization
+local L = PER.localization
 
 -- Generel
 

@@ -1,8 +1,8 @@
-local addonName, SRT = ...
+local addonName, PER = ...
 
-local L = SRT.localization
-local Utils = SRT.utils
-local Dialog = SRT.dialog
+local L = PER.localization
+local Utils = PER.utils
+local Dialog = PER.dialog
 
 local Options = {}
 
@@ -132,7 +132,7 @@ function Options:Initialize()
         text:SetJustifyH("LEFT")
         text:SetSpacing(2)
         text:SetWordWrap(true)
-        text:SetText(L["info.about.text"]:format(SRT.GAME_VERSION .. " (" .. SRT.GAME_FLAVOR .. ")", SRT.ADDON_VERSION .. " (" .. SRT.ADDON_BUILD_DATE .. ")", SRT.ADDON_AUTHOR))
+        text:SetText(L["info.about.text"]:format(PER.GAME_VERSION .. " (" .. PER.GAME_FLAVOR .. ")", PER.ADDON_VERSION .. " (" .. PER.ADDON_BUILD_DATE .. ")", PER.ADDON_AUTHOR))
 
         local divider = aboutFrame:CreateTexture(nil, "BACKGROUND")
         divider:SetPoint("TOP", text, "BOTTOM", 0, -10)
@@ -146,7 +146,7 @@ function Options:Initialize()
         buttonGithub:SetSize(150, 22)
         buttonGithub:SetText(L["info.help.github-button.name"])
         buttonGithub:SetScript("OnClick", function(self)
-            Dialog:ShowCopyAddressDialog(SRT.LINK_GITHUB)
+            Dialog:ShowCopyAddressDialog(PER.LINK_GITHUB)
         end)
         buttonGithub:SetScript("OnEnter", function(self)
             GameTooltip:SetOwner(self, "ANCHOR_CURSOR")
@@ -163,7 +163,7 @@ function Options:Initialize()
         buttonCurseforge:SetSize(150, 22)
         buttonCurseforge:SetText(L["info.help.curseforge-button.name"])
         buttonCurseforge:SetScript("OnClick", function(self)
-            Dialog:ShowCopyAddressDialog(SRT.LINK_CURSEFORGE)
+            Dialog:ShowCopyAddressDialog(PER.LINK_CURSEFORGE)
         end)
         buttonCurseforge:SetScript("OnEnter", function(self)
             GameTooltip:SetOwner(self, "ANCHOR_CURSOR")
@@ -185,7 +185,7 @@ function Options:Initialize()
     local mainCategory = Settings.RegisterCanvasLayoutCategory(canvasFrame, addonName)
     mainCategory.ID = addonName
 
-    local variableTable = SRT.data.options
+    local variableTable = PER.data.options
     local category, layout = Settings.RegisterVerticalLayoutSubcategory(mainCategory, L["options"])
 
     local parentSettingMinimapButton
@@ -248,15 +248,15 @@ function Options:Initialize()
 
         local function GetOptions()
             local container = Settings.CreateControlTextContainer()
-            container:Add(0, L["options.race-tracker-background-type.value.0"], "|T" .. SRT.MEDIA_PATH .. "raceTrackerBackground-01.blp:16:64|t")
-            container:Add(1, L["options.race-tracker-background-type.value.1"], "|T" .. SRT.MEDIA_PATH .. "raceTrackerBackground-02.blp:16:64|t")
+            container:Add(0, L["options.race-tracker-background-type.value.0"], "|T" .. PER.MEDIA_PATH .. "raceTrackerBackground-01.blp:16:64|t")
+            container:Add(1, L["options.race-tracker-background-type.value.1"], "|T" .. PER.MEDIA_PATH .. "raceTrackerBackground-02.blp:16:64|t")
             return container:GetData()
         end
 
         local setting = Settings.RegisterAddOnSetting(category, addonName .. "_" .. variable, variable, variableTable, Settings.VarType.Number, name, defaultValue)
         local subSetting = Settings.CreateDropdown(category, setting, GetOptions, tooltip)
 
-        subSetting:SetParentInitializer(parentSettingBackground, function() return SRT.data.options["race-tracker-background"] end)
+        subSetting:SetParentInitializer(parentSettingBackground, function() return PER.data.options["race-tracker-background"] end)
     end
 
     do
@@ -337,4 +337,4 @@ function Options:Initialize()
     Settings.RegisterAddOnCategory(mainCategory)
 end
 
-SRT.options = Options
+PER.options = Options

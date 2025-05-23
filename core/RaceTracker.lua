@@ -1,7 +1,7 @@
-local _, SRT = ...
+local _, PER = ...
 
-local L = SRT.localization
-local Utils = SRT.utils
+local L = PER.localization
+local Utils = PER.utils
 
 local RaceTracker = {}
 
@@ -45,17 +45,17 @@ local function SetBackgroundFrame(type, width, high)
     raceTrackerFrame:SetSize(width, high)
 
     if type == 0 then
-        raceTrackerFrame.background:SetTexture(SRT.MEDIA_PATH .. "raceTrackerBackground-01-bg.blp")
+        raceTrackerFrame.background:SetTexture(PER.MEDIA_PATH .. "raceTrackerBackground-01-bg.blp")
         raceTrackerFrame.background:ClearAllPoints()
         raceTrackerFrame.background:SetSize(width, high - 8)
         raceTrackerFrame.background:SetPoint("TOPLEFT", 0, -4)
 
-        raceTrackerFrame.top:SetTexture(SRT.MEDIA_PATH .. "raceTrackerBackground-01-border.blp")
+        raceTrackerFrame.top:SetTexture(PER.MEDIA_PATH .. "raceTrackerBackground-01-border.blp")
         raceTrackerFrame.top:ClearAllPoints()
         raceTrackerFrame.top:SetSize(width, 4)
         raceTrackerFrame.top:SetPoint("TOPLEFT", 0, 0)
 
-        raceTrackerFrame.bottom:SetTexture(SRT.MEDIA_PATH .. "raceTrackerBackground-01-border.blp")
+        raceTrackerFrame.bottom:SetTexture(PER.MEDIA_PATH .. "raceTrackerBackground-01-border.blp")
         raceTrackerFrame.bottom:ClearAllPoints()
         raceTrackerFrame.bottom:SetSize(width, 4)
         raceTrackerFrame.bottom:SetPoint("BOTTOMLEFT", 0, 0)
@@ -66,27 +66,27 @@ local function SetBackgroundFrame(type, width, high)
         raceTrackerFrame.left:Hide()
         raceTrackerFrame.right:Hide()
     elseif type == 1 then
-        raceTrackerFrame.background:SetTexture(SRT.MEDIA_PATH .. "raceTrackerBackground-02-bg.blp")
+        raceTrackerFrame.background:SetTexture(PER.MEDIA_PATH .. "raceTrackerBackground-02-bg.blp")
         raceTrackerFrame.background:ClearAllPoints()
         raceTrackerFrame.background:SetSize(width - 4, high - 4)
         raceTrackerFrame.background:SetPoint("TOPLEFT", 2, -2)
 
-        raceTrackerFrame.top:SetTexture(SRT.MEDIA_PATH .. "raceTrackerBackground-02-border.blp")
+        raceTrackerFrame.top:SetTexture(PER.MEDIA_PATH .. "raceTrackerBackground-02-border.blp")
         raceTrackerFrame.top:ClearAllPoints()
         raceTrackerFrame.top:SetSize(width, 2)
         raceTrackerFrame.top:SetPoint("TOPLEFT", 0, 0)
 
-        raceTrackerFrame.bottom:SetTexture(SRT.MEDIA_PATH .. "raceTrackerBackground-02-border.blp")
+        raceTrackerFrame.bottom:SetTexture(PER.MEDIA_PATH .. "raceTrackerBackground-02-border.blp")
         raceTrackerFrame.bottom:ClearAllPoints()
         raceTrackerFrame.bottom:SetSize(width, 2)
         raceTrackerFrame.bottom:SetPoint("BOTTOMLEFT", 0, 0)
 
-        raceTrackerFrame.left:SetTexture(SRT.MEDIA_PATH .. "raceTrackerBackground-02-border.blp")
+        raceTrackerFrame.left:SetTexture(PER.MEDIA_PATH .. "raceTrackerBackground-02-border.blp")
         raceTrackerFrame.left:ClearAllPoints()
         raceTrackerFrame.left:SetSize(2, high)
         raceTrackerFrame.left:SetPoint("TOPLEFT", 0, 0)
 
-        raceTrackerFrame.right:SetTexture(SRT.MEDIA_PATH .. "raceTrackerBackground-02-border.blp")
+        raceTrackerFrame.right:SetTexture(PER.MEDIA_PATH .. "raceTrackerBackground-02-border.blp")
         raceTrackerFrame.right:ClearAllPoints()
         raceTrackerFrame.right:SetSize(2, high)
         raceTrackerFrame.right:SetPoint("TOPLEFT", width - 2, 0)
@@ -105,7 +105,7 @@ local function ShowRaceTracker(raceQuestID, raceGoldTime, racePersonalTime)
     defaultHigh = 64
     defaultWidth = 256
 
-    raceTrackerFrame:SetPoint("CENTER", SRT.data.options["race-tracker-horizontal-shift"], SRT.data.options["race-tracker-vertical-shift"])
+    raceTrackerFrame:SetPoint("CENTER", PER.data.options["race-tracker-horizontal-shift"], PER.data.options["race-tracker-vertical-shift"])
 
     raceTrackerFrame.timer:ClearAllPoints()
     raceTrackerFrame.timer:SetPoint("CENTER", 0, 10)
@@ -116,17 +116,17 @@ local function ShowRaceTracker(raceQuestID, raceGoldTime, racePersonalTime)
 
     raceTrackerFrame.speed:Hide()
 
-    if SRT.data.options["race-tracker-background"] then
-        if SRT.data.options["race-tracker-background-type"] == 1 then
+    if PER.data.options["race-tracker-background"] then
+        if PER.data.options["race-tracker-background-type"] == 1 then
             local widthTimer = raceTrackerFrame.timer:GetStringWidth()
             Utils:PrintDebug(tostring(widthTimer))
             if widthTimer > 240 then
-                SetBackgroundFrame(SRT.data.options["race-tracker-background-type"], widthTimer + 26, defaultHigh)
+                SetBackgroundFrame(PER.data.options["race-tracker-background-type"], widthTimer + 26, defaultHigh)
             else
-                SetBackgroundFrame(SRT.data.options["race-tracker-background-type"], defaultWidth, defaultHigh)
+                SetBackgroundFrame(PER.data.options["race-tracker-background-type"], defaultWidth, defaultHigh)
             end
         else
-            SetBackgroundFrame(SRT.data.options["race-tracker-background-type"], defaultWidth, defaultHigh)
+            SetBackgroundFrame(PER.data.options["race-tracker-background-type"], defaultWidth, defaultHigh)
         end
     else
         raceTrackerFrame.background:Hide()
@@ -136,11 +136,11 @@ local function ShowRaceTracker(raceQuestID, raceGoldTime, racePersonalTime)
         raceTrackerFrame.right:Hide()
     end
 
-    if SRT.data.options["race-tracker-mode"] == 0 then
+    if PER.data.options["race-tracker-mode"] == 0 then
         raceTrackerFrame.info:SetText(L["gold-time"]:format(raceGoldTime))
-    elseif SRT.data.options["race-tracker-mode"] == 1 then
+    elseif PER.data.options["race-tracker-mode"] == 1 then
         raceTrackerFrame.info:SetText(L["gold-time"]:format(raceGoldTime))
-    elseif SRT.data.options["race-tracker-mode"] == 2 then
+    elseif PER.data.options["race-tracker-mode"] == 2 then
         if racePersonalTime == -1 then
             raceTrackerFrame.info:SetText(L["personal-best-time-not-available"])
         elseif racePersonalTime == 0 then
@@ -151,18 +151,18 @@ local function ShowRaceTracker(raceQuestID, raceGoldTime, racePersonalTime)
     end
 
     C_Timer.After(5, function()
-        if SRT.data.options["race-tracker-mode"] == 0 or (SRT.data.options["race-tracker-mode"] == 2 and racePersonalTime <= 0) then
+        if PER.data.options["race-tracker-mode"] == 0 or (PER.data.options["race-tracker-mode"] == 2 and racePersonalTime <= 0) then
             raceTrackerFrame.timer:SetText(string.format(L["time"], 0))
-        elseif SRT.data.options["race-tracker-mode"] == 1 then
+        elseif PER.data.options["race-tracker-mode"] == 1 then
             raceTrackerFrame.timer:SetText(L["time"]:format(-raceGoldTime))
-        elseif SRT.data.options["race-tracker-mode"] == 2 then
+        elseif PER.data.options["race-tracker-mode"] == 2 then
             raceTrackerFrame.timer:SetText(L["time"]:format(-racePersonalTime))
         end
 
         local _, c, _ = C_PlayerInfo.GetGlidingInfo()
         canGlide = c
 
-        if SRT.data.options["race-tracker-gliding-speed"] and canGlide then
+        if PER.data.options["race-tracker-gliding-speed"] and canGlide then
             defaultHigh = 84
 
             raceTrackerFrame.timer:ClearAllPoints()
@@ -177,7 +177,7 @@ local function ShowRaceTracker(raceQuestID, raceGoldTime, racePersonalTime)
             raceTrackerFrame.speed:Show()
         end
 
-        SetBackgroundFrame(SRT.data.options["race-tracker-background-type"], defaultWidth, defaultHigh)
+        SetBackgroundFrame(PER.data.options["race-tracker-background-type"], defaultWidth, defaultHigh)
     end)
 
     raceTrackerFrame:Show()
@@ -230,7 +230,7 @@ function RaceTracker:Start(raceQuestID, raceSpellID, raceGoldTime, raceSilverTim
 
         AuraUtil.ForEachAura("player", "HELPFUL", nil, foo)
 
-        if SRT.data.options["race-tracker-gliding-speed"] and canGlide then
+        if PER.data.options["race-tracker-gliding-speed"] and canGlide then
             local _, _, forwardSpeed = C_PlayerInfo.GetGlidingInfo()
 
             raceTrackerFrame.speed:SetText(L["gliding-speed"]:format(tostring(Round(forwardSpeed))))
@@ -240,11 +240,11 @@ function RaceTracker:Start(raceQuestID, raceSpellID, raceGoldTime, raceSilverTim
             isInit = true
             raceStartTime = -1
 
-            if SRT.data.options["race-tracker-mode"] == 0 or (SRT.data.options["race-tracker-mode"] == 2 and racePersonalTime <= 0) then
+            if PER.data.options["race-tracker-mode"] == 0 or (PER.data.options["race-tracker-mode"] == 2 and racePersonalTime <= 0) then
                 raceTrackerFrame.timer:SetText(string.format(L["time"], 0))
-            elseif SRT.data.options["race-tracker-mode"] == 1 then
+            elseif PER.data.options["race-tracker-mode"] == 1 then
                 raceTrackerFrame.timer:SetText(L["time"]:format(-raceGoldTime))
-            elseif SRT.data.options["race-tracker-mode"] == 2 then
+            elseif PER.data.options["race-tracker-mode"] == 2 then
                 raceTrackerFrame.timer:SetText(L["time"]:format(-racePersonalTime))
             end
 
@@ -263,7 +263,7 @@ function RaceTracker:Start(raceQuestID, raceSpellID, raceGoldTime, raceSilverTim
 
             local elapsedTime = GetTime() - raceStartTime
 
-            if SRT.data.options["race-tracker-mode"] == 0 then
+            if PER.data.options["race-tracker-mode"] == 0 then
                 raceTrackerFrame.timer:SetText(L["time"]:format(elapsedTime))
 
                 if elapsedTime <= raceGoldTime then
@@ -273,7 +273,7 @@ function RaceTracker:Start(raceQuestID, raceSpellID, raceGoldTime, raceSilverTim
                 else
                     raceTrackerFrame.info:SetText(L["bronze-time"])
                 end
-            elseif SRT.data.options["race-tracker-mode"] == 1 then
+            elseif PER.data.options["race-tracker-mode"] == 1 then
                 if elapsedTime <= raceGoldTime then
                     local remainingTime = -(raceGoldTime - elapsedTime)
                     raceTrackerFrame.timer:SetText(L["time"]:format(remainingTime))
@@ -286,7 +286,7 @@ function RaceTracker:Start(raceQuestID, raceSpellID, raceGoldTime, raceSilverTim
                     raceTrackerFrame.timer:SetText(L["time"]:format(0))
                     raceTrackerFrame.info:SetText(L["bronze-time"])
                 end
-            elseif SRT.data.options["race-tracker-mode"] == 2 then
+            elseif PER.data.options["race-tracker-mode"] == 2 then
                 if racePersonalTime == -1 then
                     raceTrackerFrame.timer:SetText(L["time"]:format(elapsedTime))
                     raceTrackerFrame.info:SetText(L["personal-best-time-not-available"])
@@ -312,12 +312,12 @@ function RaceTracker:Stop()
     count = 1
     raceTicker:Cancel()
 
-    if SRT.data.options["race-tracker-gliding-speed"] then
+    if PER.data.options["race-tracker-gliding-speed"] then
         raceTrackerFrame.speed:SetText(L["gliding-speed"]:format("0"))
     end
 
     finalTicker = C_Timer.NewTicker(1, function()
-        if count >= SRT.data.options["race-tracker-fadeout-delay"] then
+        if count >= PER.data.options["race-tracker-fadeout-delay"] then
             raceTrackerFrame:Hide()
             StopFinalTicker()
         else
@@ -326,4 +326,4 @@ function RaceTracker:Stop()
     end)
 end
 
-SRT.raceTracker = RaceTracker
+PER.raceTracker = RaceTracker

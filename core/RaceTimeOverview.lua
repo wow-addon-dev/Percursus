@@ -1,11 +1,11 @@
-local addonName, SRT = ...
+local addonName, PER = ...
 
-local L = SRT.localization
+local L = PER.localization
 
 local RaceTimeOverview = {}
 
-local raceDataTable = SRT.RACE_DATA
-local sortedRaceDataTable = SRT.SORTED_RACE_DATA
+local raceDataTable = PER.RACE_DATA
+local sortedRaceDataTable = PER.SORTED_RACE_DATA
 
 --------------
 --- Frames ---
@@ -52,7 +52,7 @@ local function UpdateRaceOverview(npcID, scrollFrame)
 
     local difficulties = raceDataTable[npcID][3]
 
-    for _, modeKey in ipairs(SRT.DIFFICULTY_ORDER) do
+    for _, modeKey in ipairs(PER.DIFFICULTY_ORDER) do
         if difficulties[modeKey] then
             local lookupKey = "race-" .. modeKey:lower():gsub("_", "-")
 
@@ -83,11 +83,11 @@ local function UpdateRaceOverview(npcID, scrollFrame)
                 local time
 
                 if racePersonalTime <= raceGoldTime then
-                    time = "|T616373:0|t |c" .. SRT.GOLD_FONT_COLOR .. racePersonalTime .. "|r"
+                    time = "|T616373:0|t |c" .. PER.GOLD_FONT_COLOR .. racePersonalTime .. "|r"
                 elseif racePersonalTime <= raceSilverTime then
-                    time = "|T616375:0|t |c" .. SRT.COLOR_SILVER .. racePersonalTime .. "|r"
+                    time = "|T616375:0|t |c" .. PER.COLOR_SILVER .. racePersonalTime .. "|r"
                 else
-                    time = "|T616372:0|t |c" .. SRT.COLOR_BRONZE .. racePersonalTime .. "|r"
+                    time = "|T616372:0|t |c" .. PER.COLOR_BRONZE .. racePersonalTime .. "|r"
                 end
 
                 bestTime:SetText(L["personal-best-time"]:format(time))
@@ -147,7 +147,7 @@ local function UpdateZoneOverview(zoneID, scrollFrame)
 
             offsetY = offsetY - 20
 
-            for _, mode in ipairs(SRT.DIFFICULTY_ORDER) do
+            for _, mode in ipairs(PER.DIFFICULTY_ORDER) do
                 local data = modes[mode]
 
                 if data then
@@ -182,11 +182,11 @@ local function UpdateZoneOverview(zoneID, scrollFrame)
 
                     if racePersonalTime > 0 then
                         if racePersonalTime <= raceGoldTime then
-                            time = "|T616373:0|t |c" .. SRT.GOLD_FONT_COLOR .. racePersonalTime .. "|r"
+                            time = "|T616373:0|t |c" .. PER.GOLD_FONT_COLOR .. racePersonalTime .. "|r"
                         elseif racePersonalTime <= raceSilverTime then
-                            time = "|T616375:0|t |c" .. SRT.COLOR_SILVER .. racePersonalTime .. "|r"
+                            time = "|T616375:0|t |c" .. PER.COLOR_SILVER .. racePersonalTime .. "|r"
                         else
-                            time = "|T616372:0|t |c" .. SRT.COLOR_BRONZE .. racePersonalTime .. "|r"
+                            time = "|T616372:0|t |c" .. PER.COLOR_BRONZE .. racePersonalTime .. "|r"
                         end
 
                         text:SetText(difficulty .. ": " .. time .. " " .. L['seconds-short'])
@@ -213,7 +213,7 @@ local function InitializeFrames()
 
         raceOverviewFrame.portrait = raceOverviewFrame:GetPortrait()
         raceOverviewFrame.portrait:SetPoint('TOPLEFT', -5, 8)
-        raceOverviewFrame.portrait:SetTexture(SRT.MEDIA_PATH .. "icon-round.blp")
+        raceOverviewFrame.portrait:SetTexture(PER.MEDIA_PATH .. "icon-round.blp")
 
         local background = CreateFrame("Frame", nil, raceOverviewFrame, "InsetFrameTemplate4")
         background:SetSize(350, 330)
@@ -223,7 +223,7 @@ local function InitializeFrames()
         background.texture:SetPoint("CENTER")
         background.texture:SetAtlas("character-panel-background", false)
 
-        raceOverviewFrame.scrollFrame = CreateFrame("ScrollFrame", nil, raceOverviewFrame, "SRT_OverviewScrollFrameTemplate")
+        raceOverviewFrame.scrollFrame = CreateFrame("ScrollFrame", nil, raceOverviewFrame, "Percursus_OverviewScrollFrameTemplate")
         raceOverviewFrame.scrollFrame:SetPoint("TOPLEFT", background, "TOPLEFT", 15, -15)
         raceOverviewFrame.scrollFrame:SetPoint("BOTTOMRIGHT", background, "BOTTOMRIGHT", -25, 15)
 
@@ -260,7 +260,7 @@ local function InitializeFrames()
         background.texture:SetPoint("CENTER")
         background.texture:SetAtlas("character-panel-background", false)
 
-        zoneOverviewFrame.scrollFrame = CreateFrame("ScrollFrame", nil, zoneOverviewFrame, "SRT_OverviewScrollFrameTemplate")
+        zoneOverviewFrame.scrollFrame = CreateFrame("ScrollFrame", nil, zoneOverviewFrame, "Percursus_OverviewScrollFrameTemplate")
         zoneOverviewFrame.scrollFrame:SetPoint("TOPLEFT", background, "TOPLEFT", 15, -15)
         zoneOverviewFrame.scrollFrame:SetPoint("BOTTOMRIGHT", background, "BOTTOMRIGHT", -25, 15)
 
@@ -299,4 +299,4 @@ function RaceTimeOverview:HideRaceOverview()
 	raceOverviewFrame:Hide()
 end
 
-SRT.raceTimeOverview = RaceTimeOverview
+PER.raceTimeOverview = RaceTimeOverview

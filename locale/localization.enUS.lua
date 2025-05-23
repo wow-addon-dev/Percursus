@@ -1,11 +1,11 @@
-local _, SRT = ...
+local _, PER = ...
 
-SRT.localization = setmetatable({},{__index=function(self,key)
-        geterrorhandler()("Skyriding Race Tracker (Debug): Missing entry for '" .. tostring(key) .. "'")
+PER.localization = setmetatable({},{__index=function(self,key)
+        geterrorhandler()("Percursus (Debug): Missing entry for '" .. tostring(key) .. "'")
         return key
     end})
 
-local L = SRT.localization
+local L = PER.localization
 
 -- Generel
 

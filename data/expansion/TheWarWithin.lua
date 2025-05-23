@@ -1,10 +1,10 @@
-local _, SRT = ...
+local _, PER = ...
 
-if SRT.RACE_DATA == nil then
-    SRT.RACE_DATA = {}
+if PER.RACE_DATA == nil then
+    PER.RACE_DATA = {}
 end
 
-local raceDataTable = SRT.RACE_DATA
+local raceDataTable = PER.RACE_DATA
 
 -- The War Within
 -- Isle of Dorn Z1 (Insel von Dorn)

@@ -1,13 +1,13 @@
-local addonName, SRT = ...
+local addonName, PER = ...
 
-local L = SRT.localization
-local Utils = SRT.utils
-local Dialog = SRT.dialog
-local Options = SRT.options
-local RaceTracker = SRT.raceTracker
-local RaceTimeOverview = SRT.raceTimeOverview
+local L = PER.localization
+local Utils = PER.utils
+local Dialog = PER.dialog
+local Options = PER.options
+local RaceTracker = PER.raceTracker
+local RaceTimeOverview = PER.raceTimeOverview
 
-local raceDataTable = SRT.RACE_DATA
+local raceDataTable = PER.RACE_DATA
 
 local raceQuestID = -1
 local raceSpellID = -1
@@ -64,17 +64,17 @@ end
 --- Frames ---
 --------------
 
-local skyridingRaceTrackerFrame = CreateFrame("Frame", "SkyridingRaceTracker")
+local percursusFrame = CreateFrame("Frame", "Percursus")
 
 ---------------------
 --- Main funtions ---
 ---------------------
 
-function skyridingRaceTrackerFrame:OnEvent(event, ...)
+function percursusFrame:OnEvent(event, ...)
 	self[event](self, event, ...)
 end
 
-function skyridingRaceTrackerFrame:ADDON_LOADED(_, addOnName)
+function percursusFrame:ADDON_LOADED(_, addOnName)
     if addOnName == addonName then
         Utils:InitializeDatabase()
         Dialog:InitializeDialog()
@@ -86,7 +86,7 @@ function skyridingRaceTrackerFrame:ADDON_LOADED(_, addOnName)
     end
 end
 
-function skyridingRaceTrackerFrame:QUEST_ACCEPTED(_, questID)
+function percursusFrame:QUEST_ACCEPTED(_, questID)
     local result = GetRaceData(questID)
 
     --Utils:PrintDebug("questID: " .. questID)
@@ -94,7 +94,7 @@ function skyridingRaceTrackerFrame:QUEST_ACCEPTED(_, questID)
     if result ~= nil then
         Utils:PrintDebug("Event 'QUEST_ACCEPTED' fired. Payload: " .. C_QuestLog.GetTitleForQuestID(questID) .. " (" .. questID ..")")
 
-        if SRT.data.options["race-tracker"] then
+        if PER.data.options["race-tracker"] then
             raceQuestID = result.questID
             raceSpellID = result.spellID
             raceGoldTime = result.goldTime
@@ -111,7 +111,7 @@ function skyridingRaceTrackerFrame:QUEST_ACCEPTED(_, questID)
     end
 end
 
-function skyridingRaceTrackerFrame:QUEST_REMOVED(_, questID, wasReplayQuest)
+function percursusFrame:QUEST_REMOVED(_, questID, wasReplayQuest)
     if CheckRaceQuest(questID) then
         raceQuestID = -1
         raceSpellID = -1
@@ -126,7 +126,7 @@ function skyridingRaceTrackerFrame:QUEST_REMOVED(_, questID, wasReplayQuest)
 end
 
 GossipFrame:HookScript("OnShow",function()
-    if UnitExists("target") and SRT.data.options["race-time-overview"] then
+    if UnitExists("target") and PER.data.options["race-time-overview"] then
 		local npcID = select(6, strsplit("-", tostring(UnitGUID("target"))))
         npcID = tonumber(npcID)
 
@@ -142,10 +142,10 @@ GossipFrame:HookScript("OnHide",function()
     RaceTimeOverview:HideRaceOverview()
 end)
 
-skyridingRaceTrackerFrame:RegisterEvent("ADDON_LOADED")
-skyridingRaceTrackerFrame:RegisterEvent("QUEST_ACCEPTED")
-skyridingRaceTrackerFrame:RegisterEvent("QUEST_REMOVED")
-skyridingRaceTrackerFrame:SetScript("OnEvent", skyridingRaceTrackerFrame.OnEvent)
+percursusFrame:RegisterEvent("ADDON_LOADED")
+percursusFrame:RegisterEvent("QUEST_ACCEPTED")
+percursusFrame:RegisterEvent("QUEST_REMOVED")
+percursusFrame:SetScript("OnEvent", percursusFrame.OnEvent)
 
 SLASH_Percursus1, SLASH_Percursus2 = '/per', '/Percursus'
 

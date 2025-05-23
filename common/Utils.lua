@@ -1,6 +1,6 @@
-local addonName, SRT = ...
+local addonName, PER = ...
 
-local L = SRT.localization
+local L = PER.localization
 
 local Utils = {}
 
@@ -32,27 +32,27 @@ end
 ---------------------
 
 function Utils:PrintDebug(msg)
-    if SRT.data.options["debug-mode"] then
+    if PER.data.options["debug-mode"] then
         local notfound = true
 
         for i = 1, NUM_CHAT_WINDOWS do
             local name, _, _, _, _, _, shown, locked, docked, uni = GetChatWindowInfo(i)
 
             if name == "Debug" and docked ~= nil then
-                _G['ChatFrame' .. i]:AddMessage(WrapTextInColorCode("Skyriding Race Tracker (Debug): ", SRT.ORANGE_FONT_COLOR) .. msg)
+                _G['ChatFrame' .. i]:AddMessage(WrapTextInColorCode("Skyriding Race Tracker (Debug): ", PER.ORANGE_FONT_COLOR) .. msg)
                 notfound = false
                 break
             end
         end
 
         if notfound then
-            DEFAULT_CHAT_FRAME:AddMessage(WrapTextInColorCode("Skyriding Race Tracker (Debug): ", SRT.ORANGE_FONT_COLOR)  .. msg)
+            DEFAULT_CHAT_FRAME:AddMessage(WrapTextInColorCode("Skyriding Race Tracker (Debug): ", PER.ORANGE_FONT_COLOR)  .. msg)
         end
 	end
 end
 
 function Utils:PrintMessage(msg)
-    DEFAULT_CHAT_FRAME:AddMessage(WrapTextInColorCode(addonName .. ": ", SRT.NORMAL_FONT_COLOR) .. msg)
+    DEFAULT_CHAT_FRAME:AddMessage(WrapTextInColorCode(addonName .. ": ", PER.NORMAL_FONT_COLOR) .. msg)
 end
 
 function Utils:InitializeDatabase()
@@ -61,8 +61,8 @@ function Utils:InitializeDatabase()
         SkyridingRaceTracker_Options_v2 = {}
     end
 
-    SRT.data = {}
-    SRT.data.options = SkyridingRaceTracker_Options_v2
+    PER.data = {}
+    PER.data.options = SkyridingRaceTracker_Options_v2
 end
 
-SRT.utils = Utils
+PER.utils = Utils
