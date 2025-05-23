@@ -1,4 +1,4 @@
-local _, SRT = ...
+local addonName, SRT = ...
 
 local L = SRT.localization
 
@@ -208,7 +208,7 @@ local function InitializeFrames()
         raceOverviewFrame = CreateFrame("Frame", "RaceTimeOverview", GossipFrame, "PortraitFrameTemplate")
         raceOverviewFrame:SetPoint("TOPLEFT", GossipFrame, "TOPRIGHT", 15, 0)
         raceOverviewFrame:SetSize(370, 430)
-        raceOverviewFrame:SetTitle(L["addon.name"])
+        raceOverviewFrame:SetTitle(addonName)
         raceOverviewFrame:Hide()
 
         raceOverviewFrame.portrait = raceOverviewFrame:GetPortrait()

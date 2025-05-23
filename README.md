@@ -1,12 +1,16 @@
-# Skyriding Race Tracker
+# Percursus
 
-[![GitHub Release](https://img.shields.io/github/v/release/diomsg-code/SkyridingRaceTracker?logo=github&cacheSeconds=600)](https://github.com/diomsg-code/SkyridingRaceTracker/releases)
-[![GitHub Release Date](https://img.shields.io/github/release-date/diomsg-code/SkyridingRaceTracker?logo=github&cacheSeconds=600)](https://github.com/diomsg-code/SkyridingRaceTracker/releases)
+[![GitHub Release](https://img.shields.io/github/v/release/wow-addon-dev/Percursus?logo=github&cacheSeconds=600)](https://github.com/wow-addon-dev/Percursus/releases)
+[![GitHub Release Date](https://img.shields.io/github/release-date/wow-addon-dev/Percursus?logo=github&cacheSeconds=600)](https://github.com/wow-addon-dev/Percursus/releases)
+
+*Master every course. Beat your time.*
+
+Percursus is an addon that displays a live timer during a race (e.g. dragonriding & skyriding) and provides a detailed time overview of all completed races.
 
 This addon is compatible with all race types such as dragonriding, skyriding, skyrocketing and breakneck (D.R.I.V.E.).
 
-Skyriding Race Tracker is an addon with the following two key features:
-*   Race Tracker: During the skyriding race, an overlay is shown that allows you to track your current race time
+The following key features are currently implemented:
+*   Race Tracker: During the race, an overlay is shown that allows you to track your current race time
 *   Race Time Overview: Next to the quest window of each Bronze Timekeeper, your current race times, as well as the gold and silver medal times are shown
 
 ### Features
@@ -23,8 +27,8 @@ Further customisation options for the 'Race Tracker' are planned.
 
 ### Quick Start
 
-To open the addon option window, type `/srt` or `/SkyridingRaceTracker` into your chat and hit enter.
+To open the addon option window, type `/per` or `/Percursus` into your chat and hit enter.
 
 ### Translation Support
 
-If you would like to help me with the translation, you can do so here: [CurseForge](https://legacy.curseforge.com/wow/addons/skyriding-race-tracker/localization) - Many thanks!
+If you would like to help me with the translation, I would be very pleased.

@@ -147,6 +147,6 @@ skyridingRaceTrackerFrame:RegisterEvent("QUEST_ACCEPTED")
 skyridingRaceTrackerFrame:RegisterEvent("QUEST_REMOVED")
 skyridingRaceTrackerFrame:SetScript("OnEvent", skyridingRaceTrackerFrame.OnEvent)
 
-SLASH_SkyridingRaceTracker1, SLASH_SkyridingRaceTracker2 = '/srt', '/SkyridingRaceTracker'
+SLASH_Percursus1, SLASH_Percursus2 = '/per', '/Percursus'
 
-SlashCmdList["SkyridingRaceTracker"] = SlashCommand
+SlashCmdList["Percursus"] = SlashCommand
