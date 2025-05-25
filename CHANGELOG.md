@@ -5,3 +5,4 @@
 - Changed: New addon name
 - Changed: New addon logo
 - Changed: The version number scheme has been changed
+- Updated: deDE, enUS, ruRU localization

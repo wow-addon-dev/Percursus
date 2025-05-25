@@ -44,7 +44,7 @@ L["personal-best-time-failed"] = "New Personal Best Time Failed"
 -- Options
 
 L["info.description"] = "Description"
-L["info.description.text"] = "The Skyriding Race Tracker is an addon to display the current race time during a skyriding race and provide an overview of all race times.\n\nThis addon is compatible with all race types such as dragonriding, skyriding, skyrocketing and breakneck (D.R.I.V.E.).\n\nIf you find a bug or have questions about the addon, you can contact me via Github or Curseforge. You can also help me with the translation via these two platforms. Thank you."
+L["info.description.text"] = "Percursus is an addon that displays a live timer during a race and provides a detailed time overview of all completed races.\n\nThis addon is compatible with all race types such as dragonriding, skyriding, skyrocketing and breakneck (D.R.I.V.E.).\n\nIf you find a bug or have questions about the addon, you can contact me via GitHub or CurseForge. You can also help me with the translation via GitHub. Thank you."
 
 L["info.help"] = "Help"
 L["info.help.text"] = "In case of problems after an update or if you want to, you can reset the options here."

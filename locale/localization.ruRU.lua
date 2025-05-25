@@ -41,7 +41,7 @@ L["personal-best-time-failed"] = "новый личный рекорд неуд�
 -- Options
 
 L["info.description"] = "Описание"
-L["info.description.text"] = "Skyriding Race Tracker — дополнение, которое отображает текущее время гонки во время гонок на Драконах и предоставляющее обзор времени всех гонок.\n\nЭто дополнение совместимо со всеми типами гонок, такими как езда на драконе, скайрайдинг, скайрокет и головокружительная гонка (D.R.I.V.E.).\n\nЕсли Вы нашли ошибку или у Вас есть вопросы по дополнению, Вы можете связаться со мной через Github или Curseforge. Вы также можете помочь мне с переводом через эти две платформы. Спасибо."
+L["info.description.text"] = "Percursus is an addon that displays a live timer during a race and provides a detailed time overview of all completed races.\n\nThis addon is compatible with all race types such as dragonriding, skyriding, skyrocketing and breakneck (D.R.I.V.E.).\n\nIf you find a bug or have questions about the addon, you can contact me via GitHub or CurseForge. You can also help me with the translation via GitHub. Thank you."
 
 L["info.help"] = "Помощь"
 L["info.help.text"] = "В случае возникновения проблем после обновления, Вы можете сбросить настройки здесь."
