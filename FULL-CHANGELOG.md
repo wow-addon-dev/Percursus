@@ -1,3 +1,9 @@
+**v1.38 (2025-05-25)**
+- Changed: New addon name
+- Changed: New addon logo
+- Changed: The version number scheme has been changed
+- Updated: deDE, enUS, ruRU localization
+
 **v1.38-alpha.2 (2025-05-25)**
 - Changed: New addon name
 - Changed: New addon logo
