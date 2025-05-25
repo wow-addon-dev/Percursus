@@ -1,8 +1,3 @@
-**v1.38-alpha.1 (2025-05-25)**
-- Changed: New addon name
-- Changed: New addon logo
-- Changed: The version number scheme has been changed
-
 **v37 (2025-05-11)**
 - Minor code adjustments
 
