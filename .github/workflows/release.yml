@@ -1,5 +1,5 @@
-name: Publish 'Memento'
-run-name: Publish 'Memento' (${{ github.event.inputs.release-type }})
+name: Publish 'Percursus'
+run-name: Publish 'Percursus' (${{ github.event.inputs.release-type }})
 
 on:
   workflow_dispatch:
