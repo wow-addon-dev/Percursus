@@ -10,7 +10,7 @@
 
 ## Notes: This addon displays a live timer during a race (e.g. dragonriding & skyriding) and provides a detailed time overview of all completed races.
 ## Notes-deDE: Dieses Addon zeigt einen Live-Timer während eines Rennens (z.B. Drachenreiter & Himmelsreiter) an und bietet eine detaillierte Zeitübersicht über alle absolvierten Rennen.
-## Notes-ruRU: Этот аддон отображает таймер в реальном времени во время гонки (например, гонки на драконе и параплане) и предоставляет подробный обзор времени всех завершенных гонок.
+## Notes-ruRU: Аддон, который отображает таймер в реальном времени во время гонки (например, гонки на драконе и параплане) и предоставляет подробный обзор времени всех завершенных гонок.
 
 ## LoadSavedVariablesFirst: 1
 ## SavedVariables: Percursus_Options
