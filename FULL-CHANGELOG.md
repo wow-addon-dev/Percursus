@@ -22,8 +22,8 @@
 - Fixed: The wrong gold and silver times were displayed in the race overview
 
 **v35 (2025-05-07)**
-- Updated: Skyriding race times for the expansion 'Dragonflight'
-- Updated: ruRU localization (Thanks to Valdemar)
+- Updated: Race times for the expansion 'Dragonflight'
+- Updated: ruRU localization (Thanks to Hollicsh)
 
 **v34 (2025-05-06)**
 - Added: New subpage in the options menu with information about the addon
@@ -38,41 +38,41 @@
 - Fixed: Variable names conflict with other addons
 
 **3.3.1 (2025-04-17)**
-- Updated: ruRU localization (Thanks to Valdemar)
+- Updated: ruRU localization (Thanks to Hollicsh)
 
 **3.3.0 (2025-04-13)**
 - Added: The current race speed (gliding speed) can now be displayed during the race
-- Updated: Skyriding race times for the area 'Zaralek Cavern'
+- Updated: Race times for the area 'Zaralek Cavern'
 - Minor code adjustments
 
 **3.2.6 (2025-04-11)**
-- Updated: Skyriding race times for the area 'Zaralek Cavern'
+- Updated: Race times for the area 'Zaralek Cavern'
 
 **3.2.5 (2025-04-06)**
 - Added: TOC version for patch 11.1.5 (Retail)
 
 **3.2.4 (2025-03-30)**
-- Updated: Skyriding race times for the area 'Emerald Dream'
+- Updated: Race times for the area 'Emerald Dream'
 
 **3.2.3 (2025-03-22)**
 - Minor code adjustments
 
 **3.2.2 (2025-03-21)**
-- Updated: Skyriding race times for the area 'Emerald Dream'
+- Updated: Race times for the area 'Emerald Dream'
 
 **3.2.1 (2025-02-27)**
 - Removed: TOC version for patch 11.0.7 (Retail)
 
 **3.2.0 (2025-02-25)**
-- Added: ruRU localization (Thanks to Valdemar)
-- Updated: Skyriding race times for the event 'Kalimdor Cup'
+- Added: ruRU localization (Thanks to Hollicsh)
+- Updated: Race times for the event 'Kalimdor Cup'
 - Minor code adjustments
 
 **3.1.0 (2025-02-25)**
-- Added: Skyriding race times for the event 'Kalimdor Cup'
+- Added: Race times for the event 'Kalimdor Cup'
 
 **3.0.5 (2025-02-19)**
-- Updated: Skyriding race times for the area 'Undermine' (PTR race times)
+- Updated: Race times for the area 'Undermine' (PTR race times)
 - Fixed: The color coding of the best race time in the zone overview was not correct
 
 **3.0.4 (2025-01-28)**
@@ -87,10 +87,10 @@
 - Minor code adjustments
 
 **3.0.1 (2025-01-15)**
-- Updated: Skyriding race times for the expansion 'Dragonflight'
+- Updated: Race times for the expansion 'Dragonflight'
 
 **3.0.0 (2025-01-12)**
-- Added: Skyriding race times for the area 'Undermine' (PTR race times)
+- Added: Race times for the area 'Undermine' (PTR race times)
 - Fixed: If the race was reset with the 'Bronze Pocket Watch', this was not detected and the timer continued to run (the detection does not yet work for all races from the 'Dragonflight' expansion, this will be fixed with the upcoming releases)
 - Refactoring of the addon structure and source codes
 
@@ -118,22 +118,22 @@
 - Minor code adjustments
 
 **2.0.0-4-alpha (2024-11-19)**
-- Added: For each skyriding race there is now a race time overview next to the corresponding quest window
+- Added: For each race there is now a race time overview next to the corresponding quest window
 - Changed: Name of the addon
 - Updated: deDE, enUS localization
 
 **2.0.0-3-alpha (2024-11-18)**
-- Added: For each skyriding race there is now a race time overview next to the corresponding quest window
+- Added: For each race there is now a race time overview next to the corresponding quest window
 - Changed: Name of the addon
 - Updated: deDE, enUS localization
 
 **2.0.0-2-alpha (2024-11-18)**
-- Added: For each skyriding race there is now a race time overview next to the corresponding quest window
+- Added: For each race there is now a race time overview next to the corresponding quest window
 - Changed: Name of the addon
 - Updated: deDE, enUS localization
 
 **2.0.0-1-alpha (2024-11-18)**
-- Added: For each skyriding race there is now a race time overview next to the corresponding quest window
+- Added: For each race there is now a race time overview next to the corresponding quest window
 - Changed: Name of the addon
 - Updated: deDE, enUS localization
 
@@ -156,10 +156,10 @@
 - Updated: TOC version for patch 11.0.5 (Retail)
 
 **1.3.0 (2024-10-22)**
-- Added: Skyriding race times for the expansion 'Dragonflight'
+- Added: Race times for the expansion 'Dragonflight'
 
 **1.2.0 (2024-10-21)**
-- Added: Skyriding race times for the expansion 'The War Within'
+- Added: Race times for the expansion 'The War Within'
 - Added: If available, the gold and silver times for the current race are displayed
 
 **1.1.0 (2024-10-20)**
