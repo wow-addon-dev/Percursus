@@ -41,7 +41,7 @@ L["personal-best-time-failed"] = "neue persönliche Bestzeit verfehlt"
 -- Options
 
 L["info.description"] = "Beschreibung"
-L["info.description.text"] = "Percursus ist ein Addon, das während eines Rennens einen Live-Timer anzeigt und einen detaillierten Zeitüberblick über alle absolvierten Rennen bietet.\n\nDieses Addon ist mit allen Renntypen wie Drachen-, Himmelsreiter-, Raketen- und Halsbrecherrennen (F.A.H.R.E.N.) kompatibel.\n\nSolltest Du einen Fehler finden oder Fragen zum Addon haben, so kannst Du über GitHub oder CurseForge Kontakt aufnehmen. Über GitHub kannst Du mir auch bei der Übersetzung helfen. Vielen Dank."
+L["info.description.text"] = "Percursus ist ein Addon, das während eines Rennens einen Live-Timer anzeigt und einen detaillierten Zeitüberblick über alle absolvierten Rennen bietet.\n\nDieses Addon ist mit allen Renntypen wie Drachen-, Himmelsreiter-, Raketen- und Halsbrecherrennen (F.A.H.R.E.N.) kompatibel.\n\nSolltest Du einen Fehler finden oder Fragen zum Addon haben, so kannst Du über GitHub Kontakt aufnehmen. Über GitHub kannst Du mir auch bei der Übersetzung helfen. Vielen Dank."
 
 L["info.help"] = "Hilfe"
 L["info.help.text"] = "Bei Problemen nach einem Update oder wenn Du es möchtest, kannst Du hier die Einstellungen zurücksetzen."
@@ -49,8 +49,6 @@ L["info.help.reset-button.name"] = "Einstellungen zurücksetzen"
 L["info.help.reset-button.desc"] = "Setzt die Einstellungen auf die Standardwerte zurück. Dies gilt für alle Charaktere."
 L["info.help.github-button.name"] = "GitHub"
 L["info.help.github-button.desc"] = "Öffnet ein Popup-Fenster mit einem Link nach GitHub."
-L["info.help.curseforge-button.name"] = "CurseForge"
-L["info.help.curseforge-button.desc"] = "Öffnet ein Popup-Fenster mit einem Link nach CurseForge."
 
 L["info.about"] = "Über"
 L["info.about.text"] = "|cffF2E699Spielversion:|r %s\n|cffF2E699Addonversion:|r %s\n\n|cffF2E699Autor:|r %s"
