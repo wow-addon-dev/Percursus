@@ -1,3 +1,6 @@
+**v1.40 (2025-05-30)**
+- Minor code adjustments
+
 **v1.39 (2025-05-28)**
 - Updated: ruRU localization (#1 - Thanks to Hollicsh)
 
