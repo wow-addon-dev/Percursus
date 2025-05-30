@@ -41,7 +41,7 @@ local function UpdateRaceOverview(npcID, scrollFrame)
     local questID = raceDataTable[npcID][3].NORMAL[1]
 
     local quest = scrollFrame:CreateFontString(nil, "OVERLAY", "GameFontNormal")
-    quest:SetPoint("TOP", 0, 35)
+    quest:SetPoint("TOP", 5, 35)
 
     QuestEventListener:AddCallback(questID, function()
         local name = C_QuestLog.GetTitleForQuestID(questID)
@@ -122,7 +122,7 @@ local function UpdateZoneOverview(zoneID, scrollFrame)
     scrollFrame.rows = {}
 
     local zone = scrollFrame:CreateFontString(nil, "OVERLAY", "GameFontNormal")
-    zone:SetPoint("TOP", 0, 35)
+    zone:SetPoint("TOP", 5, 35)
     zone:SetText(C_Map.GetMapInfo(zoneID).name)
     table.insert(scrollFrame.rows, {zone})
 
@@ -205,9 +205,10 @@ end
 
 local function InitializeFrames()
     do
-        raceOverviewFrame = CreateFrame("Frame", "RaceTimeOverview", GossipFrame, "PortraitFrameTemplate")
+        raceOverviewFrame = CreateFrame("Frame", nil, GossipFrame, "PortraitFrameTemplate")
         raceOverviewFrame:SetPoint("TOPLEFT", GossipFrame, "TOPRIGHT", 15, 0)
-        raceOverviewFrame:SetSize(370, 430)
+        raceOverviewFrame:SetSize(338, 430)
+		raceOverviewFrame:SetFrameStrata("MEDIUM")
         raceOverviewFrame:SetTitle(addonName)
         raceOverviewFrame:Hide()
 
@@ -216,7 +217,7 @@ local function InitializeFrames()
         raceOverviewFrame.portrait:SetTexture(PER.MEDIA_PATH .. "icon-round.blp")
 
         local background = CreateFrame("Frame", nil, raceOverviewFrame, "InsetFrameTemplate4")
-        background:SetSize(350, 330)
+        background:SetSize(322, 330)
         background:SetPoint("BOTTOM", raceOverviewFrame, "BOTTOM", 0, 37)
         background.texture = background:CreateTexture(nil, "BACKGROUND")
         background.texture:SetAllPoints(background)
@@ -247,14 +248,15 @@ local function InitializeFrames()
 
     do
         zoneOverviewFrame = CreateFrame("Frame", nil, raceOverviewFrame, "DefaultPanelTemplate")
-        zoneOverviewFrame:SetPoint("TOPLEFT", raceOverviewFrame, "TOPRIGHT", 15, 0)
-        zoneOverviewFrame:SetSize(375, 430)
+        zoneOverviewFrame:SetPoint("TOPLEFT", raceOverviewFrame, "TOPRIGHT", 10, 0)
+		zoneOverviewFrame:SetPoint("CENTER")
+        zoneOverviewFrame:SetSize(343, 430)
         zoneOverviewFrame:SetTitle(L["title.zone-overview"])
-        zoneOverviewFrame:Hide()
+        zoneOverviewFrame:Show()
 
         local background = CreateFrame("Frame", nil, zoneOverviewFrame, "InsetFrameTemplate4")
-        background:SetSize(350, 330)
-        background:SetPoint("BOTTOM", zoneOverviewFrame, "BOTTOM", 3, 37)
+        background:SetSize(322, 330)
+        background:SetPoint("BOTTOM", zoneOverviewFrame, "BOTTOM", 2.5, 37)
         background.texture = background:CreateTexture(nil, "BACKGROUND")
         background.texture:SetAllPoints(background)
         background.texture:SetPoint("CENTER")
