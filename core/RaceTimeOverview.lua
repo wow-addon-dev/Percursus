@@ -252,7 +252,7 @@ local function InitializeFrames()
 		zoneOverviewFrame:SetPoint("CENTER")
         zoneOverviewFrame:SetSize(343, 430)
         zoneOverviewFrame:SetTitle(L["title.zone-overview"])
-        zoneOverviewFrame:Show()
+        zoneOverviewFrame:Hide()
 
         local background = CreateFrame("Frame", nil, zoneOverviewFrame, "InsetFrameTemplate4")
         background:SetSize(322, 330)
