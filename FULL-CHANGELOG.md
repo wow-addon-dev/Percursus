@@ -1,3 +1,7 @@
+**v1.41 (2025-06-02)**
+- Added: TOC version for patch 11.1.7 (Retail)
+- Minor code adjustments
+
 **v1.40 (2025-05-30)**
 - Minor code adjustments
 
