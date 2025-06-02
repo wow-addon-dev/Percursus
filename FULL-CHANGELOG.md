@@ -1,3 +1,6 @@
+**v1.42 (2025-06-02)**
+- Fixed: Settings were not saved
+
 **v1.41 (2025-06-02)**
 - Added: TOC version for patch 11.1.7 (Retail)
 - Minor code adjustments
