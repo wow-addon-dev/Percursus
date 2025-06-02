@@ -57,12 +57,12 @@ end
 
 function Utils:InitializeDatabase()
     -- Options
-    if (not SkyridingRaceTracker_Options_v2) then
-        SkyridingRaceTracker_Options_v2 = {}
+    if (not Percursus_Options) then
+        Percursus_Options = {}
     end
 
     PER.data = {}
-    PER.data.options = SkyridingRaceTracker_Options_v2
+    PER.data.options = Percursus_Options
 end
 
 PER.utils = Utils
