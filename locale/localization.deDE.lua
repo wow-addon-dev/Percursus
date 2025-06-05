@@ -58,9 +58,9 @@ L["options.general"] = "allgemeine Einstellungen"
 
 L["options.race-tracker"] = "Race-Tracker"
 L["options.race-tracker.name"] = "Race-Tracker aktivieren"
-L["options.race-tracker.tooltip"] = "Aktiviert oder deaktiviert den Race-Tracker während des Himmelsreiterrennen."
+L["options.race-tracker.tooltip"] = "Aktiviert den Race-Tracker während eines Rennens."
 L["options.race-tracker-mode.name"] = "Modus"
-L["options.race-tracker-mode.tooltip"] = "Legt fest, ob die Zeit beim Rennen als Timer oder Countdown angezeigt werden soll."
+L["options.race-tracker-mode.tooltip"] = "Legt fest, wie die Zeit während eines Rennens angezeigt werden soll."
 L["options.race-tracker-mode.value.0"] = "Timer"
 L["options.race-tracker-mode.value.1"] = "Countdown - Medaillenzeit"
 L["options.race-tracker-mode.value.2"] = "Countdown - persönliche Bestzeit"
@@ -81,7 +81,7 @@ L["options.race-tracker-fadeout-delay.tooltip"] = "Bestimmt die Zeit nach einem 
 
 L["options.race-time-overview"] = "Rennzeitenübersicht"
 L["options.race-time-overview.name"] = "Rennzeitenübersicht aktivieren"
-L["options.race-time-overview.tooltip"] = "Aktiviert oder deaktiviert die Rennzeitenübersicht neben dem Questfenster."
+L["options.race-time-overview.tooltip"] = "Aktiviert die Rennzeitenübersicht neben dem Questfenster."
 
 L["options.other"] = "sonstige Einstellungen"
 L["options.debug-mode.name"] = "Debugmodus"

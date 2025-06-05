@@ -171,9 +171,9 @@ function Options:Initialize()
     local variableTable = PER.data.options
     local category, layout = Settings.RegisterVerticalLayoutSubcategory(mainCategory, L["options"])
 
-    local parentSettingMinimapButton
+	local ParentSettingRaceTracker
 
-    layout:AddInitializer(CreateSettingsListSectionHeaderInitializer(L["options.general"]))
+    layout:AddInitializer(CreateSettingsListSectionHeaderInitializer(L["options.race-tracker"]))
 
     do
         local name = L["options.race-tracker.name"]
@@ -220,7 +220,7 @@ function Options:Initialize()
         local defaultValue = true
 
         local setting = Settings.RegisterAddOnSetting(category, variable, variable, variableTable, Settings.VarType.Boolean, name, defaultValue)
-        parentSettingBackground = Settings.CreateCheckbox(category, setting, tooltip)
+        ParentSettingBackground = Settings.CreateCheckbox(category, setting, tooltip)
     end
 
     do
@@ -239,7 +239,7 @@ function Options:Initialize()
         local setting = Settings.RegisterAddOnSetting(category, addonName .. "_" .. variable, variable, variableTable, Settings.VarType.Number, name, defaultValue)
         local subSetting = Settings.CreateDropdown(category, setting, GetOptions, tooltip)
 
-        subSetting:SetParentInitializer(parentSettingBackground, function() return PER.data.options["race-tracker-background"] end)
+        subSetting:SetParentInitializer(ParentSettingBackground, function() return PER.data.options["race-tracker-background"] end)
     end
 
     do
