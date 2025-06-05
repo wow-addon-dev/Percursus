@@ -3,3 +3,4 @@
 [Full Changelog](@full-changelog@) - [Previous Releases](https://github.com/wow-addon-dev/Percursus/releases)
 
 - Updated: deDE, enUS, ruRU localization
+- Minor code adjustments

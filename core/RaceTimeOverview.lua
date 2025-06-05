@@ -242,6 +242,7 @@ local function InitializeFrames()
                 zoneOverviewFrame:Hide()
             else
                 zoneOverviewFrame:Show()
+				zoneOverviewFrame.scrollFrame:SetVerticalScroll(0)
             end
         end)
     end
@@ -294,6 +295,7 @@ function RaceTimeOverview:ShowRaceOverview(npcID)
     UpdateZoneOverview(zoneID, zoneOverviewFrame.scrollFrame)
 
     raceOverviewFrame:Show()
+	raceOverviewFrame.scrollFrame:SetVerticalScroll(0)
 end
 
 function RaceTimeOverview:HideRaceOverview()
