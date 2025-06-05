@@ -1,3 +1,7 @@
+**v1.43 (2025-06-05)**
+- Updated: deDE, enUS, ruRU localization
+- Minor code adjustments
+
 **v1.42 (2025-06-02)**
 - Fixed: Settings were not saved
 
