@@ -17,7 +17,7 @@ local resetOptionsDialog
 ---------------------
 
 function Dialog:InitializeDialog()
-    copyAddressDialog = CreateFrame("Frame", "PER_CopyAddressDialog", UIParent, "TranslucentFrameTemplate")
+    copyAddressDialog = CreateFrame("Frame", "Percursus_CopyAddressDialog", UIParent, "TranslucentFrameTemplate")
     copyAddressDialog:SetSize(400, 10)
     copyAddressDialog:SetPoint("CENTER", 0, 200)
 
@@ -54,7 +54,7 @@ function Dialog:InitializeDialog()
 
     copyAddressDialog:SetHeight(copyAddressDialog:GetTop() - buttonClose:GetBottom() + 20)
 
-    resetOptionsDialog = CreateFrame("Frame", "PER_ResetOptionsDialog", UIParent, "TranslucentFrameTemplate")
+    resetOptionsDialog = CreateFrame("Frame", "Percursus_ResetOptionsDialog", UIParent, "TranslucentFrameTemplate")
     resetOptionsDialog:SetSize(350, 10)
     resetOptionsDialog:SetPoint("CENTER", 0, 200)
 
@@ -63,7 +63,6 @@ function Dialog:InitializeDialog()
     resetOptionsDialog:SetClampedToScreen(true)
 
     tinsert(UISpecialFrames, resetOptionsDialog:GetName())
-
     resetOptionsDialog:Hide()
 
     local text = resetOptionsDialog:CreateFontString(nil, "OVERLAY", "GameFontHighlight")
