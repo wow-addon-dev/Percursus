@@ -1,3 +1,7 @@
+**v1.44 (2025-06-07)**
+- Updated: Race times for the expansion 'Dragonflight'
+- Updated: ruRU localization (#2 - Thanks to Hollicsh)
+
 **v1.43 (2025-06-05)**
 - Updated: deDE, enUS, ruRU localization
 - Minor code adjustments
