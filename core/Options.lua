@@ -231,8 +231,9 @@ function Options:Initialize()
 
         local function GetOptions()
             local container = Settings.CreateControlTextContainer()
-            container:Add(0, L["options.race-tracker-background-type.value.0"], "|T" .. PER.MEDIA_PATH .. "raceTrackerBackground-01.blp:16:64|t")
-            container:Add(1, L["options.race-tracker-background-type.value.1"], "|T" .. PER.MEDIA_PATH .. "raceTrackerBackground-02.blp:16:64|t")
+            container:Add(0, L["options.race-tracker-background-type.value.0"])
+            container:Add(1, L["options.race-tracker-background-type.value.1"])
+			container:Add(2, L["options.race-tracker-background-type.value.2"])
             return container:GetData()
         end
 
