@@ -80,12 +80,13 @@ function Dialog:InitializeDialog()
         local options = PER.data.options
         options["race-tracker"] = true
         options["race-tracker-mode"] = 0
-        options["race-tracker-gliding-speed"] = false
-        options["race-tracker-background"] = true
-        options["race-tracker-background-type"] = 0
+        options["race-tracker-background"] = 0
         options["race-tracker-horizontal-shift"] = 0
         options["race-tracker-vertical-shift"] = 200
         options["race-tracker-fadeout-delay"] = 3
+		options["race-tracker-speed-display"] = false
+		options["race-tracker-speed-display-horizontal-shift"] = 0
+        options["race-tracker-speed-display-vertical-shift"] = -100
         options["race-time-overview"] = true
         options["debug-mode"] = false
 

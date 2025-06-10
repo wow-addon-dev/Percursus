@@ -111,7 +111,7 @@ function percursusFrame:QUEST_ACCEPTED(_, questID)
     end
 end
 
-function percursusFrame:QUEST_REMOVED(_, questID, wasReplayQuest)
+function percursusFrame:QUEST_REMOVED(_, questID)
     if CheckRaceQuest(questID) then
         raceQuestID = -1
         raceSpellID = -1
@@ -123,6 +123,19 @@ function percursusFrame:QUEST_REMOVED(_, questID, wasReplayQuest)
 
         Utils:PrintDebug("Event 'QUEST_REMOVED' fired. Payload: " .. C_QuestLog.GetTitleForQuestID(questID) .. " (" .. questID ..")")
     end
+end
+
+function percursusFrame:DISPLAY_EVENT_TOASTS()
+    Utils:PrintDebug("Event 'DISPLAY_EVENT_TOASTS' fired. No payload.")
+	--local toastInfo = C_EventToastManager.GetNextToastToDisplay()
+
+	--print(tostring(toastInfo.title))
+	--print(tostring(toastInfo.eventToastID))
+	--print(tostring(toastInfo.eventType))
+	--print(tostring(toastInfo.displayType))
+
+	--C_EventToastManager.RemoveCurrentToast()
+	--EventToastManagerFrame:Hide()
 end
 
 GossipFrame:HookScript("OnShow",function()
@@ -145,6 +158,7 @@ end)
 percursusFrame:RegisterEvent("ADDON_LOADED")
 percursusFrame:RegisterEvent("QUEST_ACCEPTED")
 percursusFrame:RegisterEvent("QUEST_REMOVED")
+percursusFrame:RegisterEvent("DISPLAY_EVENT_TOASTS")
 percursusFrame:SetScript("OnEvent", percursusFrame.OnEvent)
 
 SLASH_Percursus1, SLASH_Percursus2 = '/per', '/Percursus'
