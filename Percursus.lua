@@ -9,6 +9,7 @@ local RaceTimeOverview = PER.raceTimeOverview
 
 local raceDataTable = PER.RACE_DATA
 
+local activeTracker = false
 local raceQuestID = -1
 local raceSpellID = -1
 local raceGoldTime = -1
@@ -95,6 +96,7 @@ function percursusFrame:QUEST_ACCEPTED(_, questID)
         Utils:PrintDebug("Event 'QUEST_ACCEPTED' fired. Payload: " .. C_QuestLog.GetTitleForQuestID(questID) .. " (" .. questID ..")")
 
         if PER.data.options["race-tracker"] then
+			activeTracker = true
             raceQuestID = result.questID
             raceSpellID = result.spellID
             raceGoldTime = result.goldTime
@@ -104,6 +106,12 @@ function percursusFrame:QUEST_ACCEPTED(_, questID)
                 racePersonalTime = C_CurrencyInfo.GetCurrencyInfo(result.raceTime).quantity / 1000
             end
 
+			--if false then
+			--	percursusFrame:RegisterEvent("ZONE_CHANGED")
+			--	percursusFrame:RegisterEvent("ZONE_CHANGED_NEW_AREA")
+			--	percursusFrame:RegisterEvent("DISPLAY_EVENT_TOASTS")
+			--end
+
             RaceTracker:Start(raceQuestID, raceSpellID, raceGoldTime, raceSilverTime, racePersonalTime)
         else
             Utils:PrintDebug("No race tracker requested.")
@@ -112,7 +120,10 @@ function percursusFrame:QUEST_ACCEPTED(_, questID)
 end
 
 function percursusFrame:QUEST_REMOVED(_, questID)
-    if CheckRaceQuest(questID) then
+    if CheckRaceQuest(questID) and activeTracker then
+		Utils:PrintDebug("Event 'QUEST_REMOVED' fired. Payload: " .. C_QuestLog.GetTitleForQuestID(questID) .. " (" .. questID ..")")
+
+		activeTracker = false
         raceQuestID = -1
         raceSpellID = -1
         raceGoldTime = -1
@@ -121,21 +132,36 @@ function percursusFrame:QUEST_REMOVED(_, questID)
 
         RaceTracker:Stop()
 
-        Utils:PrintDebug("Event 'QUEST_REMOVED' fired. Payload: " .. C_QuestLog.GetTitleForQuestID(questID) .. " (" .. questID ..")")
+		local delay = PER.data.options["race-tracker-fadeout-delay"]
+
+		C_Timer.After(delay, function()
+			RaceTracker:HideResultDisplay()
+
+			--percursusFrame:UnregisterEvent("ZONE_CHANGED")
+			--percursusFrame:UnregisterEvent("ZONE_CHANGED_NEW_AREA")
+			--percursusFrame:UnregisterEvent("DISPLAY_EVENT_TOASTS")
+		end)
     end
+end
+
+function percursusFrame:ZONE_CHANGED()
+    Utils:PrintDebug("Event 'ZONE_CHANGED' fired. No payload.")
+
+	ZoneTextFrame:Hide()
+	SubZoneTextFrame:Hide()
+end
+
+function percursusFrame:ZONE_CHANGED_NEW_AREA()
+    Utils:PrintDebug("Event 'ZONE_CHANGED_NEW_AREA' fired. No payload.")
+
+	ZoneTextFrame:Hide()
+	SubZoneTextFrame:Hide()
 end
 
 function percursusFrame:DISPLAY_EVENT_TOASTS()
     Utils:PrintDebug("Event 'DISPLAY_EVENT_TOASTS' fired. No payload.")
-	--local toastInfo = C_EventToastManager.GetNextToastToDisplay()
 
-	--print(tostring(toastInfo.title))
-	--print(tostring(toastInfo.eventToastID))
-	--print(tostring(toastInfo.eventType))
-	--print(tostring(toastInfo.displayType))
-
-	--C_EventToastManager.RemoveCurrentToast()
-	--EventToastManagerFrame:Hide()
+	EventToastManagerFrame:Hide()
 end
 
 GossipFrame:HookScript("OnShow",function()
@@ -158,7 +184,6 @@ end)
 percursusFrame:RegisterEvent("ADDON_LOADED")
 percursusFrame:RegisterEvent("QUEST_ACCEPTED")
 percursusFrame:RegisterEvent("QUEST_REMOVED")
-percursusFrame:RegisterEvent("DISPLAY_EVENT_TOASTS")
 percursusFrame:SetScript("OnEvent", percursusFrame.OnEvent)
 
 SLASH_Percursus1, SLASH_Percursus2 = '/per', '/Percursus'

@@ -16,34 +16,23 @@ local finalTicker = nil
 --------------
 
 local raceTrackerFrame
+local resultDisplayFrame
 local speedDisplayFrame
 
 ----------------------
 --- Local funtions ---
 ----------------------
 
-local function StopFinalTicker()
-    local status, err = pcall(function ()
-        if finalTicker and not finalTicker:IsCancelled() then
-            finalTicker:Cancel()
-            finalTicker = nil
-        end
-    end)
-
-    if not status then
-        Utils:PrintDebug("Method StopFinalTicker() aborted with exception: " .. err)
-    end
-end
-
 ----------------------
 --- Frame Funtions ---
 ----------------------
 
 local function ShowRaceTracker(raceQuestID, raceGoldTime, racePersonalTime)
-    StopFinalTicker()
+	resultDisplayFrame:Hide()
 
     raceTrackerFrame:SetPoint("CENTER", PER.data.options["race-tracker-horizontal-shift"], PER.data.options["race-tracker-vertical-shift"])
-    speedDisplayFrame:SetPoint("CENTER", PER.data.options["race-tracker-speed-display-horizontal-shift"], PER.data.options["race-tracker-speed-display-vertical-shift"])
+    resultDisplayFrame:SetPoint("CENTER", PER.data.options["race-tracker-horizontal-shift"], PER.data.options["race-tracker-vertical-shift"])
+	speedDisplayFrame:SetPoint("CENTER", PER.data.options["race-tracker-speed-display-horizontal-shift"], PER.data.options["race-tracker-speed-display-vertical-shift"])
 
 	raceTrackerFrame.timer:SetText(C_QuestLog.GetTitleForQuestID(raceQuestID))
 
@@ -51,33 +40,49 @@ local function ShowRaceTracker(raceQuestID, raceGoldTime, racePersonalTime)
 		local style = PER.RACE_TRACKER_BACKGROUNDS[PER.data.options["race-tracker-background"]]
 
 		raceTrackerFrame:SetSize(style.width, style.height)
+		resultDisplayFrame:SetSize(style.width, style.height)
 
 		raceTrackerFrame.background:SetAllPoints(raceTrackerFrame)
 		raceTrackerFrame.background:SetPoint("CENTER")
+		resultDisplayFrame.background:SetAllPoints(raceTrackerFrame)
+		resultDisplayFrame.background:SetPoint("CENTER")
 
 		if style.type == "file" then
 			raceTrackerFrame.background:SetTexture(PER.MEDIA_PATH .. style.texture)
+			resultDisplayFrame.background:SetTexture(PER.MEDIA_PATH .. style.texture)
 		elseif style.type == "atlas" then
 			raceTrackerFrame.background:SetAtlas(style.texture)
+			resultDisplayFrame.background:SetAtlas(style.texture)
 		end
 
 		raceTrackerFrame.info:ClearAllPoints()
 		raceTrackerFrame.info:SetPoint("CENTER", 0, style.yOffsets.info)
+		resultDisplayFrame.info:ClearAllPoints()
+		resultDisplayFrame.info:SetPoint("CENTER", 0, style.yOffsets.info)
 
 		raceTrackerFrame.timer:ClearAllPoints()
 		raceTrackerFrame.timer:SetPoint("CENTER", 0, style.yOffsets.timer)
+		resultDisplayFrame.timer:ClearAllPoints()
+		resultDisplayFrame.timer:SetPoint("CENTER", 0, style.yOffsets.timer)
 
 		raceTrackerFrame.background:Show()
+		resultDisplayFrame.background:Show()
     else
 		raceTrackerFrame:SetSize(256, 64)
+		resultDisplayFrame:SetSize(256, 64)
 
 		raceTrackerFrame.timer:ClearAllPoints()
 		raceTrackerFrame.timer:SetPoint("CENTER", 0, 10)
+		resultDisplayFrame.timer:ClearAllPoints()
+		resultDisplayFrame.timer:SetPoint("CENTER", 0, 10)
 
 		raceTrackerFrame.info:ClearAllPoints()
 		raceTrackerFrame.info:SetPoint("CENTER", 0, -10)
+		resultDisplayFrame.info:ClearAllPoints()
+		resultDisplayFrame.info:SetPoint("CENTER", 0, -10)
 
 		raceTrackerFrame.background:Hide()
+		resultDisplayFrame.background:Hide()
     end
 
     if PER.data.options["race-tracker-mode"] == 0 then
@@ -123,23 +128,52 @@ local function InitializeFrames ()
     raceTrackerFrame.timer = raceTrackerFrame:CreateFontString(nil, "OVERLAY", "GameFontNormalLarge")
     raceTrackerFrame.info = raceTrackerFrame:CreateFontString(nil, "OVERLAY", "GameFontNormal")
 
+    resultDisplayFrame = CreateFrame("Frame", nil, UIParent)
+    resultDisplayFrame:Hide()
+
+    resultDisplayFrame.background = resultDisplayFrame:CreateTexture(nil, "BACKGROUND")
+    resultDisplayFrame.timer = resultDisplayFrame:CreateFontString(nil, "OVERLAY", "GameFontNormalLarge")
+    resultDisplayFrame.info = resultDisplayFrame:CreateFontString(nil, "OVERLAY", "GameFontNormal")
+
     speedDisplayFrame = CreateFrame("Frame", nil, UIParent)
-	speedDisplayFrame:SetSize(130, 25)
+	speedDisplayFrame:SetSize(220, 31)
     speedDisplayFrame:Hide()
 
-    speedDisplayFrame.border = speedDisplayFrame:CreateTexture(nil, "BACKGROUND", nil, 0)
-	speedDisplayFrame.border:SetPoint("CENTER")
-	speedDisplayFrame.border:SetAtlas("worldstate-capturebar-frame-boss", true)
+    speedDisplayFrame.borderCenter = speedDisplayFrame:CreateTexture(nil, "BACKGROUND", nil, 0)
+	speedDisplayFrame.borderCenter:SetPoint("CENTER")
+	speedDisplayFrame.borderCenter:SetSize(150, 31)
+	speedDisplayFrame.borderCenter:SetAtlas("UI-Frame-Bar-BorderCenter")
 
-	speedDisplayFrame.background = speedDisplayFrame:CreateTexture(nil, "BACKGROUND", nil, -2)
-	speedDisplayFrame.background:SetPoint("CENTER")
-	speedDisplayFrame.background:SetSize(125, 9)
-	speedDisplayFrame.background:SetAtlas("worldstate-capturebar-neutralfill-boss")
+	speedDisplayFrame.borderLeft = speedDisplayFrame:CreateTexture(nil, "BACKGROUND", nil, 0)
+	speedDisplayFrame.borderLeft:SetPoint("LEFT")
+	speedDisplayFrame.borderLeft:SetSize(35, 31)
+	speedDisplayFrame.borderLeft:SetAtlas("UI-Frame-Bar-BorderLeft")
+
+	speedDisplayFrame.borderRight = speedDisplayFrame:CreateTexture(nil, "BACKGROUND", nil, 0)
+	speedDisplayFrame.borderRight:SetPoint("RIGHT")
+	speedDisplayFrame.borderRight:SetSize(35, 31)
+	speedDisplayFrame.borderRight:SetAtlas("UI-Frame-Bar-BorderRight")
+
+	speedDisplayFrame.backgroundCenter = speedDisplayFrame:CreateTexture(nil, "BACKGROUND", nil, -2)
+	speedDisplayFrame.backgroundCenter:SetPoint("CENTER")
+	speedDisplayFrame.backgroundCenter:SetSize(150, 18)
+	speedDisplayFrame.backgroundCenter:SetAtlas("UI-Frame-Bar-BGCenter")
+
+	speedDisplayFrame.backgroundLeft = speedDisplayFrame:CreateTexture(nil, "BACKGROUND", nil, -2)
+	speedDisplayFrame.backgroundLeft:SetPoint("LEFT", 6, 0)
+	speedDisplayFrame.backgroundLeft:SetSize(29, 18)
+	speedDisplayFrame.backgroundLeft:SetAtlas("UI-Frame-Bar-BGLeft")
+
+	speedDisplayFrame.backgroundRight = speedDisplayFrame:CreateTexture(nil, "BACKGROUND", nil, -2)
+	speedDisplayFrame.backgroundRight:SetPoint("RIGHT", -6, 0)
+	speedDisplayFrame.backgroundRight:SetSize(29, 18)
+	speedDisplayFrame.backgroundRight:SetAtlas("UI-Frame-Bar-BGRight")
 
 	speedDisplayFrame.race = speedDisplayFrame:CreateTexture(nil, "BACKGROUND", nil, -1)
 	speedDisplayFrame.race:SetPoint("CENTER")
-	speedDisplayFrame.race:SetSize(1, 9)
-	speedDisplayFrame.race:SetAtlas("worldstate-capturebar-neutralfill-target")
+	speedDisplayFrame.race:SetSize(1, 18)
+	speedDisplayFrame.race:SetAtlas("UI-Frame-DastardlyDuos-ProgressBar-Fill-yellow")
+	speedDisplayFrame.race:Hide()
 end
 
 ---------------------
@@ -176,13 +210,13 @@ function RaceTracker:Start(raceQuestID, raceSpellID, raceGoldTime, raceSilverTim
 
         if PER.data.options["race-tracker-speed-display"] and canGlide then
             local _, _, forwardSpeed = C_PlayerInfo.GetGlidingInfo()
-			local speed = 125 * Round(forwardSpeed) / 100
+			local speed = 208 * Round(forwardSpeed) / 100
 
 			if speed == 0 then
-				speedDisplayFrame.race:SetSize(1, 9)
+				speedDisplayFrame.race:SetSize(1, 18)
 				speedDisplayFrame.race:Hide()
 			else
-				speedDisplayFrame.race:SetSize(speed, 9)
+				speedDisplayFrame.race:SetSize(speed, 15)
 				speedDisplayFrame.race:Show()
 			end
         end
@@ -260,19 +294,20 @@ function RaceTracker:Start(raceQuestID, raceSpellID, raceGoldTime, raceSilverTim
 end
 
 function RaceTracker:Stop()
-    count = 1
     raceTicker:Cancel()
 
+	speedDisplayFrame.race:Hide()
 	speedDisplayFrame:Hide()
 
-    finalTicker = C_Timer.NewTicker(1, function()
-        if count >= PER.data.options["race-tracker-fadeout-delay"] then
-            raceTrackerFrame:Hide()
-            StopFinalTicker()
-        else
-            count = count + 1
-        end
-    end)
+	resultDisplayFrame.timer:SetText(raceTrackerFrame.timer:GetText())
+	resultDisplayFrame.info:SetText(raceTrackerFrame.info:GetText())
+
+	resultDisplayFrame:Show()
+	raceTrackerFrame:Hide()
+end
+
+function RaceTracker:HideResultDisplay()
+	resultDisplayFrame:Hide()
 end
 
 PER.raceTracker = RaceTracker
