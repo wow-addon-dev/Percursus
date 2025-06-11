@@ -122,7 +122,7 @@ end
 
 local function InitializeFrames ()
     raceTrackerFrame = CreateFrame("Frame", nil, UIParent)
-    raceTrackerFrame:Hide()
+	raceTrackerFrame:Hide()
 
     raceTrackerFrame.background = raceTrackerFrame:CreateTexture(nil, "BACKGROUND")
     raceTrackerFrame.timer = raceTrackerFrame:CreateFontString(nil, "OVERLAY", "GameFontNormalLarge")

@@ -9,6 +9,7 @@ PER.GAME_FLAVOR = C_AddOns.GetAddOnMetadata(addonName, "X-Flavor")
 
 PER.LINK_GITHUB = C_AddOns.GetAddOnMetadata(addonName, "X-Github")
 PER.LINK_CURSEFORGE = C_AddOns.GetAddOnMetadata(addonName, "X-Curseforge")
+PER.LINK_WAGO = C_AddOns.GetAddOnMetadata(addonName, "X-Wago")
 
 PER.NORMAL_FONT_COLOR = "ffFFD200"      -- #1
 PER.WHITE_FONT_COLOR = "ffFFFFFF"       -- #2
