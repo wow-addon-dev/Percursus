@@ -1,3 +1,9 @@
+**v1.45 (2025-06-12)**
+- Added: New Race Tracker backgrounds (Alliance and Horde)
+- Changed: The speed display during a race is shown as a bar and can be positioned separately from the Race Tracker
+- Updated: deDE, enUS, ruRU localization (#3 - Thanks to Hollicsh)
+- Minor code adjustments
+
 **v1.44 (2025-06-07)**
 - Updated: Race times for the expansion 'Dragonflight'
 - Updated: ruRU localization (#2 - Thanks to Hollicsh)
