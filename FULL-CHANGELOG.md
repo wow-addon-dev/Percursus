@@ -1,3 +1,6 @@
+**v1.46 (2025-06-12)**
+- Fixed: Race Tracker did not start because no background can be loaded
+
 **v1.45 (2025-06-12)**
 - Added: New Race Tracker backgrounds (Alliance and Horde)
 - Changed: The speed display during a race is shown as a bar and can be positioned separately from the Race Tracker
