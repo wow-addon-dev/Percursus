@@ -204,17 +204,17 @@ function Options:Initialize()
     end
 
     do
-        local name = L["options.race-tracker-background.name"]
-        local tooltip = L["options.race-tracker-background.tooltip"]
-        local variable = "race-tracker-background"
+        local name = L["options.race-tracker-background-type.name"]
+        local tooltip = L["options.race-tracker-background-type.tooltip"]
+        local variable = "race-tracker-background-type"
         local defaultValue = 0
 
         local function GetOptions()
             local container = Settings.CreateControlTextContainer()
-            container:Add(0, L["options.race-tracker-background.value.0"])
-            container:Add(1, L["options.race-tracker-background.value.1"])
-			container:Add(2, L["options.race-tracker-background.value.2"])
-			container:Add(3, L["options.race-tracker-background.value.3"])
+            container:Add(0, L["options.race-tracker-background-type.value.0"])
+            container:Add(1, L["options.race-tracker-background-type.value.1"])
+			container:Add(2, L["options.race-tracker-background-type.value.2"])
+			container:Add(3, L["options.race-tracker-background-type.value.3"])
             return container:GetData()
         end
 
