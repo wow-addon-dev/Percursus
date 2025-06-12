@@ -35,8 +35,8 @@ local function ShowRaceTracker(raceQuestID, raceGoldTime, racePersonalTime)
     resultTrackerFrame:SetPoint("CENTER", PER.data.options["race-tracker-horizontal-shift"], PER.data.options["race-tracker-vertical-shift"])
 	speedDisplayFrame:SetPoint("CENTER", PER.data.options["race-tracker-speed-display-horizontal-shift"], PER.data.options["race-tracker-speed-display-vertical-shift"])
 
-    if PER.data.options["race-tracker-background"] ~= 0 then
-		local style = PER.RACE_TRACKER_BACKGROUNDS[PER.data.options["race-tracker-background"]]
+    if PER.data.options["race-tracker-background-type"] ~= 0 then
+		local style = PER.RACE_TRACKER_BACKGROUNDS[PER.data.options["race-tracker-background-type"]]
 
 		raceTrackerFrame:SetBackground(style)
 		resultTrackerFrame:SetBackground(style)
