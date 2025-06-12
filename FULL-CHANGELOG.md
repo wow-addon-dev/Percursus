@@ -1,3 +1,6 @@
+**v1.47 (2025-06-12)**
+- Fixed: Race Tracker did not start because no background can be loaded
+
 **v1.46 (2025-06-12)**
 - Fixed: Race Tracker did not start because no background can be loaded
 
