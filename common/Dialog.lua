@@ -17,7 +17,7 @@ local resetOptionsDialog
 ---------------------
 
 function Dialog:InitializeDialog()
-    copyAddressDialog = CreateFrame("Frame", "Percursus_CopyAddressDialog", UIParent, "TranslucentFrameTemplate")
+    copyAddressDialog = CreateFrame("Frame", "PercursusCopyAddressDialog", UIParent, "TranslucentFrameTemplate")
     copyAddressDialog:SetSize(400, 10)
     copyAddressDialog:SetPoint("CENTER", 0, 200)
 
@@ -54,7 +54,7 @@ function Dialog:InitializeDialog()
 
     copyAddressDialog:SetHeight(copyAddressDialog:GetTop() - buttonClose:GetBottom() + 20)
 
-    resetOptionsDialog = CreateFrame("Frame", "Percursus_ResetOptionsDialog", UIParent, "TranslucentFrameTemplate")
+    resetOptionsDialog = CreateFrame("Frame", "PercursusResetOptionsDialog", UIParent, "TranslucentFrameTemplate")
     resetOptionsDialog:SetSize(350, 10)
     resetOptionsDialog:SetPoint("CENTER", 0, 200)
 

@@ -6,7 +6,7 @@ PER.RACE_TRACKER_BACKGROUNDS = {
     width = 256,
     height = 64,
     texture = "race-tracker-background-classic.blp",
-    yOffsets = {
+    offsetY = {
       timer = 10,
       info = -10
     }
@@ -16,7 +16,7 @@ PER.RACE_TRACKER_BACKGROUNDS = {
     width = 467,
     height = 141,
     texture = "AllianceScenario-TitleBG",
-    yOffsets = {
+    offsetY = {
       timer = 5,
       info = -15
     }
@@ -26,7 +26,7 @@ PER.RACE_TRACKER_BACKGROUNDS = {
     width = 467,
     height = 141,
     texture = "HordeScenario-TitleBG",
-    yOffsets = {
+    offsetY = {
       timer = 5,
       info = -15
     }

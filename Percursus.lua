@@ -109,7 +109,6 @@ function percursusFrame:QUEST_ACCEPTED(_, questID)
 			--if false then
 			--	percursusFrame:RegisterEvent("ZONE_CHANGED")
 			--	percursusFrame:RegisterEvent("ZONE_CHANGED_NEW_AREA")
-			--	percursusFrame:RegisterEvent("DISPLAY_EVENT_TOASTS")
 			--end
 
             RaceTracker:Start(raceQuestID, raceSpellID, raceGoldTime, raceSilverTime, racePersonalTime)
@@ -135,11 +134,10 @@ function percursusFrame:QUEST_REMOVED(_, questID)
 		local delay = PER.data.options["race-tracker-fadeout-delay"]
 
 		C_Timer.After(delay, function()
-			RaceTracker:HideResultDisplay()
+			RaceTracker:HideResultTracker()
 
 			--percursusFrame:UnregisterEvent("ZONE_CHANGED")
 			--percursusFrame:UnregisterEvent("ZONE_CHANGED_NEW_AREA")
-			--percursusFrame:UnregisterEvent("DISPLAY_EVENT_TOASTS")
 		end)
     end
 end

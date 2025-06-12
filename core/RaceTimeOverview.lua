@@ -224,7 +224,7 @@ local function InitializeFrames()
         background.texture:SetPoint("CENTER")
         background.texture:SetAtlas("character-panel-background", false)
 
-        raceOverviewFrame.scrollFrame = CreateFrame("ScrollFrame", nil, raceOverviewFrame, "Percursus_OverviewScrollFrameTemplate")
+        raceOverviewFrame.scrollFrame = CreateFrame("ScrollFrame", nil, raceOverviewFrame, "PercursusOverviewScrollFrameTemplate")
         raceOverviewFrame.scrollFrame:SetPoint("TOPLEFT", background, "TOPLEFT", 15, -15)
         raceOverviewFrame.scrollFrame:SetPoint("BOTTOMRIGHT", background, "BOTTOMRIGHT", -25, 15)
 
@@ -263,7 +263,7 @@ local function InitializeFrames()
         background.texture:SetPoint("CENTER")
         background.texture:SetAtlas("character-panel-background", false)
 
-        zoneOverviewFrame.scrollFrame = CreateFrame("ScrollFrame", nil, zoneOverviewFrame, "Percursus_OverviewScrollFrameTemplate")
+        zoneOverviewFrame.scrollFrame = CreateFrame("ScrollFrame", nil, zoneOverviewFrame, "PercursusOverviewScrollFrameTemplate")
         zoneOverviewFrame.scrollFrame:SetPoint("TOPLEFT", background, "TOPLEFT", 15, -15)
         zoneOverviewFrame.scrollFrame:SetPoint("BOTTOMRIGHT", background, "BOTTOMRIGHT", -25, 15)
 

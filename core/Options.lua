@@ -68,7 +68,7 @@ function Options:Initialize()
         helpFrame:SetPoint("TOPLEFT", scrollView, "TOPLEFT", 10, offsetY)
         helpFrame:SetWidth(615)
         helpFrame:SetBackdrop(backdrop)
-        helpFrame:SetBackdropColor(0,0,0,0.4)
+        helpFrame:SetBackdropColor(0, 0, 0, 0.4)
 
         helpFrame.title = helpFrame:CreateFontString(nil, "OVERLAY", "GameFontNormal")
         helpFrame.title:SetPoint("TOPLEFT", 8, 15)
@@ -76,7 +76,7 @@ function Options:Initialize()
 
         local text = helpFrame:CreateFontString(nil, "OVERLAY", "GameFontHighlight")
         text:SetPoint("TOPLEFT", helpFrame, "TOPLEFT", 15, -15)
-        text:SetPoint("TOPRIGHT", helpFrame, "TOPRIGHT",  -15, -15)
+        text:SetPoint("TOPRIGHT", helpFrame, "TOPRIGHT", -15, -15)
         text:SetWidth(helpFrame:GetWidth() - 30)
         text:SetJustifyH("LEFT")
         text:SetSpacing(2)
@@ -119,7 +119,7 @@ function Options:Initialize()
         aboutFrame:SetPoint("TOPLEFT", scrollView, "TOPLEFT", 10, offsetY)
         aboutFrame:SetWidth(615)
         aboutFrame:SetBackdrop(backdrop)
-        aboutFrame:SetBackdropColor(0,0,0,0.4)
+        aboutFrame:SetBackdropColor(0, 0, 0, 0.4)
 
         aboutFrame.title = aboutFrame:CreateFontString(nil, "OVERLAY", "GameFontNormal")
         aboutFrame.title:SetPoint("TOPLEFT", 8, 15)
@@ -271,9 +271,9 @@ function Options:Initialize()
         local setting = Settings.RegisterAddOnSetting(category, addonName .. "_" .. variable, variable, variableTable, Settings.VarType.Number, name, defaultValue)
 
 		local options = Settings.CreateSliderOptions(minValue, maxValue, step)
-        options:SetLabelFormatter(MinimalSliderWithSteppersMixin.Label.Right)
+        options:SetLabelFormatter(MinimalSliderWithSteppersMixin.Label.Right, function(value) return value .. " " .. L["seconds-short"] end)
 
-        Settings.CreateSlider(category, setting, options, tooltip)
+		Settings.CreateSlider(category, setting, options, tooltip)
     end
 
     do
