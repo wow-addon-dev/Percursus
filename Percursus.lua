@@ -78,7 +78,7 @@ end
 function percursusFrame:ADDON_LOADED(_, addOnName)
     if addOnName == addonName then
         Utils:InitializeDatabase()
-        Dialog:InitializeDialog()
+        Dialog:Initialize()
         Options:Initialize()
         RaceTracker:Initialize()
         RaceTimeOverview:Initialize()
@@ -154,12 +154,6 @@ function percursusFrame:ZONE_CHANGED_NEW_AREA()
 
 	ZoneTextFrame:Hide()
 	SubZoneTextFrame:Hide()
-end
-
-function percursusFrame:DISPLAY_EVENT_TOASTS()
-    Utils:PrintDebug("Event 'DISPLAY_EVENT_TOASTS' fired. No payload.")
-
-	EventToastManagerFrame:Hide()
 end
 
 GossipFrame:HookScript("OnShow",function()

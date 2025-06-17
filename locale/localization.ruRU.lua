@@ -70,6 +70,9 @@ L["options.race-tracker-background-type.value.0"] = "Ничего"
 L["options.race-tracker-background-type.value.1"] = "Percursus (Classic)"
 L["options.race-tracker-background-type.value.2"] = "Альянс"
 L["options.race-tracker-background-type.value.3"] = "Орда"
+L["options.race-tracker-background-type.value.4"] = "Evergreen"
+L["options.race-tracker-background-type.value.5"] = "Dragonflight"
+L["options.race-tracker-background-type.value.6"] = "The War Within"
 L["options.race-tracker-horizontal-shift.name"] = "Горизонтальное смещение"
 L["options.race-tracker-horizontal-shift.tooltip"] = "Относительное горизонтальное положение Race Tracker по отношению к центру экрана."
 L["options.race-tracker-vertical-shift.name"] = "Вертикальное смещение"
@@ -98,4 +101,4 @@ L["chat.reset-options.success"] = "Параметры успешно сброш�
 -- Dialog
 
 L["dialog.copy-address.text"] = "Чтобы скопировать ссылку, нажмите CTRL + C."
-L["dialog.reset-options.text"] = "Вы действительно хотите сбросить настройки?"
+L["dialog.reset-options.text"] = "Вы действительно хотите сбросить настройки?\n|cffFFD200Warning:|r The game interface will be automatically reloaded!"
