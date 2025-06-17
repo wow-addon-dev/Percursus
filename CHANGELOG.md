@@ -4,4 +4,5 @@
 
 - Added: New Race Tracker backgrounds (Evergreen, Dragonflight and The War Within)
 - Updated: deDE, enUS, ruRU localization
+- Removed: TOC version for patch 11.1.5 (Retail)
 - Minor code adjustments
