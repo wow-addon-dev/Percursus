@@ -1,3 +1,9 @@
+**v1.48 (2025-06-18)**
+- Added: New Race Tracker backgrounds (Evergreen, Dragonflight and The War Within)
+- Updated: deDE, enUS, ruRU localization
+- Removed: TOC version for patch 11.1.5 (Retail)
+- Minor code adjustments
+
 **v1.47 (2025-06-12)**
 - Fixed: Race Tracker did not start because no background can be loaded
 
