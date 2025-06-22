@@ -1,3 +1,7 @@
+**v1.49 (2025-06-22)**
+- Changed: You can now select whether the race tracker should continue to be displayed after the race and thus the race result is presented
+- Updated: ruRU localization (#4 - Thanks to Hollicsh)
+
 **v1.48 (2025-06-18)**
 - Added: New Race Tracker backgrounds (Evergreen, Dragonflight and The War Within)
 - Updated: deDE, enUS, ruRU localization
