@@ -2,7 +2,5 @@
 ### [@project-version@](https://github.com/wow-addon-dev/Percursus/tree/@project-version@) (@build-date@)
 [Full Changelog](@full-changelog@) - [Previous Releases](https://github.com/wow-addon-dev/Percursus/releases)
 
-- Added: New Race Tracker backgrounds (Evergreen, Dragonflight and The War Within)
-- Updated: deDE, enUS, ruRU localization
-- Removed: TOC version for patch 11.1.5 (Retail)
-- Minor code adjustments
+- Changed: You can now select whether the race tracker should continue to be displayed after the race and thus the race result is presented.
+- Updated: ruRU localization (#4 - Thanks to Hollicsh)

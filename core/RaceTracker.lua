@@ -207,8 +207,11 @@ function RaceTracker:Stop()
 	resultTrackerFrame:SetTimerText(raceTrackerFrame:GetTimerText())
 	resultTrackerFrame:SetInfoText(raceTrackerFrame:GetInfoText())
 
-	resultTrackerFrame:ShowFrame()
 	raceTrackerFrame:HideFrame()
+end
+
+function RaceTracker:ShowResultTracker()
+	resultTrackerFrame:ShowFrame()
 end
 
 function RaceTracker:HideResultTracker()

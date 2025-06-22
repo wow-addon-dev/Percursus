@@ -237,22 +237,31 @@ function Options:Initialize()
         Settings.CreateSlider(category, setting, options, tooltip)
     end
 
-    do
-        local name = L["options.race-tracker-fadeout-delay.name"]
-        local tooltip = L["options.race-tracker-fadeout-delay.tooltip"]
-        local variable = "race-tracker-fadeout-delay"
-        local defaultValue = 3
+	do
+        local nameCheckbox = L["options.race-tracker-result-display.name"]
+        local tooltipCheckbox = L["options.race-tracker-result-display.tooltip"]
+        local variableCheckbox = "race-tracker-result-display"
+        local defaultValueCheckbox = false
+
+        local settingCheckbox = Settings.RegisterAddOnSetting(category, addonName .. "_" .. variableCheckbox, variableCheckbox, variableTable, Settings.VarType.Boolean, nameCheckbox, not defaultValueCheckbox)
+
+        local nameSlider = L["options.race-tracker-fadeout-delay.name"]
+        local tooltipSlider = L["options.race-tracker-fadeout-delay.tooltip"]
+        local variableSlider = "race-tracker-fadeout-delay"
+        local defaultValueSlider = 3
 
         local minValue = 1
         local maxValue = 10
         local step = 1
 
-        local setting = Settings.RegisterAddOnSetting(category, addonName .. "_" .. variable, variable, variableTable, Settings.VarType.Number, name, defaultValue)
+        local settingSlider = Settings.RegisterAddOnSetting(category, addonName .. "_" .. variableSlider, variableSlider, variableTable, Settings.VarType.Number, nameSlider, defaultValueSlider)
 
-		local options = Settings.CreateSliderOptions(minValue, maxValue, step)
-        options:SetLabelFormatter(MinimalSliderWithSteppersMixin.Label.Right, function(value) return value .. " " .. L["seconds-short"] end)
+		local optionsSlider = Settings.CreateSliderOptions(minValue, maxValue, step)
+        optionsSlider:SetLabelFormatter(MinimalSliderWithSteppersMixin.Label.Right, function(value) return value .. " " .. L["seconds-short"] end)
 
-		Settings.CreateSlider(category, setting, options, tooltip)
+        local initializer = CreateSettingsCheckboxSliderInitializer(settingCheckbox, nameCheckbox, tooltipCheckbox, settingSlider, optionsSlider, nameSlider, tooltipSlider)
+
+        layout:AddInitializer(initializer)
     end
 
     do

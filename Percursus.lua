@@ -131,14 +131,18 @@ function percursusFrame:QUEST_REMOVED(_, questID)
 
         RaceTracker:Stop()
 
-		local delay = PER.data.options["race-tracker-fadeout-delay"]
+		if PER.data.options["race-tracker-result-display"] then
+			RaceTracker:ShowResultTracker()
 
-		C_Timer.After(delay, function()
-			RaceTracker:HideResultTracker()
+			local delay = PER.data.options["race-tracker-fadeout-delay"]
 
-			--percursusFrame:UnregisterEvent("ZONE_CHANGED")
-			--percursusFrame:UnregisterEvent("ZONE_CHANGED_NEW_AREA")
-		end)
+			C_Timer.After(delay, function()
+				RaceTracker:HideResultTracker()
+			end)
+		end
+
+		--percursusFrame:UnregisterEvent("ZONE_CHANGED")
+		--percursusFrame:UnregisterEvent("ZONE_CHANGED_NEW_AREA")
     end
 end
 
