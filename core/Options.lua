@@ -237,6 +237,16 @@ function Options:Initialize()
         Settings.CreateSlider(category, setting, options, tooltip)
     end
 
+    do
+        local name = L["options.race-tracker-hide-area-names.name"]
+        local tooltip = L["options.race-tracker-hide-area-names.tooltip"]
+        local variable = "race-tracker-hide-area-names"
+        local defaultValue = false
+
+        local setting = Settings.RegisterAddOnSetting(category, addonName .. "_" .. variable, variable, variableTable, Settings.VarType.Boolean, name, defaultValue)
+        Settings.CreateCheckbox(category, setting, tooltip)
+    end
+
 	do
         local nameCheckbox = L["options.race-tracker-result-display.name"]
         local tooltipCheckbox = L["options.race-tracker-result-display.tooltip"]

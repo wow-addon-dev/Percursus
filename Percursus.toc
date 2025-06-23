@@ -6,7 +6,6 @@
 ## IconTexture: Interface\AddOns\Percursus\media\icon.blp
 ## LoadOnDemand: 0
 ## DefaultState: enabled
-## AllowLoadGameType: mainline
 
 ## Notes: This addon displays a live timer during a race (e.g. dragonriding & skyriding) and provides a detailed time overview of all completed races.
 ## Notes-deDE: Dieses Addon zeigt einen Live-Timer während eines Rennens (z.B. Drachenreiter & Himmelsreiter) an und bietet eine detaillierte Zeitübersicht über alle absolvierten Rennen.

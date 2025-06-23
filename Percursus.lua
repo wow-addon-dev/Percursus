@@ -141,8 +141,8 @@ function percursusFrame:QUEST_REMOVED(_, questID)
 			end)
 		end
 
-		--percursusFrame:UnregisterEvent("ZONE_CHANGED")
-		--percursusFrame:UnregisterEvent("ZONE_CHANGED_NEW_AREA")
+		percursusFrame:UnregisterEvent("ZONE_CHANGED")
+		percursusFrame:UnregisterEvent("ZONE_CHANGED_NEW_AREA")
     end
 end
 
