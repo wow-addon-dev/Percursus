@@ -106,10 +106,10 @@ function percursusFrame:QUEST_ACCEPTED(_, questID)
                 racePersonalTime = C_CurrencyInfo.GetCurrencyInfo(result.raceTime).quantity / 1000
             end
 
-			--if false then
-			--	percursusFrame:RegisterEvent("ZONE_CHANGED")
-			--	percursusFrame:RegisterEvent("ZONE_CHANGED_NEW_AREA")
-			--end
+			if PER.data.options["race-tracker-hide-area-names"] then
+				percursusFrame:RegisterEvent("ZONE_CHANGED")
+				percursusFrame:RegisterEvent("ZONE_CHANGED_NEW_AREA")
+			end
 
             RaceTracker:Start(raceQuestID, raceSpellID, raceGoldTime, raceSilverTime, racePersonalTime)
         else
