@@ -54,7 +54,7 @@ L["info.help.github-button.name"] = "GitHub"
 L["info.help.github-button.desc"] = "Opens a popup window with a link to GitHub."
 
 L["info.about"] = "About"
-L["info.about.text"] = "|cffF2E699Game version:|r %s\n|cffF2E699Addon version:|r %s\n\n|cffF2E699Author:|r %s"
+L["info.about.text"] = "|cnGOLD_FONT_COLOR:Game version:|r %s\n|cnGOLD_FONT_COLOR:Addon version:|r %s\n\n|cnGOLD_FONT_COLOR:Author:|r %s"
 
 L["options"] = "Options"
 L["options.general"] = "General Options"
@@ -108,4 +108,4 @@ L["chat.reset-options.success"] = "Options successfully reseted."
 -- Dialog
 
 L["dialog.copy-address.text"] = "To copy the link press CTRL + C."
-L["dialog.reset-options.text"] = "Do you really want to reset the options?\n|cffFFD200Warning:|r The game interface will be automatically reloaded!"
+L["dialog.reset-options.text"] = "Do you really want to reset the options?\n|cnNORMAL_FONT_COLOR:Warning:|r The game interface will be automatically reloaded!"

@@ -1,24 +1,24 @@
 local _, PER = ...
 
-PercursusRaceTrackerMixin = {}
+Percursus_RaceTrackerMixin = {}
 
-function PercursusRaceTrackerMixin:SetTimerText(text)
+function Percursus_RaceTrackerMixin:SetTimerText(text)
 	self.Timer:SetText(text)
 end
 
-function PercursusRaceTrackerMixin:SetInfoText(text)
+function Percursus_RaceTrackerMixin:SetInfoText(text)
 	self.Info:SetText(text)
 end
 
-function PercursusRaceTrackerMixin:GetTimerText()
+function Percursus_RaceTrackerMixin:GetTimerText()
 	return self.Timer:GetText()
 end
 
-function PercursusRaceTrackerMixin:GetInfoText()
+function Percursus_RaceTrackerMixin:GetInfoText()
 	return self.Info:GetText()
 end
 
-function PercursusRaceTrackerMixin:SetBackground(style)
+function Percursus_RaceTrackerMixin:SetBackground(style)
 	self:SetSize(style.width, style.height)
 
 	if style.type == "file" then
@@ -36,7 +36,7 @@ function PercursusRaceTrackerMixin:SetBackground(style)
 	self.Background:Show()
 end
 
-function PercursusRaceTrackerMixin:RemoveBackground()
+function Percursus_RaceTrackerMixin:RemoveBackground()
 	self:SetSize(256, 64)
 
 	self.Timer:ClearAllPoints()
@@ -48,17 +48,17 @@ function PercursusRaceTrackerMixin:RemoveBackground()
 	self.Background:Hide()
 end
 
-function PercursusRaceTrackerMixin:ShowFrame()
+function Percursus_RaceTrackerMixin:ShowFrame()
 	self:Show()
 end
 
-function PercursusRaceTrackerMixin:HideFrame()
+function Percursus_RaceTrackerMixin:HideFrame()
 	self:Hide()
 end
 
-PercursusRaceTrackerSpeedDisplayMixin = {}
+Percursus_RaceTrackerSpeedDisplayMixin = {}
 
-function PercursusRaceTrackerSpeedDisplayMixin:SetSpeedBar(speed)
+function Percursus_RaceTrackerSpeedDisplayMixin:SetSpeedBar(speed)
 	if speed == 0 then
 		self.SpeedBar:SetSize(1, 18)
 		self.SpeedBar:Hide()
@@ -68,10 +68,10 @@ function PercursusRaceTrackerSpeedDisplayMixin:SetSpeedBar(speed)
 	end
 end
 
-function PercursusRaceTrackerSpeedDisplayMixin:ShowFrame()
+function Percursus_RaceTrackerSpeedDisplayMixin:ShowFrame()
 	self:Show()
 end
 
-function PercursusRaceTrackerSpeedDisplayMixin:HideFrame()
+function Percursus_RaceTrackerSpeedDisplayMixin:HideFrame()
 	self:Hide()
 end

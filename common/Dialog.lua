@@ -16,8 +16,8 @@ local resetOptionsDialog
 ---------------------
 
 function Dialog:Initialize()
-    copyAddressDialog = CreateFrame("Frame", "PercursusCopyAdressDialog", UIParent, "PercursusCopyAdressDialogTemplate")
-	resetOptionsDialog = CreateFrame("Frame", "PercursusResetOptionsDialog", UIParent, "PercursusResetOptionsDialogTemplate")
+    copyAddressDialog = CreateFrame("Frame", "Percursus_CopyAdressDialog", UIParent, "Percursus_CopyAdressDialogTemplate")
+	resetOptionsDialog = CreateFrame("Frame", "Percursus_ResetOptionsDialog", UIParent, "Percursus_ResetOptionsDialogTemplate")
 end
 
 function Dialog:ShowCopyAddressDialog(address)

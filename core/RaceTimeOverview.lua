@@ -83,7 +83,7 @@ local function UpdateRaceOverview(npcID, scrollFrame)
                 local time
 
                 if racePersonalTime <= raceGoldTime then
-                    time = "|T616373:0|t |c" .. PER.GOLD_FONT_COLOR .. racePersonalTime .. "|r"
+                    time = "|T616373:0|t |cnGOLD_FONT_COLOR:".. racePersonalTime .. "|r"
                 elseif racePersonalTime <= raceSilverTime then
                     time = "|T616375:0|t |c" .. PER.COLOR_SILVER .. racePersonalTime .. "|r"
                 else
@@ -182,7 +182,7 @@ local function UpdateZoneOverview(zoneID, scrollFrame)
 
                     if racePersonalTime > 0 then
                         if racePersonalTime <= raceGoldTime then
-                            time = "|T616373:0|t |c" .. PER.GOLD_FONT_COLOR .. racePersonalTime .. "|r"
+                            time = "|T616373:0|t |cnGOLD_FONT_COLOR:" .. racePersonalTime .. "|r"
                         elseif racePersonalTime <= raceSilverTime then
                             time = "|T616375:0|t |c" .. PER.COLOR_SILVER .. racePersonalTime .. "|r"
                         else

@@ -2,7 +2,7 @@
 ..\FrameXML\UI.xsd">
 	<Script file="RaceTrackerMixin.lua"/>
 
-	<Frame name="PercursusRaceTrackerTemplate" mixin="PercursusRaceTrackerMixin" hidden="true" virtual="true">
+	<Frame name="Percursus_RaceTrackerTemplate" mixin="Percursus_RaceTrackerMixin" hidden="true" virtual="true">
 		<Size x="256" y="64"/>
 		<Layers>
 			<Layer level="BACKGROUND">
@@ -20,7 +20,7 @@
 		</Layers>
 	</Frame>
 
-	<Frame name="PercursusRaceTrackerSpeedDisplayTemplate" mixin="PercursusRaceTrackerSpeedDisplayMixin" hidden="true" virtual="true">
+	<Frame name="Percursus_RaceTrackerSpeedDisplayTemplate" mixin="Percursus_RaceTrackerSpeedDisplayMixin" hidden="true" virtual="true">
 		<Size x="220" y="31"/>
 		<Layers>
 			<Layer level="BACKGROUND">

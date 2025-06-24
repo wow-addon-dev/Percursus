@@ -8,25 +8,6 @@ local Utils = {}
 --- Helper Funtions ---
 -----------------------
 
-function Utils:HexToRGB(hex)
-    hex = hex:gsub("^#","")
-    hex = hex:gsub("^ff","")
-
-    local r = tonumber(hex:sub(1,2), 16) / 255
-    local g = tonumber(hex:sub(3,4), 16) / 255
-    local b = tonumber(hex:sub(5,6), 16) / 255
-
-    return r, g, b
-end
-
-function Utils:RGBToHex(r, g, b)
-    r = math.min(math.max(r,0),1)
-    g = math.min(math.max(g,0),1)
-    b = math.min(math.max(b,0),1)
-
-    return string.format("ff%02X%02X%02X", r * 255, g * 255, b * 255)
-end
-
 ---------------------
 --- Main Funtions ---
 ---------------------
@@ -39,20 +20,20 @@ function Utils:PrintDebug(msg)
             local name, _, _, _, _, _, shown, locked, docked, uni = GetChatWindowInfo(i)
 
             if name == "Debug" and docked ~= nil then
-                _G['ChatFrame' .. i]:AddMessage(WrapTextInColorCode("Skyriding Race Tracker (Debug): ", PER.ORANGE_FONT_COLOR) .. msg)
+                _G['ChatFrame' .. i]:AddMessage(ORANGE_FONT_COLOR:WrapTextInColorCode(addonName .. " (Debug): ")  .. msg)
                 notfound = false
                 break
             end
         end
 
         if notfound then
-            DEFAULT_CHAT_FRAME:AddMessage(WrapTextInColorCode("Skyriding Race Tracker (Debug): ", PER.ORANGE_FONT_COLOR)  .. msg)
+            DEFAULT_CHAT_FRAME:AddMessage(ORANGE_FONT_COLOR:WrapTextInColorCode(addonName .. " (Debug): ")  .. msg)
         end
 	end
 end
 
 function Utils:PrintMessage(msg)
-    DEFAULT_CHAT_FRAME:AddMessage(WrapTextInColorCode(addonName .. ": ", PER.NORMAL_FONT_COLOR) .. msg)
+    DEFAULT_CHAT_FRAME:AddMessage(NORMAL_FONT_COLOR:WrapTextInColorCode(addonName .. ": ") .. msg)
 end
 
 function Utils:InitializeDatabase()

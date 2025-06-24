@@ -83,9 +83,9 @@ local function ShowRaceTracker(raceQuestID, raceGoldTime, racePersonalTime)
 end
 
 local function InitializeFrames ()
-	raceTrackerFrame = CreateFrame("Frame", nil, UIParent, "PercursusRaceTrackerTemplate")
-    resultTrackerFrame = CreateFrame("Frame", nil, UIParent, "PercursusRaceTrackerTemplate")
-    speedDisplayFrame = CreateFrame("Frame", nil, UIParent, "PercursusRaceTrackerSpeedDisplayTemplate")
+	raceTrackerFrame = CreateFrame("Frame", nil, UIParent, "Percursus_RaceTrackerTemplate")
+    resultTrackerFrame = CreateFrame("Frame", nil, UIParent, "Percursus_RaceTrackerTemplate")
+    speedDisplayFrame = CreateFrame("Frame", nil, UIParent, "Percursus_RaceTrackerSpeedDisplayTemplate")
 end
 
 ---------------------

@@ -2,30 +2,30 @@ local _, PER = ...
 
 local L = PER.localization
 
-PercursusCopyAdressDialogMixin = {}
+Percursus_CopyAdressDialogMixin = {}
 
-function PercursusCopyAdressDialogMixin:OnLoad()
+function Percursus_CopyAdressDialogMixin:OnLoad()
     self.Text:SetText(L["dialog.copy-address.text"])
 	self:SetHeight(self:GetTop() - self.CloseButton:GetBottom() + 20)
 
     tinsert(UISpecialFrames, self:GetName())
 end
 
-function PercursusCopyAdressDialogMixin:ShowDialog(address)
+function Percursus_CopyAdressDialogMixin:ShowDialog(address)
     self.EditBox:SetText(address)
 	self.EditBox:HighlightText()
     self:Show()
 end
 
-PercursusResetOptionsDialogMixin = {}
+Percursus_ResetOptionsDialogMixin = {}
 
-function PercursusResetOptionsDialogMixin:OnLoad()
+function Percursus_ResetOptionsDialogMixin:OnLoad()
 	self.Text:SetText(L["dialog.reset-options.text"])
 	self:SetHeight(self:GetTop() - self.NoButton:GetBottom() + 20)
 
     tinsert(UISpecialFrames, self:GetName())
 end
 
-function PercursusResetOptionsDialogMixin:ShowDialog()
+function Percursus_ResetOptionsDialogMixin:ShowDialog()
     self:Show()
 end
