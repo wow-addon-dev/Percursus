@@ -1,3 +1,8 @@
+**v1.50 (2025-06-24)**
+- Added: New option to hide area names during a race
+- Updated: ruRU localization (#5 - Thanks to Hollicsh)
+- Minor code adjustments
+
 **v1.49 (2025-06-22)**
 - Changed: You can now select whether the race tracker should continue to be displayed after the race and thus the race result is presented
 - Updated: ruRU localization (#4 - Thanks to Hollicsh)
