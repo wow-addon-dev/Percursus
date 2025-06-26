@@ -1,3 +1,6 @@
+**v1.51 (2025-06-26)**
+- Minor code adjustments
+
 **v1.50 (2025-06-24)**
 - Added: New option to hide area names during a race
 - Updated: ruRU localization (#5 - Thanks to Hollicsh)
