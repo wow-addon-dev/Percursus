@@ -60,5 +60,15 @@ PER.RACE_TRACKER_BACKGROUNDS = {
 			timer = 9,
 			info = -11
 		}
+  	},
+	[7] = {
+		type = "atlas",
+		width = 467,
+		height = 141,
+		texture = "legioninvasion-title-bg",
+		offsetY = {
+			timer = 7,
+			info = -13
+		}
   	}
 }
