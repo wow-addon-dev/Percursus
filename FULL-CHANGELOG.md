@@ -1,3 +1,6 @@
+**v1.52 (2025-06-29)**
+- Added: New Race Tracker backgrounds (Legion)
+
 **v1.51 (2025-06-26)**
 - Minor code adjustments
 
