@@ -55,7 +55,7 @@ end
 
 local function SlashCommand(msg, editbox)
     if not msg or msg:trim() == "" then
-        Settings.OpenToCategory("Skyriding Race Tracker")
+        Settings.OpenToCategory("Percursus")
 	else
         Utils:PrintDebug("No arguments will be accepted.")
 	end
