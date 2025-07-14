@@ -22,7 +22,7 @@
 **v1.48 (2025-06-18)**
 - Added: New Race Tracker backgrounds 'Evergreen', 'Dragonflight' and 'The War Within'
 - Updated: deDE, enUS, ruRU localization
-- Removed: TOC version for patch 11.1.5 (Retail)
+- Removed: TOC version for patch 11.1.5
 - Minor code adjustments
 
 **v1.47 (2025-06-12)**
@@ -49,7 +49,7 @@
 - Fixed: Settings were not saved
 
 **v1.41 (2025-06-02)**
-- Added: TOC version for patch 11.1.7 (Retail)
+- Added: TOC version for patch 11.1.7
 - Minor code adjustments
 
 **v1.40 (2025-05-30)**
