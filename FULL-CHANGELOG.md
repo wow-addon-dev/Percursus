@@ -5,7 +5,7 @@
 - Minor code adjustments
 
 **v1.52 (2025-06-29)**
-- Added: New Race Tracker background (Legion)
+- Added: New Race Tracker background 'Legion'
 
 **v1.51 (2025-06-26)**
 - Minor code adjustments
@@ -20,7 +20,7 @@
 - Updated: ruRU localization (#4 - Thanks to Hollicsh)
 
 **v1.48 (2025-06-18)**
-- Added: New Race Tracker backgrounds (Evergreen, Dragonflight and The War Within)
+- Added: New Race Tracker backgrounds 'Evergreen', 'Dragonflight' and 'The War Within'
 - Updated: deDE, enUS, ruRU localization
 - Removed: TOC version for patch 11.1.5 (Retail)
 - Minor code adjustments
@@ -32,7 +32,7 @@
 - Fixed: Race Tracker did not start because no background can be loaded
 
 **v1.45 (2025-06-12)**
-- Added: New Race Tracker backgrounds (Alliance and Horde)
+- Added: New Race Tracker backgrounds 'Alliance' and 'Horde'
 - Changed: The speed display during a race is shown as a bar and can be positioned separately from the Race Tracker
 - Updated: deDE, enUS, ruRU localization (#3 - Thanks to Hollicsh)
 - Minor code adjustments

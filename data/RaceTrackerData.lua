@@ -70,5 +70,15 @@ PER.RACE_TRACKER_BACKGROUNDS = {
 			timer = 7,
 			info = -13
 		}
+  	},
+	[8] = {
+		type = "atlas",
+		width = 330,
+		height = 136,
+		texture = "NzothScenario-TitleBG",
+		offsetY = {
+			timer = -5,
+			info = -25
+		}
   	}
 }
