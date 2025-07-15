@@ -1,3 +1,6 @@
+**v1.55 (2025-07-15)**
+- Added: New Race Tracker background 'N'Zoth'
+
 **v1.54 (2025-07-10)**
 - Added: TOC version for patch 11.2.0
 
