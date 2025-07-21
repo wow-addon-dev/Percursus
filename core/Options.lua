@@ -6,8 +6,6 @@ local Dialog = PER.dialog
 
 local Options = {}
 
-local optionsTooltip = CreateFrame("GameTooltip", "Percursus_OptionsTooltip", UIParent, "GameTooltipTemplate")
-
 ---------------------
 --- Main Funtions ---
 ---------------------
@@ -87,16 +85,16 @@ function Options:Initialize()
             Dialog:ShowResetOptionsDialog()
         end)
         buttonReset:SetScript("OnEnter", function(self)
-			optionsTooltip:ClearLines()
-			optionsTooltip:SetOwner(self, "ANCHOR_RIGHT")
-			optionsTooltip:SetText(WHITE_FONT_COLOR:WrapTextInColorCode(L["info.help.reset-button.name"]))
-			optionsTooltip:AddLine(L["info.help.reset-button.desc"])
----@diagnostic disable-next-line: redundant-parameter
-			optionsTooltip:SetMinimumWidth(175, true)
-			optionsTooltip:Show()
+			GameTooltip:ClearAllPoints()
+			GameTooltip:SetOwner(self, "ANCHOR_RIGHT")
+
+			GameTooltip_SetTitle(GameTooltip, L["info.help.reset-button.name"])
+			GameTooltip_AddNormalLine(GameTooltip, L["info.help.reset-button.desc"])
+
+			GameTooltip:Show()
         end)
 		buttonReset:SetScript("OnLeave", function(self)
-			optionsTooltip:Hide()
+			GameTooltip:Hide()
         end)
 
         helpFrame:SetHeight(helpFrame.text:GetStringHeight() + 48 + 30)
@@ -133,16 +131,16 @@ function Options:Initialize()
             Dialog:ShowCopyAddressDialog(PER.LINK_GITHUB)
         end)
         buttonGithub:SetScript("OnEnter", function(self)
-			optionsTooltip:ClearLines()
- 			optionsTooltip:SetOwner(self, "ANCHOR_RIGHT")
-			optionsTooltip:SetText(WHITE_FONT_COLOR:WrapTextInColorCode(L["info.help.github-button.name"]))
-			optionsTooltip:AddLine(L["info.help.github-button.desc"])
----@diagnostic disable-next-line: redundant-parameter
-			optionsTooltip:SetMinimumWidth(175, true)
-			optionsTooltip:Show()
+			GameTooltip:ClearAllPoints()
+			GameTooltip:SetOwner(self, "ANCHOR_RIGHT")
+
+			GameTooltip_SetTitle(GameTooltip, L["info.help.github-button.name"])
+			GameTooltip_AddNormalLine(GameTooltip, L["info.help.github-button.desc"])
+
+			GameTooltip:Show()
         end)
 		buttonGithub:SetScript("OnLeave", function(self)
-			optionsTooltip:Hide()
+			GameTooltip:Hide()
         end)
 
         aboutFrame:SetHeight(aboutFrame.text :GetStringHeight() + 48 + 30)
