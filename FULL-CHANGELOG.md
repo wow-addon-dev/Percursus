@@ -1,3 +1,6 @@
+**v1.56 (2025-07-22)**
+- Minor code adjustments
+
 **v1.55 (2025-07-15)**
 - Added: New Race Tracker background 'N'Zoth'
 
