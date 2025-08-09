@@ -40,12 +40,12 @@ local function UpdateRaceOverview(npcID, scrollFrame)
     local zoneID = raceDataTable[npcID][2]
     local questID = raceDataTable[npcID][3].NORMAL[1]
 
-    local quest = scrollFrame:CreateFontString(nil, "OVERLAY", "GameFontNormal")
-    quest:SetPoint("TOP", 5, 35)
+    local quest = scrollFrame:CreateFontString(nil, "OVERLAY", "Fancy18Font")
+    quest:SetPoint("TOP", 5, 40)
 
     QuestEventListener:AddCallback(questID, function()
         local name = C_QuestLog.GetTitleForQuestID(questID)
-        quest:SetText(name)
+        quest:SetText("|cnNORMAL_FONT_COLOR:".. name .. "|r")
     end)
 
     table.insert(scrollFrame.rows, {quest})
@@ -121,9 +121,9 @@ local function UpdateZoneOverview(zoneID, scrollFrame)
 
     scrollFrame.rows = {}
 
-    local zone = scrollFrame:CreateFontString(nil, "OVERLAY", "GameFontNormal")
-    zone:SetPoint("TOP", 5, 35)
-    zone:SetText(C_Map.GetMapInfo(zoneID).name)
+    local zone = scrollFrame:CreateFontString(nil, "OVERLAY", "Fancy18Font")
+    zone:SetPoint("TOP", 5, 40)
+    zone:SetText("|cnNORMAL_FONT_COLOR:".. C_Map.GetMapInfo(zoneID).name .. "|r")
     table.insert(scrollFrame.rows, {zone})
 
     local offsetY = 0
