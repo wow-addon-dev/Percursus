@@ -1,11 +1,11 @@
 **v1.60 (2025-08-17)**
-- Added: TOC version for patch 11.2.5 [retail]
+- Added: TOC version for patch 11.2.5
 
 **v1.59 (2025-08-12)**
 - Minor code adjustments
 
 **v1.58 (2025-08-09)**
-- Removed: TOC version for patch 11.1.7 [retail]
+- Removed: TOC version for patch 11.1.7
 - Minor code adjustments
 
 **v1.57 (2025-08-02)**
