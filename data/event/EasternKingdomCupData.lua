@@ -7,36 +7,36 @@ end
 local raceDataTable = PER.RACE_DATA
 
 -- Eastern Kingdom Cup
--- Gilneas Gambit R1 (XXX) - R-11.2.0
+-- Gilneas Gambit R1 (Gilneasgambit) - R-11.2.0
 raceDataTable[206246] = {
     010201, 13, {
-        NORMAL            = {76309, 2536, 0, 78, 83},
-        ADVANCED          = {76310, 2552, 0, 74, 79},
-        REVERSE           = {76311, 2568, 0, 74, 79}
+        NORMAL            = {76309, 2536, 413655, 78, 83},
+        ADVANCED          = {76310, 2552, 413690, 74, 79},
+        REVERSE           = {76311, 2568, 413695, 74, 79}
     }
 }
--- Loch Modan Loop R2 (XXX) - R-11.2.0
+-- Loch Modan Loop R2 (Luftspaß von Loch Modan) - R-11.2.0
 raceDataTable[206461] = {
     010202, 13, {
-        NORMAL            = {76339, 2537, 0, 63, 68},
-        ADVANCED          = {76340, 2553, 0, 61, 66},
-        REVERSE           = {76341, 2569, 0, 63, 68}
+        NORMAL            = {76339, 2537, 413778, 63, 68}, --XXX
+        ADVANCED          = {76340, 2553, 413779, 61, 66},
+        REVERSE           = {76341, 2569, 413780, 63, 68}
     }
 }
--- Searing Slalom R3 (XXX) - R-11.2.0
+-- Searing Slalom R3 (Sengslalom) - R-11.2.0
 raceDataTable[206618] = {
     010203, 13, {
-        NORMAL            = {76357, 2538, 0, 52, 57},
-        ADVANCED          = {76358, 2554, 0, 46, 51},
-        REVERSE           = {76359, 2570, 0, 43, 48}
+        NORMAL            = {76357, 2538, 413851, 52, 57}, --XXX
+        ADVANCED          = {76358, 2554, 413852, 46, 51},
+        REVERSE           = {76359, 2570, 413854, 43, 48}
     }
 }
--- Twilight Terror R4 (XXX) - R-11.2.0
+-- Twilight Terror R4 (Schattenschrecken) - R-11.2.0
 raceDataTable[206764] = {
     010204, 13, {
-        NORMAL            = {76364, 2539, 0, 73, 78},
-        ADVANCED          = {76365, 2555, 0, 68, 73},
-        REVERSE           = {76366, 2571, 0, 66, 71}
+        NORMAL            = {76364, 2539, 413940, 73, 78}, --XXX
+        ADVANCED          = {76365, 2555, 413941, 68, 73},
+        REVERSE           = {76366, 2571, 413942, 66, 71}
     }
 }
 -- Deadwind Derby R5 (Totenwindtour) - R-11.2.0
@@ -63,12 +63,12 @@ raceDataTable[207163] = {
         REVERSE           = {76440, 2574, 414351, 50, 55}
     }
 }
--- Ironforge Interceptor R8 (XXX) - R-11.2.0
+-- Ironforge Interceptor R8 (Eisenschmiedeerkundung) - R-11.2.0
 raceDataTable[207173] = {
     010208, 13, {
-        NORMAL            = {76445, 2543, 0, 70, 75},
-        ADVANCED          = {76446, 2559, 0, 64, 69},
-        REVERSE           = {76447, 2575, 0, 60, 65}
+        NORMAL            = {76445, 2543, 414368, 70, 75}, --XXX
+        ADVANCED          = {76446, 2559, 414372, 64, 69},
+        REVERSE           = {76447, 2575, 414374, 60, 65}
     }
 }
 -- Blasted Lands Bolt R9 (Funke der Verwüsteten Lande) - R-11.2.0
@@ -79,12 +79,12 @@ raceDataTable[207357] = {
         REVERSE           = {76471, 2576, 414618, 64, 69}
     }
 }
--- Plaguelands Plunge R10 (XXX) - R-11.2.0
+-- Plaguelands Plunge R10 (Pestländerprüfung) - R-11.2.0
 raceDataTable[207448] = {
     010210, 13, {
-        NORMAL            = {76510, 2545, 0, 63, 68},
-        ADVANCED          = {76512, 2561, 0, 53, 58},
-        REVERSE           = {76513, 2577, 0, 58, 63}
+        NORMAL            = {76510, 2545, 414740, 63, 68}, --XXX
+        ADVANCED          = {76512, 2561, 414741, 53, 58},
+        REVERSE           = {76513, 2577, 414742, 58, 63}
     }
 }
 -- Booty Bay Blast R11 (Beutebuchtgeballer) - R-11.2.0
@@ -95,20 +95,20 @@ raceDataTable[207455] = {
         REVERSE           = {76517, 2578, 414756, 56, 61}
     }
 }
--- Fuselight Night Flight R12 (XXX) - R-11.2.0
+-- Fuselight Night Flight R12 (Luntenbrand-Rundenstunt) - R-11.2.0
 raceDataTable[207467] = {
     010212, 13, {
-        NORMAL            = {76523, 2547, 0, 64, 69},
-        ADVANCED          = {76524, 2563, 0, 58, 63},
-        REVERSE           = {76525, 2579, 0, 58, 63}
+        NORMAL            = {76523, 2547, 414773, 64, 69}, --XXX
+        ADVANCED          = {76524, 2563, 414774, 58, 63},
+        REVERSE           = {76525, 2579, 414775, 58, 63}
     }
 }
--- Krazzworks Klash R13 (XXX) - R-11.2.0
+-- Krazzworks Klash R13 (Krazzwerke-Kaos) - R-11.2.0
 raceDataTable[207485] = {
     010213, 13, {
-        NORMAL            = {76527, 2548, 0, 71, 76},
-        ADVANCED          = {76528, 2564, 0, 64, 69},
-        REVERSE           = {76529, 2580, 0, 62, 67}
+        NORMAL            = {76527, 2548, 414829, 71, 76}, --XXX
+        ADVANCED          = {76528, 2564, 414830, 64, 69},
+        REVERSE           = {76529, 2580, 414831, 62, 67}
     }
 }
 -- Redridge Rally R14 (Rotkammrally) - R-11.2.0

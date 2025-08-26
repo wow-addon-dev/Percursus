@@ -90,7 +90,7 @@ end
 function percursusFrame:QUEST_ACCEPTED(_, questID)
     local result = GetRaceData(questID)
 
-    Utils:PrintDebug("questID: " .. questID)
+    --Utils:PrintDebug("questID: " .. questID)
 
     if result ~= nil then
         Utils:PrintDebug("Event 'QUEST_ACCEPTED' fired. Payload: " .. C_QuestLog.GetTitleForQuestID(questID) .. " (" .. questID ..")")
