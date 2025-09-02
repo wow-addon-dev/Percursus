@@ -1,3 +1,6 @@
+**v1.63 (2025-09-02)**
+- Minor code adjustments
+
 **v1.62 (2025-08-26)**
 - Updated: Race times for the event 'Eastern Kingdom Cup'
 
