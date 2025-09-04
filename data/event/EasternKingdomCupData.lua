@@ -42,7 +42,7 @@ raceDataTable[206764] = {
 -- Deadwind Derby R5 (Totenwindtour) - R-11.2.0
 raceDataTable[206823] = {
     010205, 13, {
-        NORMAL            = {76380, 2540, 413966, 60, 65}, --XXX
+        NORMAL            = {76380, 2540, 413966, 60, 65},
         ADVANCED          = {76381, 2556, 413967, 59, 62},
         REVERSE           = {76382, 2572, 413968, 59, 62}
     }
@@ -74,7 +74,7 @@ raceDataTable[207173] = {
 -- Blasted Lands Bolt R9 (Funke der Verwüsteten Lande) - R-11.2.0
 raceDataTable[207357] = {
     010209, 13, {
-        NORMAL            = {76469, 2544, 414616, 69, 74}, --XXX
+        NORMAL            = {76469, 2544, 414616, 69, 74},
         ADVANCED          = {76470, 2560, 414617, 62, 65},
         REVERSE           = {76471, 2576, 414618, 64, 67}
     }
@@ -114,7 +114,7 @@ raceDataTable[207485] = {
 -- Redridge Rally R14 (Rotkammrally) - R-11.2.0
 raceDataTable[207524] = {
     010214, 13, {
-        NORMAL            = {76536, 2549, 414891, 57, 62}, --XXX
+        NORMAL            = {76536, 2549, 414891, 57, 62},
         ADVANCED          = {76537, 2565, 414892, 52, 55},
         REVERSE           = {76538, 2581, 414893, 52, 55}
     }
