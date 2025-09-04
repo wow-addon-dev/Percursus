@@ -1,3 +1,6 @@
+**v1.65 (2025-09-04)**
+- Updated: Race times for the event 'Eastern Kingdom Cup'
+
 **v1.64 (2025-09-02)**
 - Updated: Race times for the event 'Eastern Kingdom Cup'
 
