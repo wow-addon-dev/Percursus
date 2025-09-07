@@ -1,3 +1,8 @@
+**v1.66 (2025-09-07)**
+- Added: Race times for the area 'K'aresh'
+- Changed: Output of debug messages
+- Updated: Race times for the event 'Eastern Kingdom Cup'
+
 **v1.65 (2025-09-04)**
 - Updated: Race times for the event 'Eastern Kingdom Cup'
 
