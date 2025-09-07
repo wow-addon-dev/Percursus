@@ -264,3 +264,13 @@ raceDataTable[233920] = {
         REVERSE   = {85907, 3188, 471632, 33, 38}
     }
 }
+
+-- K'aresh Z7 (K'aresh)
+-- Oasis Overdrive R1 - 11.2.0
+raceDataTable[234643] = {
+    110701, 2371, {
+        NORMAL    = {86339, 3213, 473850, 57, 62},
+        ADVANCED  = {86340, 3214, 473851, 54, 57},
+        REVERSE   = {86341, 3215, 473852, 54, 57}
+    }
+}
