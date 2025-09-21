@@ -1,3 +1,6 @@
+**v1.67 (2025-09-21)**
+- Minor code adjustments
+
 **v1.66 (2025-09-07)**
 - Added: Race times for the area 'K'aresh'
 - Changed: Output of debug messages
