@@ -1,3 +1,6 @@
+**v1.68 (2025-10-10)**
+- Removed: TOC version for patch 11.2.0 [retail]
+
 **v1.67 (2025-09-21)**
 - Minor code adjustments
 
