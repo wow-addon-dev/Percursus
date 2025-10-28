@@ -1,3 +1,6 @@
+**v1.69 (2025-10-28)**
+- Added: TOC version for patch 11.2.7 [retail]
+
 **v1.68 (2025-10-10)**
 - Removed: TOC version for patch 11.2.0 [retail]
 
