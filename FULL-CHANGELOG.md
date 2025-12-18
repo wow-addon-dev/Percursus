@@ -1,3 +1,7 @@
+**v1.71 (2025-12-18)**
+- Added: TOC version for patch 12.0.1 [retail]
+- Removed: TOC version for patch 11.2.5 [retail]
+
 **v1.70 (2025-11-23)**
 - Added: TOC version for patch 12.0.0 [retail]
 
