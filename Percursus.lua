@@ -55,7 +55,7 @@ end
 
 local function SlashCommand(msg, editbox)
     if not msg or msg:trim() == "" then
-        Settings.OpenToCategory("Percursus")
+        Settings.OpenToCategory(PER.MAIN_CATEGORY_ID)
 	else
         Utils:PrintDebug("No arguments will be accepted.")
 	end

@@ -150,7 +150,6 @@ function Options:Initialize()
     end
 
     local mainCategory = Settings.RegisterCanvasLayoutCategory(canvasFrame, addonName)
-    mainCategory.ID = addonName
 
     local variableTable = PER.data.options
     local category, layout = Settings.RegisterVerticalLayoutSubcategory(mainCategory, L["options"])
@@ -357,6 +356,8 @@ function Options:Initialize()
     end
 
     Settings.RegisterAddOnCategory(mainCategory)
+
+	PER.MAIN_CATEGORY_ID = mainCategory:GetID()
 end
 
 PER.options = Options

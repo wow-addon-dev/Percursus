@@ -2,5 +2,4 @@
 ### [@project-version@](https://github.com/wow-addon-dev/Percursus/tree/@project-version@) (@build-date@)
 [Full Changelog](@full-changelog@) - [Previous Releases](https://github.com/wow-addon-dev/Percursus/releases)
 
-- Added: TOC version for patch 12.0.1 [retail]
-- Removed: TOC version for patch 11.2.5 [retail]
+- Fixed: The option window can be opened again via the command line in patch 12.0.0 and higher [retail]
