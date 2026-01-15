@@ -1,3 +1,6 @@
+**v1.73 (2026-01-15)**
+- Minor code adjustments [retail]
+
 **v1.72 (2026-01-12)**
 - Fixed: The option window can be opened again via the command line in patch 12.0.0 and higher [retail]
 
