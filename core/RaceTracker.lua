@@ -106,19 +106,15 @@ function RaceTracker:Start(raceQuestID, raceSpellID, raceGoldTime, raceSilverTim
 
     ShowRaceTracker(raceQuestID, raceGoldTime, racePersonalTime)
 
-    local function foo(_, _, _, _, _, _, _, _, _, spellId, ...)
-        if spellId == 369968 then
-            isRace = true
-        elseif spellId == raceSpellID then
-            isCountdown = true
-        end
-    end
-
     raceTicker = C_Timer.NewTicker(0.03, function()
         isCountdown = false
         isRace = false
 
-        AuraUtil.ForEachAura("player", "HELPFUL", nil, foo)
+        local raceAura = C_UnitAuras.GetPlayerAuraBySpellID(369968)
+		local countdownAura = C_UnitAuras.GetPlayerAuraBySpellID(raceSpellID)
+
+		if raceAura then isRace = true end
+		if countdownAura then	isCountdown = true end
 
         if isCountdown and not isFirstTry and not isInit then
             isInit = true
