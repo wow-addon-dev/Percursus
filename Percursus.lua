@@ -160,9 +160,20 @@ function percursusFrame:ZONE_CHANGED_NEW_AREA()
 	SubZoneTextFrame:Hide()
 end
 
-GossipFrame:HookScript("OnShow",function()
-    if UnitExists("target") and PER.data.options["race-time-overview"] then
-		local npcID = select(6, strsplit("-", tostring(UnitGUID("target"))))
+hooksecurefunc(GossipFrame, "HandleShow", function ()
+	local unitGUID = UnitGUID("target")
+
+	if unitGUID == nil then
+		return
+	end
+
+	---@diagnostic disable-next-line: param-type-mismatch
+	if issecretvalue(unitGUID) then
+		return
+	end
+
+    if PER.data.options["race-time-overview"] then
+		local npcID = select(6, strsplit("-", tostring(unitGUID)))
         npcID = tonumber(npcID)
 
         --Utils:PrintDebug("npcID: " .. npcID)
@@ -173,7 +184,7 @@ GossipFrame:HookScript("OnShow",function()
     end
 end)
 
-GossipFrame:HookScript("OnHide",function()
+hooksecurefunc(GossipFrame, "Hide", function ()
     RaceTimeOverview:HideRaceOverview()
 end)
 
