@@ -1,3 +1,7 @@
+**v1.77 (2026-02-08)**
+- Fixed: Access to secret values when opening the race overview is prevented [retail]
+- Minor code adjustments [retail]
+
 **v1.76 (2026-02-06)**
 - Fixed: Access to secret values prevented when querying auras (#6) [retail]
 
