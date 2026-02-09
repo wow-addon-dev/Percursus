@@ -1,3 +1,6 @@
+**v1.78 (2026-02-09)**
+- Added: New Race Tracker background 'Midnight' [retail]
+
 **v1.77 (2026-02-08)**
 - Fixed: Access to secret values when opening the race overview is prevented [retail]
 - Minor code adjustments [retail]
