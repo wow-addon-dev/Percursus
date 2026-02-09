@@ -80,5 +80,15 @@ PER.RACE_TRACKER_BACKGROUNDS = {
 			timer = -5,
 			info = -25
 		}
+  	},
+	[9] = {
+		type = "atlas",
+		width = 319,
+		height = 126,
+		texture = "midnight-scenario-titlebg",
+		offsetY = {
+			timer = 10,
+			info = -10
+		}
   	}
 }

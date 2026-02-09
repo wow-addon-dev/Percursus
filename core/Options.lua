@@ -202,6 +202,7 @@ function Options:Initialize()
 			container:Add(7, L["options.race-tracker-background-type.value.7"])
 			container:Add(5, L["options.race-tracker-background-type.value.5"])
 			container:Add(6, L["options.race-tracker-background-type.value.6"])
+			container:Add(9, L["options.race-tracker-background-type.value.9"])
 			container:Add(8, L["options.race-tracker-background-type.value.8"])
             return container:GetData()
         end
