@@ -1,37 +1,37 @@
 **v1.78 (2026-02-09)**
-- Added: New Race Tracker background 'Midnight' [retail]
+- Added: New Race Tracker background 'Midnight'
 
 **v1.77 (2026-02-08)**
-- Fixed: Access to secret values when opening the race overview is prevented [retail]
-- Minor code adjustments [retail]
+- Fixed: Access to secret values when opening the race overview is prevented
+- Minor code adjustments
 
 **v1.76 (2026-02-06)**
-- Fixed: Access to secret values prevented when querying auras (#6) [retail]
+- Fixed: Access to secret values prevented when querying auras (#6)
 
 **v1.75 (2026-01-24)**
-- Removed: TOC version for patch 11.2.7 [retail]
+- Removed: TOC version for patch 11.2.7
 
 **v1.74 (2026-01-21)**
-- Minor code adjustments [retail]
+- Minor code adjustments
 
 **v1.73 (2026-01-15)**
-- Minor code adjustments [retail]
+- Minor code adjustments
 
 **v1.72 (2026-01-12)**
-- Fixed: The option window can be opened again via the command line in patch 12.0.0 and higher [retail]
+- Fixed: The option window can be opened again via the command line in patch 12.0.0 and higher
 
 **v1.71 (2025-12-18)**
-- Added: TOC version for patch 12.0.1 [retail]
-- Removed: TOC version for patch 11.2.5 [retail]
+- Added: TOC version for patch 12.0.1
+- Removed: TOC version for patch 11.2.5
 
 **v1.70 (2025-11-23)**
-- Added: TOC version for patch 12.0.0 [retail]
+- Added: TOC version for patch 12.0.0
 
 **v1.69 (2025-10-28)**
-- Added: TOC version for patch 11.2.7 [retail]
+- Added: TOC version for patch 11.2.7
 
 **v1.68 (2025-10-10)**
-- Removed: TOC version for patch 11.2.0 [retail]
+- Removed: TOC version for patch 11.2.0
 
 **v1.67 (2025-09-21)**
 - Minor code adjustments
