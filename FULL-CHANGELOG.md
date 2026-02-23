@@ -1,3 +1,6 @@
+**v1.80 (2026-02-23)**
+- Added: Race times for the event 'Outland Cup'
+
 **v1.79 (2026-02-17)**
 - Removed: TOC version for patch 12.0.0
 
