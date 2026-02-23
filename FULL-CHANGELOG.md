@@ -1,5 +1,5 @@
 **v1.79 (2026-02-17)**
-- Removed: TOC version for patch 12.0.0 [retail]
+- Removed: TOC version for patch 12.0.0
 
 **v1.78 (2026-02-09)**
 - Added: New Race Tracker background 'Midnight'
