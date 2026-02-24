@@ -1,3 +1,6 @@
+**v1.81 (2026-02-24)**
+- Updated: Race times for the event 'Outland Cup'
+
 **v1.80 (2026-02-23)**
 - Added: Race times for the event 'Outland Cup'
 
