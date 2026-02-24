@@ -75,8 +75,8 @@ raceDataTable[208673] = {
 raceDataTable[208748] = {
     020109, 101, {
         NORMAL            = {77346, 2608, 418287, 70, 75},
-        ADVANCED          = {77347, 2623, 418288, 63, 60},
-        REVERSE           = {77348, 2638, 418289, 63, 60}
+        ADVANCED          = {77347, 2623, 418288, 63, 66},
+        REVERSE           = {77348, 2638, 418289, 63, 66}
     }
 }
 -- Eco-Dome Excursion R10 (Biokuppelbahn) - R-12.0.1
