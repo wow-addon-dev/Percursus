@@ -1,3 +1,6 @@
+**v1.82 (2026-02-27)**
+- Updated: License
+
 **v1.81 (2026-02-24)**
 - Updated: Race times for the event 'Outland Cup'
 
