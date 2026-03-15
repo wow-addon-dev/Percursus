@@ -8,7 +8,7 @@
 - Added: Race times for the event 'Outland Cup'
 
 **v1.79 (2026-02-17)**
-- Removed: TOC version for patch 12.0.0
+- Removed: TOC version for patch 12.0.0 [retail]
 
 **v1.78 (2026-02-09)**
 - Added: New Race Tracker background 'Midnight'
@@ -21,7 +21,7 @@
 - Fixed: Access to secret values prevented when querying auras (#6)
 
 **v1.75 (2026-01-24)**
-- Removed: TOC version for patch 11.2.7
+- Removed: TOC version for patch 11.2.7 [retail]
 
 **v1.74 (2026-01-21)**
 - Minor code adjustments
@@ -33,17 +33,17 @@
 - Fixed: The option window can be opened again via the command line in patch 12.0.0 and higher
 
 **v1.71 (2025-12-18)**
-- Added: TOC version for patch 12.0.1
-- Removed: TOC version for patch 11.2.5
+- Added: TOC version for patch 12.0.1 [retail]
+- Removed: TOC version for patch 11.2.5 [retail]
 
 **v1.70 (2025-11-23)**
-- Added: TOC version for patch 12.0.0
+- Added: TOC version for patch 12.0.0 [retail]
 
 **v1.69 (2025-10-28)**
-- Added: TOC version for patch 11.2.7
+- Added: TOC version for patch 11.2.7 [retail]
 
 **v1.68 (2025-10-10)**
-- Removed: TOC version for patch 11.2.0
+- Removed: TOC version for patch 11.2.0 [retail]
 
 **v1.67 (2025-09-21)**
 - Minor code adjustments
@@ -69,13 +69,13 @@
 - Added: Race times for the event 'Eastern Kingdom Cup'
 
 **v1.60 (2025-08-17)**
-- Added: TOC version for patch 11.2.5
+- Added: TOC version for patch 11.2.5 [retail]
 
 **v1.59 (2025-08-12)**
 - Minor code adjustments
 
 **v1.58 (2025-08-09)**
-- Removed: TOC version for patch 11.1.7
+- Removed: TOC version for patch 11.1.7 [retail]
 - Minor code adjustments
 
 **v1.57 (2025-08-02)**
@@ -88,7 +88,7 @@
 - Added: New Race Tracker background 'N'Zoth'
 
 **v1.54 (2025-07-10)**
-- Added: TOC version for patch 11.2.0
+- Added: TOC version for patch 11.2.0 [retail]
 
 **v1.53 (2025-07-01)**
 - Minor code adjustments
@@ -111,7 +111,7 @@
 **v1.48 (2025-06-18)**
 - Added: New Race Tracker backgrounds 'Evergreen', 'Dragonflight' and 'The War Within'
 - Updated: deDE, enUS, ruRU localization
-- Removed: TOC version for patch 11.1.5
+- Removed: TOC version for patch 11.1.5 [retail]
 - Minor code adjustments
 
 **v1.47 (2025-06-12)**
@@ -138,7 +138,7 @@
 - Fixed: Settings were not saved
 
 **v1.41 (2025-06-02)**
-- Added: TOC version for patch 11.1.7
+- Added: TOC version for patch 11.1.7 [retail]
 - Minor code adjustments
 
 **v1.40 (2025-05-30)**
@@ -181,7 +181,7 @@
 - Refactoring of the addon structure and source code
 
 **3.3.3 (2025-04-23)**
-- Removed: TOC version for patch 11.1.0 (Retail)
+- Removed: TOC version for patch 11.1.0 [retail]
 
 **3.3.2 (2025-04-21)**
 - Fixed: Variable names conflict with other addons
@@ -198,7 +198,7 @@
 - Updated: Race times for the area 'Zaralek Cavern'
 
 **3.2.5 (2025-04-06)**
-- Added: TOC version for patch 11.1.5 (Retail)
+- Added: TOC version for patch 11.1.5 [retail]
 
 **3.2.4 (2025-03-30)**
 - Updated: Race times for the area 'Emerald Dream'
@@ -210,7 +210,7 @@
 - Updated: Race times for the area 'Emerald Dream'
 
 **3.2.1 (2025-02-27)**
-- Removed: TOC version for patch 11.0.7 (Retail)
+- Removed: TOC version for patch 11.0.7 [retail]
 
 **3.2.0 (2025-02-25)**
 - Added: ruRU localization (Thanks to Hollicsh)
@@ -231,7 +231,7 @@
 - Fixed: The settings were not saved
 
 **3.0.2 (2025-01-26)**
-- Added: TOC version for patch 11.1.0 (Retail)
+- Added: TOC version for patch 11.1.0 [retail]
 - Updated: License
 - Minor code adjustments
 
@@ -247,7 +247,7 @@
 - Added: Slash command to open the addon option window
 
 **2.2.2 (2024-12-17)**
-- Updated: TOC version for patch 11.0.7 (Retail)
+- Updated: TOC version for patch 11.0.7 [retail]
 
 **2.2.1 (2024-12-10)**
 - Changed: The race times of the current zone are now shown in a fixed order
@@ -302,7 +302,7 @@
 - Added: Options menu to customize some timer display settings
 
 **1.3.1 (2024-10-23)**
-- Updated: TOC version for patch 11.0.5 (Retail)
+- Updated: TOC version for patch 11.0.5 [retail]
 
 **1.3.0 (2024-10-22)**
 - Added: Race times for the expansion 'Dragonflight'
