@@ -8,7 +8,7 @@
 
 Percursus is an addon that displays a live timer during a race (e.g. dragonriding & skyriding) and provides a detailed time overview of all completed races.
 
-This addon is compatible with all race types such as dragonriding, skyriding, skyrocketing and breakneck (D.R.I.V.E.).
+This addon is compatible with all race types such as dragonriding, skyriding, skyrocketing, breakneck (D.R.I.V.E.) and postal route.
 
 The following key features are currently implemented:
 *   Race Tracker: During the race, an overlay is shown that allows you to track your current race time
