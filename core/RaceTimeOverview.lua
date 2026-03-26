@@ -40,7 +40,9 @@ local function UpdateRaceOverview(npcID, scrollFrame)
 	local zoneID = raceDataTable[npcID][2]
 	local count = raceDataTable[npcID][3]
 
-	if count > 1 then
+	if count >= 1 then
+		raceOverviewFrame.openButton:Disable()
+
 		local npc = scrollFrame:CreateFontString(nil, "OVERLAY", "Fancy16Font")
 		npc:SetPoint("TOP", 5, 40)
 
@@ -152,6 +154,8 @@ local function UpdateRaceOverview(npcID, scrollFrame)
 			end
 		end
 	else
+		raceOverviewFrame.openButton:Enable()
+
 		local questID = raceDataTable[npcID][4].NORMAL[1]
 
 		local quest = scrollFrame:CreateFontString(nil, "OVERLAY", "Fancy16Font")
