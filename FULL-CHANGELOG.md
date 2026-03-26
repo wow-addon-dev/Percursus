@@ -1,4 +1,5 @@
 **v1.84 (2026-03-26)**
+- Added: New race type 'Postal Route'
 - Added: Race times for the expansion 'Midnight'
 
 **v1.83 (2026-03-15)**
