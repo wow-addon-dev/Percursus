@@ -22,7 +22,7 @@ local racePersonalTime = -1
 
 local function CheckRaceQuest(questID)
     for _, dataWrapper in pairs(raceDataTable) do
-        local _, _, modes = unpack(dataWrapper)
+        local _, _, _, modes = unpack(dataWrapper)
         for _, data in pairs(modes) do
             if data[1] == questID then
                 return true
