@@ -5,6 +5,7 @@
     <Script file="event\OutlandCupData.lua" />
     <Script file="expansion\DragonflightData.lua" />
     <Script file="expansion\TheWarWithinData.lua" />
+	<Script file="expansion\Midnight.lua" />
     <Script file="CoreData.lua" />
 	<Script file="CommonData.lua" />
 	<Script file="RaceTrackerData.lua" />

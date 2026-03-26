@@ -35,7 +35,7 @@ end
 
 local function GetRaceData(questID)
     for _, dataWrapper in pairs(raceDataTable) do
-        local _, _, modes = unpack(dataWrapper)
+        local _, _, _, modes = unpack(dataWrapper)
         for mode, data in pairs(modes) do
             if data[1] == questID then
                 return {

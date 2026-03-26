@@ -37,74 +37,191 @@ local function UpdateRaceOverview(npcID, scrollFrame)
 
     local offsetY = 0
 
-    local zoneID = raceDataTable[npcID][2]
-    local questID = raceDataTable[npcID][3].NORMAL[1]
+	local zoneID = raceDataTable[npcID][2]
+	local count = raceDataTable[npcID][3]
 
-    local quest = scrollFrame:CreateFontString(nil, "OVERLAY", "Fancy16Font")
-    quest:SetPoint("TOP", 5, 40)
+	if count > 1 then
+		local npc = scrollFrame:CreateFontString(nil, "OVERLAY", "Fancy16Font")
+		npc:SetPoint("TOP", 5, 40)
 
-    QuestEventListener:AddCallback(questID, function()
-        local name = C_QuestLog.GetTitleForQuestID(questID)
-        quest:SetText("|cnNORMAL_FONT_COLOR:".. name .. "|r")
-    end)
+		local function GetNPCNameByIDAsync(npcID, callback)
+			if not npcID or type(callback) ~= "function" then return end
 
-    table.insert(scrollFrame.rows, {quest})
+			local hyperlink = string.format("unit:Creature-0-0-0-0-%d-0", npcID)
 
-    local difficulties = raceDataTable[npcID][3]
+			local function CheckForName()
+				local tooltipInfo = C_TooltipInfo.GetHyperlink(hyperlink)
+				if tooltipInfo and tooltipInfo.lines and tooltipInfo.lines[1] then
+					local name = tooltipInfo.lines[1].leftText
+					if name and name ~= "" then
+						return name
+					end
+				end
+				return nil
+			end
 
-    for _, modeKey in ipairs(PER.DIFFICULTY_ORDER) do
-        if difficulties[modeKey] then
-            local lookupKey = "race-" .. modeKey:lower():gsub("_", "-")
+			local immediateName = CheckForName()
+			if immediateName then
+				callback(immediateName)
+				return
+			end
 
-            local racePersonalTime = -1
-            local raceGoldTime = raceDataTable[npcID][3][modeKey][4]
-            local raceSilverTime = raceDataTable[npcID][3][modeKey][5]
+			local maxRetries = 20
+			local attempts = 0
+			local ticker
 
-            if raceDataTable[npcID][3][modeKey][2] ~= 0 then
-                racePersonalTime = C_CurrencyInfo.GetCurrencyInfo(raceDataTable[npcID][3][modeKey][2]).quantity / 1000
-            end
+			ticker = C_Timer.NewTicker(0.1, function()
+				attempts = attempts + 1
+				local fetchedName = CheckForName()
 
-            local mode = scrollFrame.scrollView:CreateFontString(nil, "OVERLAY", "GameFontNormal")
-            mode:SetPoint("TOPLEFT", 0, offsetY)
-            mode:SetJustifyH("LEFT")
-            mode:SetText(L[lookupKey])
+				if fetchedName then
+					ticker:Cancel()
+					callback(fetchedName)
+				elseif attempts >= maxRetries then
+					ticker:Cancel()
+					callback(nil)
+				end
+			end)
+		end
 
-            offsetY = offsetY - 20
+		GetNPCNameByIDAsync(npcID, function(name)
+			if name then
+				npc:SetText("|cnNORMAL_FONT_COLOR:".. name .. "|r")
+			end
+		end)
 
-            local bestTime = scrollFrame.scrollView:CreateFontString(nil, "OVERLAY", "GameFontWhite")
-            bestTime:SetPoint("TOPLEFT", 0, offsetY)
-            bestTime:SetJustifyH("LEFT")
+		table.insert(scrollFrame.rows, {npc})
 
-            if racePersonalTime == -1 then
-                bestTime:SetText(L["personal-best-time-not-available"])
-            elseif racePersonalTime == 0 then
-                bestTime:SetText(L["personal-best-time-no-race"])
-            else
-                local time
+		local races = raceDataTable[npcID][4]
 
-                if racePersonalTime <= raceGoldTime then
-                    time = "|T616373:0|t |cnGOLD_FONT_COLOR:".. racePersonalTime .. "|r"
-                elseif racePersonalTime <= raceSilverTime then
-                    time = "|T616375:0|t |c" .. PER.COLOR_SILVER .. racePersonalTime .. "|r"
-                else
-                    time = "|T616372:0|t |c" .. PER.COLOR_BRONZE .. racePersonalTime .. "|r"
-                end
+		for _, modeKey in ipairs(PER.RACE_ORDER) do
+			if races[modeKey] then
+				local questID = raceDataTable[npcID][4][modeKey][1]
 
-                bestTime:SetText(L["personal-best-time"]:format(time))
-            end
+				local racePersonalTime = -1
+				local raceGoldTime = raceDataTable[npcID][4][modeKey][4]
+				local raceSilverTime = raceDataTable[npcID][4][modeKey][5]
 
-            offsetY = offsetY - 20
+				if raceDataTable[npcID][4][modeKey][2] ~= 0 then
+					racePersonalTime = C_CurrencyInfo.GetCurrencyInfo(raceDataTable[npcID][4][modeKey][2]).quantity / 1000
+				end
 
-            local goldSilverTime = scrollFrame.scrollView:CreateFontString(nil, "OVERLAY", "GameFontWhite")
-            goldSilverTime:SetPoint("TOPLEFT", 0, offsetY)
-            goldSilverTime:SetJustifyH("LEFT")
-            goldSilverTime:SetText(L["gold-time"]:format(raceGoldTime) .. " - " .. L["silver-time"]:format(raceSilverTime))
+				local mode = scrollFrame.scrollView:CreateFontString(nil, "OVERLAY", "GameFontNormal")
+				mode:SetPoint("TOPLEFT", 0, offsetY)
+				mode:SetJustifyH("LEFT")
 
-            table.insert(scrollFrame.rows, {mode, bestTime, goldSilverTime})
+				QuestEventListener:AddCallback(questID, function()
+					local name = C_QuestLog.GetTitleForQuestID(questID)
+					mode:SetText(name)
+				end)
 
-            offsetY = offsetY - 40
-        end
-    end
+				offsetY = offsetY - 20
+
+				local bestTime = scrollFrame.scrollView:CreateFontString(nil, "OVERLAY", "GameFontWhite")
+				bestTime:SetPoint("TOPLEFT", 0, offsetY)
+				bestTime:SetJustifyH("LEFT")
+
+				if racePersonalTime == -1 then
+					bestTime:SetText(L["personal-best-time-not-available"])
+				elseif racePersonalTime == 0 then
+					bestTime:SetText(L["personal-best-time-no-race"])
+				else
+					local time
+
+					if racePersonalTime <= raceGoldTime then
+						time = "|T616373:0|t |cnGOLD_FONT_COLOR:".. racePersonalTime .. "|r"
+					elseif racePersonalTime <= raceSilverTime then
+						time = "|T616375:0|t |c" .. PER.COLOR_SILVER .. racePersonalTime .. "|r"
+					else
+						time = "|T616372:0|t |c" .. PER.COLOR_BRONZE .. racePersonalTime .. "|r"
+					end
+
+					bestTime:SetText(L["personal-best-time"]:format(time))
+				end
+
+				offsetY = offsetY - 20
+
+				local goldSilverTime = scrollFrame.scrollView:CreateFontString(nil, "OVERLAY", "GameFontWhite")
+				goldSilverTime:SetPoint("TOPLEFT", 0, offsetY)
+				goldSilverTime:SetJustifyH("LEFT")
+				goldSilverTime:SetText(L["gold-time"]:format(raceGoldTime) .. " - " .. L["silver-time"]:format(raceSilverTime))
+
+				table.insert(scrollFrame.rows, {mode, bestTime, goldSilverTime})
+
+				offsetY = offsetY - 40
+			end
+		end
+	else
+		local questID = raceDataTable[npcID][4].NORMAL[1]
+
+		local quest = scrollFrame:CreateFontString(nil, "OVERLAY", "Fancy16Font")
+		quest:SetPoint("TOP", 5, 40)
+
+		QuestEventListener:AddCallback(questID, function()
+			local name = C_QuestLog.GetTitleForQuestID(questID)
+			quest:SetText("|cnNORMAL_FONT_COLOR:".. name .. "|r")
+		end)
+
+		table.insert(scrollFrame.rows, {quest})
+
+		local difficulties = raceDataTable[npcID][4]
+
+		for _, modeKey in ipairs(PER.DIFFICULTY_ORDER) do
+			if difficulties[modeKey] then
+				local lookupKey = "race-" .. modeKey:lower():gsub("_", "-")
+
+				local racePersonalTime = -1
+				local raceGoldTime = raceDataTable[npcID][4][modeKey][4]
+				local raceSilverTime = raceDataTable[npcID][4][modeKey][5]
+
+				if raceDataTable[npcID][4][modeKey][2] ~= 0 then
+					racePersonalTime = C_CurrencyInfo.GetCurrencyInfo(raceDataTable[npcID][4][modeKey][2]).quantity / 1000
+				end
+
+				local mode = scrollFrame.scrollView:CreateFontString(nil, "OVERLAY", "GameFontNormal")
+				mode:SetPoint("TOPLEFT", 0, offsetY)
+				mode:SetJustifyH("LEFT")
+				mode:SetText(L[lookupKey])
+
+				offsetY = offsetY - 20
+
+				local bestTime = scrollFrame.scrollView:CreateFontString(nil, "OVERLAY", "GameFontWhite")
+				bestTime:SetPoint("TOPLEFT", 0, offsetY)
+				bestTime:SetJustifyH("LEFT")
+
+				if racePersonalTime == -1 then
+					bestTime:SetText(L["personal-best-time-not-available"])
+				elseif racePersonalTime == 0 then
+					bestTime:SetText(L["personal-best-time-no-race"])
+				else
+					local time
+
+					if racePersonalTime <= raceGoldTime then
+						time = "|T616373:0|t |cnGOLD_FONT_COLOR:".. racePersonalTime .. "|r"
+					elseif racePersonalTime <= raceSilverTime then
+						time = "|T616375:0|t |c" .. PER.COLOR_SILVER .. racePersonalTime .. "|r"
+					else
+						time = "|T616372:0|t |c" .. PER.COLOR_BRONZE .. racePersonalTime .. "|r"
+					end
+
+					bestTime:SetText(L["personal-best-time"]:format(time))
+				end
+
+				offsetY = offsetY - 20
+
+				local goldSilverTime = scrollFrame.scrollView:CreateFontString(nil, "OVERLAY", "GameFontWhite")
+				goldSilverTime:SetPoint("TOPLEFT", 0, offsetY)
+				goldSilverTime:SetJustifyH("LEFT")
+				goldSilverTime:SetText(L["gold-time"]:format(raceGoldTime) .. " - " .. L["silver-time"]:format(raceSilverTime))
+
+				table.insert(scrollFrame.rows, {mode, bestTime, goldSilverTime})
+
+				offsetY = offsetY - 40
+			end
+		end
+	end
+
+
 
     return zoneID
 end
@@ -130,7 +247,7 @@ local function UpdateZoneOverview(zoneID, scrollFrame)
     local count = 1
 
     for _, raceData in ipairs(sortedRaceDataTable) do
-        if raceData.zoneID == zoneID then
+        if raceData.zoneID == zoneID and raceData.count == 0 then
             local modes = raceData.modes
             local questID = modes.NORMAL[1]
 
