@@ -18,7 +18,7 @@
 - Removed: TOC version for patch 12.0.0 [retail]
 
 **v1.78 (2026-02-09)**
-- Added: New Race Tracker background 'Midnight'
+- Added: Race Tracker background 'Midnight'
 
 **v1.77 (2026-02-08)**
 - Fixed: Access to secret values when opening the race overview is prevented
@@ -92,7 +92,7 @@
 - Minor code adjustments
 
 **v1.55 (2025-07-15)**
-- Added: New Race Tracker background 'N'Zoth'
+- Added: Race Tracker background 'N'Zoth'
 
 **v1.54 (2025-07-10)**
 - Added: TOC version for patch 11.2.0 [retail]
@@ -101,7 +101,7 @@
 - Minor code adjustments
 
 **v1.52 (2025-06-29)**
-- Added: New Race Tracker background 'Legion'
+- Added: Race Tracker background 'Legion'
 
 **v1.51 (2025-06-26)**
 - Minor code adjustments
@@ -116,7 +116,7 @@
 - Updated: ruRU localization (#4 - Thanks to Hollicsh)
 
 **v1.48 (2025-06-18)**
-- Added: New Race Tracker backgrounds 'Evergreen', 'Dragonflight' and 'The War Within'
+- Added: Race Tracker backgrounds 'Evergreen', 'Dragonflight' and 'The War Within'
 - Updated: deDE, enUS, ruRU localization
 - Removed: TOC version for patch 11.1.5 [retail]
 - Minor code adjustments
@@ -128,7 +128,7 @@
 - Fixed: Race Tracker did not start because no background can be loaded
 
 **v1.45 (2025-06-12)**
-- Added: New Race Tracker backgrounds 'Alliance' and 'Horde'
+- Added: Race Tracker backgrounds 'Alliance' and 'Horde'
 - Changed: The speed display during a race is shown as a bar and can be positioned separately from the Race Tracker
 - Updated: deDE, enUS, ruRU localization (#3 - Thanks to Hollicsh)
 - Minor code adjustments
