@@ -107,7 +107,7 @@
 - Minor code adjustments
 
 **v1.50 (2025-06-24)**
-- Added: New option to hide area names during a race
+- Added: Option to hide area names during a race
 - Updated: ruRU localization (#5 - Thanks to Hollicsh)
 - Minor code adjustments
 
