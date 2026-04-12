@@ -12,7 +12,11 @@
 ## Notes-ruRU: Аддон, который отображает таймер в реальном времени во время гонки (например, гонки на драконе и параплане) и предоставляет подробный обзор времени всех завершенных гонок.
 
 ## LoadSavedVariablesFirst: 1
-## SavedVariables: Percursus_Options
+## SavedVariables: Percursus_Options_v2
+
+## AddonCompartmentFuncOnEnter: Percursus_CompartmentOnEnter
+## AddonCompartmentFuncOnLeave: Percursus_CompartmentOnLeave
+## AddonCompartmentFunc: Percursus_CompartmentOnClick
 
 ## X-Flavor: Retail
 ## X-BuildDate: @build-date@

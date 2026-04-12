@@ -3,33 +3,22 @@ local _, PER = ...
 local L =  PER.localization
 
 local Dialog = {}
-
---------------
---- Frames ---
---------------
-
-local copyAddressDialog
-local resetOptionsDialog
+local DialogLib = LibStub("WAD-LibShared-Dialogs", true)
 
 ---------------------
 --- Main Funtions ---
 ---------------------
 
-function Dialog:Initialize()
-    copyAddressDialog = CreateFrame("Frame", "Percursus_CopyAdressDialog", UIParent, "Percursus_CopyAdressDialogTemplate")
-	resetOptionsDialog = CreateFrame("Frame", "Percursus_ResetOptionsDialog", UIParent, "Percursus_ResetOptionsDialogTemplate")
-end
-
 function Dialog:ShowCopyAddressDialog(address)
-    if (not copyAddressDialog:IsShown()) and (not resetOptionsDialog:IsShown()) then
-        copyAddressDialog:ShowDialog(address)
-    end
+	DialogLib:ShowCopyAddressDialog(address, L["dialog.copy-address.text"])
 end
 
-function Dialog:ShowResetOptionsDialog()
-    if (not copyAddressDialog:IsShown()) and (not resetOptionsDialog:IsShown()) then
-        resetOptionsDialog:ShowDialog()
+function Dialog:ShowDeleteDataDialog()
+    local function ResetLogic()
+        ReloadUI()
     end
+
+    DialogLib:ShowDeleteDataDialog(L["dialog.delete-data.text"], ResetLogic)
 end
 
 PER.dialog = Dialog

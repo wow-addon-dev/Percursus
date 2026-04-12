@@ -78,8 +78,8 @@ end
 function percursusFrame:ADDON_LOADED(_, addOnName)
     if addOnName == addonName then
         Utils:InitializeDatabase()
-        Dialog:Initialize()
-        Options:Initialize()
+		Utils:InitializeMinimapButton()
+		Options:Initialize()
         RaceTracker:Initialize()
         RaceTimeOverview:Initialize()
 
@@ -95,7 +95,7 @@ function percursusFrame:QUEST_ACCEPTED(_, questID)
     if result ~= nil then
         Utils:PrintDebug("Event 'QUEST_ACCEPTED' fired. Payload: " .. C_QuestLog.GetTitleForQuestID(questID) .. " (" .. questID ..")")
 
-        if PER.data.options["race-tracker"] then
+        if PER.options.raceTracker["active"] then
 			activeTracker = true
             raceQuestID = result.questID
             raceSpellID = result.spellID
@@ -106,7 +106,7 @@ function percursusFrame:QUEST_ACCEPTED(_, questID)
                 racePersonalTime = C_CurrencyInfo.GetCurrencyInfo(result.raceTime).quantity / 1000
             end
 
-			if PER.data.options["race-tracker-hide-area-names"] then
+			if PER.options.raceTracker["hide-area-names"] then
 				percursusFrame:RegisterEvent("ZONE_CHANGED")
 				percursusFrame:RegisterEvent("ZONE_CHANGED_NEW_AREA")
 			end
@@ -131,10 +131,10 @@ function percursusFrame:QUEST_REMOVED(_, questID)
 
         RaceTracker:Stop()
 
-		if PER.data.options["race-tracker-result-display"] then
+		if PER.options.raceTracker["result-display"] then
 			RaceTracker:ShowResultTracker()
 
-			local delay = PER.data.options["race-tracker-fadeout-delay"]
+			local delay = PER.options.raceTracker["fadeout-delay"]
 
 			C_Timer.After(delay, function()
 				RaceTracker:HideResultTracker()
@@ -172,7 +172,7 @@ hooksecurefunc(GossipFrame, "HandleShow", function ()
 		return
 	end
 
-    if PER.data.options["race-time-overview"] then
+    if PER.options.raceTimeOverview["active"] then
 		local npcID = select(6, strsplit("-", tostring(unitGUID)))
         npcID = tonumber(npcID)
 
