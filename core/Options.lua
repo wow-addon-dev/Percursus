@@ -2,7 +2,6 @@ local addonName, PER = ...
 
 local L = PER.localization
 local Utils = PER.utils
-local Dialog = PER.dialog
 
 local Options = {}
 
@@ -295,7 +294,7 @@ function Options:Initialize()
 		local buttonText = L["options.about.button-github.button"]
 
         local function OnButtonClick()
-            Dialog:ShowCopyAddressDialog(PER.LINK_GITHUB)
+            WAD.Dialog:ShowCopyAddressDialog(PER.LINK_GITHUB)
         end
 
         local buttonInitializer = CreateSettingsButtonInitializer(name, buttonText, OnButtonClick, tooltip, true)
