@@ -3,6 +3,8 @@ local addonName, PER = ...
 local L = PER.localization
 local Utils = PER.utils
 
+local AWL = ArcaneWizardLibrary
+
 local Options = {}
 
 ----------------------
@@ -259,7 +261,7 @@ function Options:Initialize()
 			rightText = PER.GAME_VERSION .. " (" .. PER.GAME_FLAVOR .. ")",
 		}
 
-		local text = layout:AddInitializer(Settings.CreateElementInitializer("Percursus_OptionsText", data))
+		local text = layout:AddInitializer(Settings.CreateElementInitializer("ArcaneWizardLibrary_OptionsText", data))
 
 		function text:GetExtent()
 			return 14
@@ -272,7 +274,7 @@ function Options:Initialize()
 			rightText = PER.ADDON_VERSION .. " (" .. PER.ADDON_BUILD_DATE .. ")"
 		}
 
-		local text = layout:AddInitializer(Settings.CreateElementInitializer("Percursus_OptionsText", data))
+		local text = layout:AddInitializer(Settings.CreateElementInitializer("ArcaneWizardLibrary_OptionsText", data))
 
 		function text:GetExtent()
 			return 14
@@ -285,7 +287,7 @@ function Options:Initialize()
 			rightText = PER.ADDON_AUTHOR
 		}
 
-		local text = layout:AddInitializer(Settings.CreateElementInitializer("Percursus_OptionsText", data))
+		local text = layout:AddInitializer(Settings.CreateElementInitializer("ArcaneWizardLibrary_OptionsText", data))
 	end
 
 	do
@@ -294,7 +296,7 @@ function Options:Initialize()
 		local buttonText = L["options.about.button-github.button"]
 
         local function OnButtonClick()
-            WAD.Dialog:ShowCopyAddressDialog(PER.LINK_GITHUB)
+            AWL.Dialog:ShowCopyAddressDialog(PER.LINK_GITHUB)
         end
 
         local buttonInitializer = CreateSettingsButtonInitializer(name, buttonText, OnButtonClick, tooltip, true)
