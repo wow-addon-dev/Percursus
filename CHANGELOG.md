@@ -6,6 +6,6 @@
 
 **Important note: All settings have been reset to their defaults.**
 
-- Added: Embedded library 'WoW-AD-LibShared' (r1)
+- Added: Required dependency 'Arcane Wizard: Library'
 - Removed: ruRU localization
 - Refactoring of the addon structure and source code
