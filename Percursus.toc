@@ -19,7 +19,6 @@
 ## AddonCompartmentFuncOnLeave: Percursus_CompartmentOnLeave
 ## AddonCompartmentFunc: Percursus_CompartmentOnClick
 
-## X-Flavor: Retail
 ## X-BuildDate: @build-date@
 ## X-E-Mail: feedback@wow-addon.dev
 ## X-Github: https://github.com/wow-addon-dev/Percursus
