@@ -8,28 +8,28 @@ This is a World of Warcraft addon that displays a live timer during a race (e.g.
 
 **Key Features**
 
-* **Race Tracker:** During the race, an overlay is shown that allows you to track your current race time.
-* **Race Time Overview:** Next to the quest window of each Bronze Timekeeper, your current race times, as well as the gold and silver medal times, are shown.
+* **Race Tracker** - During the race, an overlay is shown that allows you to track your current race time.
+* **Race Time Overview** - Next to the quest window of each Bronze Timekeeper, your current race times, as well as the gold and silver medal times, are shown.
 
 ## Features
 
 * Three modes for the Race Tracker are available: current race time, countdown to medal time (gold or silver), and countdown to your personal best time.
 * Different backgrounds can be selected for the Race Tracker.
-* The current race speed (gliding speed) can be displayed during the race (this only works with Dragonriding & Skyriding).
+* The current race speed (gliding speed) can be displayed during the race (this only works with dragonriding & skyriding).
 * The position of the Race Tracker can be moved and positioned according to your own preferences.
 * All race times of the current zone can be viewed in the Race Time Overview.
 * Both key features can be activated or deactivated separately.
 
 ## Supported Languages & Flavors
 
-* **Languages:** English, German, and Russian
-* **Flavors:** Retail
+* Languages: English, German, and Russian
+* Flavors: Retail
 
 ## Installation & Quick Start
 
 > ⚠️ **Required Dependency:** This addon requires the **Arcane Wizard: Library**. If you install Percursus via the CurseForge client, the library will be downloaded automatically. If you install it manually, please ensure the library is also downloaded and enabled.
 
-To open the addon options menu, type `/per` or `/percursus` into your chat and hit enter.
+To open the addon options menu, type `/per` or `/percursus` into your chat and press enter.
 
 ## Bugs & Feedback
 
@@ -37,4 +37,4 @@ If you find a bug or have a suggestion, please use the GitHub Issues or the Curs
 
 ## Translation Support
 
-If you would like to help me with the translation, I would be very pleased.
+If you would like to localize this addon into other languages, your contribution would be very welcome.
