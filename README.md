@@ -15,14 +15,14 @@ This is a World of Warcraft addon that displays a live timer during a race (e.g.
 
 * Three modes for the Race Tracker are available: current race time, countdown to medal time (gold or silver), and countdown to your personal best time.
 * Different backgrounds can be selected for the Race Tracker.
-* The current race speed (gliding speed) can be displayed during the race (this only works with dragonriding & skyriding).
+* The current race speed (gliding speed) can be displayed during the race (this only works with Dragonriding & Skyriding).
 * The position of the Race Tracker can be moved and positioned according to your own preferences.
 * All race times of the current zone can be viewed in the Race Time Overview.
 * Both key features can be activated or deactivated separately.
 
 ## Supported Languages & Flavors
 
-* Languages: English, German, and Russian
+* Languages: English, German
 * Flavors: Retail
 
 ## Installation & Quick Start
