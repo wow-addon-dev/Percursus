@@ -1,3 +1,7 @@
+**v2.1 (2026-04-20)**
+- Added: zhCN localization
+- Minor code adjustments
+
 **v2.0 (2026-04-18)**
 - Added: Required dependency 'Arcane Wizard: Library'
 - Changed: License
