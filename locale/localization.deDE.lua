@@ -71,34 +71,32 @@ L["minimap-button.tooltip"] = "|cnLINK_FONT_COLOR:Rechtsklick|r zum Öffnen der 
 
 -- Chat
 
--- Race Tracker
+-- Race Tracker & Race Time Overview
 
--- Race Time Overview
+L["race.time"] = "Zeit: %.1f Sekunden"
+L["race.gold-time"] = "|T616373:0|t Goldzeit: %s Sek."
+L["race.silver-time"] = "|T616375:0|t Silberzeit: %s Sek."
+L["race.bronze-time"] = "|T616372:0|t Bronzezeit"
+L["race.no-time"] = "keine Medaillenzeit abrufbar"
 
-L["time"] = "Zeit: %.1f Sekunden"
-L["gold-time"] = "|T616373:0|t Goldzeit: %s Sek."
-L["silver-time"] = "|T616375:0|t Silberzeit: %s Sek."
-L["bronze-time"] = "|T616372:0|t Bronzezeit"
-L["no-time"] = "keine Medaillenzeit abrufbar"
+L["race.gliding-speed"] = "aktuelle Renngeschwindigkeit: %s%%"
 
-L["gliding-speed"] = "aktuelle Renngeschwindigkeit: %s%%"
+L["race.seconds-long"] = "Sekunden"
+L["race.seconds-short"] = "Sek."
 
-L["seconds-long"] = "Sekunden"
-L["seconds-short"] = "Sek."
+L["race.button.close"] = "Schließen"
+L["race.button.zone-overview"] = "Zonenübersicht"
 
-L["button.close"] = "Schließen"
-L["button.zone-overview"] = "Zonenübersicht"
+L["race.title.zone-overview"] = "Zonenübersicht"
 
-L["title.zone-overview"] = "Zonenübersicht"
+L["race.type-normal"] = "Normal"
+L["race.type-advanced"] = "Fortgeschritten"
+L["race.type-reverse"] = "Umgekehrt"
+L["race.type-challenge"] = "Herausforderung"
+L["race.type-challenge-reverse"] = "Umgekehrte Herausforderung"
+L["race.type-storm-gryphon"] = "Sturmgreif"
 
-L["race-normal"] = "Normal"
-L["race-advanced"] = "Fortgeschritten"
-L["race-reverse"] = "Umgekehrt"
-L["race-challenge"] = "Herausforderung"
-L["race-challenge-reverse"] = "Umgekehrte Herausforderung"
-L["race-storm-gryphon"] = "Sturmgreif"
-
-L["personal-best-time"] = "persönliche Bestzeit: %s Sek."
-L["personal-best-time-no-race"] = "kein Rennen bisher absolviert"
-L["personal-best-time-not-available"] = "persönliche Bestzeit nicht abrufbar"
-L["personal-best-time-failed"] = "neue persönliche Bestzeit verfehlt"
+L["race.personal-best-time"] = "persönliche Bestzeit: %s Sek."
+L["race.personal-best-time-no-race"] = "kein Rennen bisher absolviert"
+L["race.personal-best-time-not-available"] = "persönliche Bestzeit nicht abrufbar"
+L["race.personal-best-time-failed"] = "neue persönliche Bestzeit verfehlt"

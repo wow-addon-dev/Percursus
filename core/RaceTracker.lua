@@ -48,26 +48,26 @@ local function ShowRaceTracker(raceQuestID, raceGoldTime, racePersonalTime)
 	raceTrackerFrame:SetTimerText(C_QuestLog.GetTitleForQuestID(raceQuestID))
 
     if PER.options.raceTracker["mode"] == 0 then
-        raceTrackerFrame:SetInfoText(L["gold-time"]:format(raceGoldTime))
+        raceTrackerFrame:SetInfoText(L["race.gold-time"]:format(raceGoldTime))
     elseif PER.options.raceTracker["mode"] == 1 then
-        raceTrackerFrame:SetInfoText(L["gold-time"]:format(raceGoldTime))
+        raceTrackerFrame:SetInfoText(L["race.gold-time"]:format(raceGoldTime))
     elseif PER.options.raceTracker["mode"] == 2 then
         if racePersonalTime == -1 then
-            raceTrackerFrame:SetInfoText(L["personal-best-time-not-available"])
+            raceTrackerFrame:SetInfoText(L["race.personal-best-time-not-available"])
         elseif racePersonalTime == 0 then
-            raceTrackerFrame:SetInfoText(L["personal-best-time-no-race"])
+            raceTrackerFrame:SetInfoText(L["race.personal-best-time-no-race"])
         else
-            raceTrackerFrame:SetInfoText(L["personal-best-time"]:format(racePersonalTime))
+            raceTrackerFrame:SetInfoText(L["race.personal-best-time"]:format(racePersonalTime))
         end
     end
 
     C_Timer.After(5, function()
         if PER.options.raceTracker["mode"] == 0 or (PER.options.raceTracker["mode"] == 2 and racePersonalTime <= 0) then
-            raceTrackerFrame:SetTimerText(string.format(L["time"], 0))
+            raceTrackerFrame:SetTimerText(string.format(L["race.time"], 0))
         elseif PER.options.raceTracker["mode"] == 1 then
-            raceTrackerFrame:SetTimerText(L["time"]:format(-raceGoldTime))
+            raceTrackerFrame:SetTimerText(L["race.time"]:format(-raceGoldTime))
         elseif PER.options.raceTracker["mode"] == 2 then
-            raceTrackerFrame:SetTimerText(L["time"]:format(-racePersonalTime))
+            raceTrackerFrame:SetTimerText(L["race.time"]:format(-racePersonalTime))
         end
 
         local _, c, _ = C_PlayerInfo.GetGlidingInfo()
@@ -121,11 +121,11 @@ function RaceTracker:Start(raceQuestID, raceSpellID, raceGoldTime, raceSilverTim
             raceStartTime = -1
 
             if PER.options.raceTracker["mode"] == 0 or (PER.options.raceTracker["mode"] == 2 and racePersonalTime <= 0) then
-                raceTrackerFrame:SetTimerText(string.format(L["time"], 0))
+                raceTrackerFrame:SetTimerText(string.format(L["race.time"], 0))
             elseif PER.options.raceTracker["mode"] == 1 then
-                raceTrackerFrame:SetTimerText(L["time"]:format(-raceGoldTime))
+                raceTrackerFrame:SetTimerText(L["race.time"]:format(-raceGoldTime))
             elseif PER.options.raceTracker["mode"] == 2 then
-                raceTrackerFrame:SetTimerText(L["time"]:format(-racePersonalTime))
+                raceTrackerFrame:SetTimerText(L["race.time"]:format(-racePersonalTime))
             end
 
             Utils:PrintDebug("The race was interrupted.")
@@ -151,43 +151,43 @@ function RaceTracker:Start(raceQuestID, raceSpellID, raceGoldTime, raceSilverTim
             local elapsedTime = GetTime() - raceStartTime
 
             if PER.options.raceTracker["mode"] == 0 then
-                raceTrackerFrame:SetTimerText(L["time"]:format(elapsedTime))
+                raceTrackerFrame:SetTimerText(L["race.time"]:format(elapsedTime))
 
                 if elapsedTime <= raceGoldTime then
-                    raceTrackerFrame:SetInfoText(L["gold-time"]:format(raceGoldTime))
+                    raceTrackerFrame:SetInfoText(L["race.gold-time"]:format(raceGoldTime))
                 elseif elapsedTime <= raceSilverTime then
-                    raceTrackerFrame:SetInfoText(L["silver-time"]:format(raceSilverTime))
+                    raceTrackerFrame:SetInfoText(L["race.silver-time"]:format(raceSilverTime))
                 else
-                    raceTrackerFrame:SetInfoText(L["bronze-time"])
+                    raceTrackerFrame:SetInfoText(L["race.bronze-time"])
                 end
             elseif PER.options.raceTracker["mode"] == 1 then
                 if elapsedTime <= raceGoldTime then
                     local remainingTime = -(raceGoldTime - elapsedTime)
-                    raceTrackerFrame:SetTimerText(L["time"]:format(remainingTime))
-                    raceTrackerFrame:SetInfoText(L["gold-time"]:format(raceGoldTime))
+                    raceTrackerFrame:SetTimerText(L["race.time"]:format(remainingTime))
+                    raceTrackerFrame:SetInfoText(L["race.gold-time"]:format(raceGoldTime))
                 elseif elapsedTime <= raceSilverTime then
                     local remainingTime = -(raceSilverTime - elapsedTime)
-                    raceTrackerFrame:SetTimerText(L["time"]:format(remainingTime))
-                    raceTrackerFrame:SetInfoText(L["silver-time"]:format(raceSilverTime))
+                    raceTrackerFrame:SetTimerText(L["race.time"]:format(remainingTime))
+                    raceTrackerFrame:SetInfoText(L["race.silver-time"]:format(raceSilverTime))
                 else
-                    raceTrackerFrame:SetTimerText(L["time"]:format(0))
-                    raceTrackerFrame:SetInfoText(L["bronze-time"])
+                    raceTrackerFrame:SetTimerText(L["race.time"]:format(0))
+                    raceTrackerFrame:SetInfoText(L["race.bronze-time"])
                 end
             elseif PER.options.raceTracker["mode"] == 2 then
                 if racePersonalTime == -1 then
-                    raceTrackerFrame:SetTimerText(L["time"]:format(elapsedTime))
-                    raceTrackerFrame:SetInfoText(L["personal-best-time-not-available"])
+                    raceTrackerFrame:SetTimerText(L["race.time"]:format(elapsedTime))
+                    raceTrackerFrame:SetInfoText(L["race.personal-best-time-not-available"])
                 elseif racePersonalTime == 0 then
-                    raceTrackerFrame:SetTimerText(L["time"]:format(elapsedTime))
-                    raceTrackerFrame:SetInfoText(L["personal-best-time-no-race"])
+                    raceTrackerFrame:SetTimerText(L["race.time"]:format(elapsedTime))
+                    raceTrackerFrame:SetInfoText(L["race.personal-best-time-no-race"])
                 else
                     if elapsedTime <= racePersonalTime then
                         local remainingTime = -(racePersonalTime - elapsedTime)
-                        raceTrackerFrame:SetTimerText(L["time"]:format(remainingTime))
-                        raceTrackerFrame:SetInfoText(L["personal-best-time"]:format(racePersonalTime))
+                        raceTrackerFrame:SetTimerText(L["race.time"]:format(remainingTime))
+                        raceTrackerFrame:SetInfoText(L["race.personal-best-time"]:format(racePersonalTime))
                     else
-                        raceTrackerFrame:SetTimerText(L["time"]:format(0))
-                        raceTrackerFrame:SetInfoText(L["personal-best-time-failed"])
+                        raceTrackerFrame:SetTimerText(L["race.time"]:format(0))
+                        raceTrackerFrame:SetInfoText(L["race.personal-best-time-failed"])
                     end
                 end
             end

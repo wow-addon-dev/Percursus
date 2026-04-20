@@ -22,7 +22,7 @@ Percursus is a World of Warcraft addon that displays a live timer during a race 
 
 ## Supported Languages & Flavors
 
-* Languages: English, German
+* Languages: English, German, Simplified Chinese
 * Flavors: Retail
 
 ## Installation & Quick Start
@@ -37,4 +37,4 @@ If you find a bug or have a suggestion, please use the GitHub Issues or the Curs
 
 ## Translation Support
 
-If you would like to localize this addon into other languages, your contribution would be very welcome.
+If you would like to localize this addon into other languages, your contribution would be very welcome. You can submit your translations directly via GitHub or use the [CurseForge Localization Tool](https://legacy.curseforge.com/wow/addons/percursus/localization).

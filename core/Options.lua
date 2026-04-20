@@ -174,7 +174,7 @@ function Options:Initialize()
         local settingSlider = Settings.RegisterAddOnSetting(category, addonName .. "_" .. variableSlider, variableSlider, variableTableRaceTracker, Settings.VarType.Number, nameSlider, defaultValueSlider)
 
 		local optionsSlider = Settings.CreateSliderOptions(minValue, maxValue, step)
-        optionsSlider:SetLabelFormatter(MinimalSliderWithSteppersMixin.Label.Right, function(value) return value .. " " .. L["seconds-short"] end)
+        optionsSlider:SetLabelFormatter(MinimalSliderWithSteppersMixin.Label.Right, function(value) return value .. " " .. L["race.seconds-short"] end)
 
         local initializer = CreateSettingsCheckboxSliderInitializer(settingCheckbox, nameCheckbox, tooltipCheckbox, settingSlider, optionsSlider, nameSlider, tooltipSlider)
 

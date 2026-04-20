@@ -124,9 +124,9 @@ local function UpdateRaceOverview(npcID, scrollFrame)
 				bestTime:SetJustifyH("LEFT")
 
 				if racePersonalTime == -1 then
-					bestTime:SetText(L["personal-best-time-not-available"])
+					bestTime:SetText(L["race.personal-best-time-not-available"])
 				elseif racePersonalTime == 0 then
-					bestTime:SetText(L["personal-best-time-no-race"])
+					bestTime:SetText(L["race.personal-best-time-no-race"])
 				else
 					local time
 
@@ -138,7 +138,7 @@ local function UpdateRaceOverview(npcID, scrollFrame)
 						time = "|T616372:0|t |c" .. PER.COLOR_BRONZE .. racePersonalTime .. "|r"
 					end
 
-					bestTime:SetText(L["personal-best-time"]:format(time))
+					bestTime:SetText(L["race.personal-best-time"]:format(time))
 				end
 
 				offsetY = offsetY - 20
@@ -146,7 +146,7 @@ local function UpdateRaceOverview(npcID, scrollFrame)
 				local goldSilverTime = scrollFrame.scrollView:CreateFontString(nil, "OVERLAY", "GameFontWhite")
 				goldSilverTime:SetPoint("TOPLEFT", 0, offsetY)
 				goldSilverTime:SetJustifyH("LEFT")
-				goldSilverTime:SetText(L["gold-time"]:format(raceGoldTime) .. " - " .. L["silver-time"]:format(raceSilverTime))
+				goldSilverTime:SetText(L["race.gold-time"]:format(raceGoldTime) .. " - " .. L["race.silver-time"]:format(raceSilverTime))
 
 				table.insert(scrollFrame.rows, {mode, bestTime, goldSilverTime})
 
@@ -172,7 +172,7 @@ local function UpdateRaceOverview(npcID, scrollFrame)
 
 		for _, modeKey in ipairs(PER.DIFFICULTY_ORDER) do
 			if difficulties[modeKey] then
-				local lookupKey = "race-" .. modeKey:lower():gsub("_", "-")
+				local lookupKey = "race.type-" .. modeKey:lower():gsub("_", "-")
 
 				local racePersonalTime = -1
 				local raceGoldTime = raceDataTable[npcID][4][modeKey][4]
@@ -194,9 +194,9 @@ local function UpdateRaceOverview(npcID, scrollFrame)
 				bestTime:SetJustifyH("LEFT")
 
 				if racePersonalTime == -1 then
-					bestTime:SetText(L["personal-best-time-not-available"])
+					bestTime:SetText(L["race.personal-best-time-not-available"])
 				elseif racePersonalTime == 0 then
-					bestTime:SetText(L["personal-best-time-no-race"])
+					bestTime:SetText(L["race.personal-best-time-no-race"])
 				else
 					local time
 
@@ -208,7 +208,7 @@ local function UpdateRaceOverview(npcID, scrollFrame)
 						time = "|T616372:0|t |c" .. PER.COLOR_BRONZE .. racePersonalTime .. "|r"
 					end
 
-					bestTime:SetText(L["personal-best-time"]:format(time))
+					bestTime:SetText(L["race.personal-best-time"]:format(time))
 				end
 
 				offsetY = offsetY - 20
@@ -216,7 +216,7 @@ local function UpdateRaceOverview(npcID, scrollFrame)
 				local goldSilverTime = scrollFrame.scrollView:CreateFontString(nil, "OVERLAY", "GameFontWhite")
 				goldSilverTime:SetPoint("TOPLEFT", 0, offsetY)
 				goldSilverTime:SetJustifyH("LEFT")
-				goldSilverTime:SetText(L["gold-time"]:format(raceGoldTime) .. " - " .. L["silver-time"]:format(raceSilverTime))
+				goldSilverTime:SetText(L["race.gold-time"]:format(raceGoldTime) .. " - " .. L["race.silver-time"]:format(raceSilverTime))
 
 				table.insert(scrollFrame.rows, {mode, bestTime, goldSilverTime})
 
@@ -283,17 +283,17 @@ local function UpdateZoneOverview(zoneID, scrollFrame)
                     end
 
                     if mode == "NORMAL" then
-                        difficulty = L["race-normal"]
+                        difficulty = L["race.type-normal"]
                     elseif mode == "ADVANCED" then
-                        difficulty = L["race-advanced"]
+                        difficulty = L["race.type-advanced"]
                     elseif mode == "REVERSE" then
-                        difficulty = L["race-reverse"]
+                        difficulty = L["race.type-reverse"]
                     elseif mode == "CHALLENGE" then
-                        difficulty = L["race-challenge"]
+                        difficulty = L["race.type-challenge"]
                     elseif mode == "CHALLENGE_REVERSE" then
-                        difficulty = L["race-challenge-reverse"]
+                        difficulty = L["race.type-challenge-reverse"]
                     elseif mode == "STORM_GRYPHON" then
-                        difficulty = L["race-storm-gryphon"]
+                        difficulty = L["race.type-storm-gryphon"]
                     end
 
                     local text = scrollFrame.scrollView:CreateFontString(nil, "OVERLAY", "GameFontWhite")
@@ -310,7 +310,7 @@ local function UpdateZoneOverview(zoneID, scrollFrame)
                             time = "|T616372:0|t |c" .. PER.COLOR_BRONZE .. racePersonalTime .. "|r"
                         end
 
-                        text:SetText(difficulty .. ": " .. time .. " " .. L['seconds-short'])
+                        text:SetText(difficulty .. ": " .. time .. " " .. L["race.seconds-short"])
                     else
                         text:SetText(difficulty .. ": " .. time)
                     end
@@ -356,7 +356,7 @@ local function InitializeFrames()
         raceOverviewFrame.openButton = CreateFrame("Button", nil, raceOverviewFrame, "UIPanelButtonTemplate")
         raceOverviewFrame.openButton:SetPoint("TOPRIGHT", background, "BOTTOMRIGHT", -5, -5)
         raceOverviewFrame.openButton:SetSize(130, 22)
-        raceOverviewFrame.openButton:SetText(L["button.zone-overview"])
+        raceOverviewFrame.openButton:SetText(L["race.button.zone-overview"])
 
         raceOverviewFrame.openButton:SetScript("OnClick", function()
             if zoneOverviewFrame:IsShown() then
@@ -373,7 +373,7 @@ local function InitializeFrames()
         zoneOverviewFrame:SetPoint("TOPLEFT", raceOverviewFrame, "TOPRIGHT", 10, 0)
 		zoneOverviewFrame:SetPoint("CENTER")
         zoneOverviewFrame:SetSize(343, 430)
-        zoneOverviewFrame:SetTitle(L["title.zone-overview"])
+        zoneOverviewFrame:SetTitle(L["race.title.zone-overview"])
         zoneOverviewFrame:Hide()
 
         local background = CreateFrame("Frame", nil, zoneOverviewFrame, "InsetFrameTemplate4")
@@ -395,7 +395,7 @@ local function InitializeFrames()
         zoneOverviewFrame.closeButton = CreateFrame("Button", nil, zoneOverviewFrame, "UIPanelButtonTemplate")
         zoneOverviewFrame.closeButton:SetPoint("TOPRIGHT", background, "BOTTOMRIGHT", -5, -5)
         zoneOverviewFrame.closeButton:SetSize(100, 22)
-        zoneOverviewFrame.closeButton:SetText(L["button.close"])
+        zoneOverviewFrame.closeButton:SetText(L["race.button.close"])
 
         zoneOverviewFrame.closeButton:SetScript("OnClick", function()
             zoneOverviewFrame:Hide()

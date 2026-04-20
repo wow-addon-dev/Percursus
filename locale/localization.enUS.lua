@@ -74,34 +74,32 @@ L["minimap-button.tooltip"] = "|cnLINK_FONT_COLOR:Right-click|r to open the opti
 
 -- Chat
 
--- Race Tracker
+-- Race Tracker & Race Time Overview
 
--- Race Time Overview
+L["race.time"] = "Time: %.1f Seconds"
+L["race.gold-time"] = "|T616373:0|t Gold Time: %s sec"
+L["race.silver-time"] = "|T616375:0|t Silver Time: %s sec"
+L["race.bronze-time"] = "|T616372:0|t Bronze Time"
+L["race.no-time"] = "No Medal Time Available"
 
-L["time"] = "Time: %.1f Seconds"
-L["gold-time"] = "|T616373:0|t Gold Time: %s sec"
-L["silver-time"] = "|T616375:0|t Silver Time: %s sec"
-L["bronze-time"] = "|T616372:0|t Bronze Time"
-L["no-time"] = "No Medal Time Available"
+L["race.gliding-speed"] = "Current Racing Speed: %s%%"
 
-L["gliding-speed"] = "Current Racing Speed: %s%%"
+L["race.seconds-long"] = "Seconds"
+L["race.seconds-short"] = "sec"
 
-L["seconds-long"] = "Seconds"
-L["seconds-short"] = "sec"
+L["race.button.close"] = "Close"
+L["race.button.zone-overview"] = "Zone Overview"
 
-L["button.close"] = "Close"
-L["button.zone-overview"] = "Zone Overview"
+L["race.title.zone-overview"] = "Zone Overview"
 
-L["title.zone-overview"] = "Zone Overview"
+L["race.type-normal"] = "Normal"
+L["race.type-advanced"] = "Advanced"
+L["race.type-reverse"] = "Reverse"
+L["race.type-challenge"] = "Challenge"
+L["race.type-challenge-reverse"] = "Reverse Challenge"
+L["race.type-storm-gryphon"] = "Storm Gryphon"
 
-L["race-normal"] = "Normal"
-L["race-advanced"] = "Advanced"
-L["race-reverse"] = "Reverse"
-L["race-challenge"] = "Challenge"
-L["race-challenge-reverse"] = "Reverse Challenge"
-L["race-storm-gryphon"] = "Storm Gryphon"
-
-L["personal-best-time"] = "Personal Best Time: %s sec"
-L["personal-best-time-no-race"] = "No Race Completed So Far"
-L["personal-best-time-not-available"] = "Personal Best Time Not Available"
-L["personal-best-time-failed"] = "New Personal Best Time Failed"
+L["race.personal-best-time"] = "Personal Best Time: %s sec"
+L["race.personal-best-time-no-race"] = "No Race Completed So Far"
+L["race.personal-best-time-not-available"] = "Personal Best Time Not Available"
+L["race.personal-best-time-failed"] = "New Personal Best Time Failed"

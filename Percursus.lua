@@ -2,7 +2,6 @@ local addonName, PER = ...
 
 local L = PER.localization
 local Utils = PER.utils
-local Dialog = PER.dialog
 local Options = PER.options
 local RaceTracker = PER.raceTracker
 local RaceTimeOverview = PER.raceTimeOverview
@@ -15,6 +14,12 @@ local raceSpellID = -1
 local raceGoldTime = -1
 local raceSilverTime = -1
 local racePersonalTime = -1
+
+--------------
+--- Frames ---
+--------------
+
+local percursusFrame = CreateFrame("Frame", "Percursus")
 
 ----------------------
 --- Local funtions ---
@@ -60,12 +65,6 @@ local function SlashCommand(msg, editbox)
         Utils:PrintDebug("No arguments will be accepted.")
 	end
 end
-
---------------
---- Frames ---
---------------
-
-local percursusFrame = CreateFrame("Frame", "Percursus")
 
 ---------------------
 --- Main funtions ---
