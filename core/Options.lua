@@ -160,7 +160,7 @@ function Options:Initialize()
         local variableCheckbox = "result-display"
         local defaultValueCheckbox = false
 
-        local settingCheckbox = Settings.RegisterAddOnSetting(category, addonName .. "_" .. variableCheckbox, variableCheckbox, variableTableRaceTracker, Settings.VarType.Boolean, nameCheckbox, not defaultValueCheckbox)
+        local settingCheckbox = Settings.RegisterAddOnSetting(category, addonName .. "_" .. variableCheckbox, variableCheckbox, variableTableRaceTracker, Settings.VarType.Boolean, nameCheckbox, defaultValueCheckbox)
 
         local nameSlider = L["options.race-tracker.fadeout-delay.name"]
         local tooltipSlider = L["options.race-tracker.fadeout-delay.tooltip"]
