@@ -26,6 +26,8 @@ local minimapButtonProxy = setmetatable({}, {
     end,
 })
 
+local function GetVal(setting) return setting:GetValue() end
+
 ---------------------
 --- Main Funtions ---
 ---------------------
@@ -33,272 +35,216 @@ local minimapButtonProxy = setmetatable({}, {
 function Options:Initialize()
     local category, layout = Settings.RegisterVerticalLayoutCategory(addonName)
 
-	local variableTableGeneral = PER.options.general
-	local variableTableRaceTracker = PER.options.raceTracker
-	local variableTableRaceTimeOverview = PER.options.raceTimeOverview
-	local variableTableOther = PER.options.other
+    layout:AddInitializer(CreateSettingsListSectionHeaderInitializer(L["options.general"]))
 
-	local ParentCheckboxRaceTrackerSpeed
-
-	layout:AddInitializer(CreateSettingsListSectionHeaderInitializer(L["options.general"]))
-
-	do
-        local name = L["options.general.minimap-button.name"]
-        local tooltip = L["options.general.minimap-button.tooltip"]
-        local variable = "hide"
-        local defaultValue = false
-
-        local setting = Settings.RegisterAddOnSetting(category, addonName .. "_" .. variable, variable, minimapButtonProxy, Settings.VarType.Boolean, name, not defaultValue)
-
-        Settings.CreateCheckbox(category, setting, tooltip)
-    end
+    -- Minimap Button
+    AWL.Settings:AddCheckbox(category, {
+        variableTable = minimapButtonProxy,
+        settingKey    = addonName .. "_hide",
+        variableName  = "hide",
+        name          = L["options.general.minimap-button.name"],
+        tooltip       = L["options.general.minimap-button.tooltip"],
+        default       = true
+    })
 
     layout:AddInitializer(CreateSettingsListSectionHeaderInitializer(L["options.race-tracker"]))
 
-    do
-        local name = L["options.race-tracker.active.name"]
-        local tooltip = L["options.race-tracker.active.tooltip"]
-        local variable = "active"
-        local defaultValue = true
+    -- Race Tracker: Active
+    AWL.Settings:AddCheckbox(category, {
+        variableTable = PER.options.raceTracker,
+        settingKey    = addonName .. "_race-tracker-active",
+        variableName  = "active",
+        name          = L["options.race-tracker.active.name"],
+        tooltip       = L["options.race-tracker.active.tooltip"],
+        default       = true
+    })
 
-        local setting = Settings.RegisterAddOnSetting(category, addonName .. "_" .. variable, variable, variableTableRaceTracker, Settings.VarType.Boolean, name, defaultValue)
-        Settings.CreateCheckbox(category, setting, tooltip)
-    end
+    -- Mode
+    AWL.Settings:AddDropdown(category, {
+        variableTable = PER.options.raceTracker,
+        settingKey    = addonName .. "_mode",
+        variableName  = "mode",
+        name          = L["options.race-tracker.mode.name"],
+        tooltip       = L["options.race-tracker.mode.tooltip"],
+        default       = 0,
+        options       = {
+            { value = 0, label = L["options.race-tracker.mode.value.0"] },
+            { value = 1, label = L["options.race-tracker.mode.value.1"] },
+            { value = 2, label = L["options.race-tracker.mode.value.2"] }
+        }
+    })
 
-    do
-        local name = L["options.race-tracker.mode.name"]
-        local tooltip = L["options.race-tracker.mode.tooltip"]
-        local variable = "mode"
-        local defaultValue = 0
+    -- Background Type
+    AWL.Settings:AddDropdown(category, {
+        variableTable = PER.options.raceTracker,
+        settingKey    = addonName .. "_background-type",
+        variableName  = "background-type",
+        name          = L["options.race-tracker.background-type.name"],
+        tooltip       = L["options.race-tracker.background-type.tooltip"],
+        default       = 0,
+        options       = {
+            { value = 0, label = L["options.race-tracker.background-type.value.0"] },
+            { value = 1, label = L["options.race-tracker.background-type.value.1"] },
+            { value = 2, label = L["options.race-tracker.background-type.value.2"] },
+            { value = 3, label = L["options.race-tracker.background-type.value.3"] },
+            { value = 4, label = L["options.race-tracker.background-type.value.4"] },
+            { value = 7, label = L["options.race-tracker.background-type.value.7"] },
+            { value = 5, label = L["options.race-tracker.background-type.value.5"] },
+            { value = 6, label = L["options.race-tracker.background-type.value.6"] },
+            { value = 9, label = L["options.race-tracker.background-type.value.9"] },
+            { value = 8, label = L["options.race-tracker.background-type.value.8"] }
+        }
+    })
 
-        local function GetOptions()
-            local container = Settings.CreateControlTextContainer()
-            container:Add(0, L["options.race-tracker.mode.value.0"])
-            container:Add(1, L["options.race-tracker.mode.value.1"])
-            container:Add(2, L["options.race-tracker.mode.value.2"])
-            return container:GetData()
-        end
+    -- Horizontal Shift
+    AWL.Settings:AddSlider(category, {
+        variableTable = PER.options.raceTracker,
+        settingKey    = addonName .. "_horizontal-shift",
+        variableName  = "horizontal-shift",
+        name          = L["options.race-tracker.horizontal-shift.name"],
+        tooltip       = L["options.race-tracker.horizontal-shift.tooltip"],
+        default       = 0, minValue = -500, maxValue = 500, step = 10,
+		formatter     = function(value) return value end,
+    })
 
-        local setting = Settings.RegisterAddOnSetting(category, addonName .. "_" .. variable, variable, variableTableRaceTracker, Settings.VarType.Number, name, defaultValue)
-        Settings.CreateDropdown(category, setting, GetOptions, tooltip)
-    end
+    -- Vertical Shift
+    AWL.Settings:AddSlider(category, {
+        variableTable = PER.options.raceTracker,
+        settingKey    = addonName .. "_vertical-shift",
+        variableName  = "vertical-shift",
+        name          = L["options.race-tracker.vertical-shift.name"],
+        tooltip       = L["options.race-tracker.vertical-shift.tooltip"],
+        default       = 200, minValue = -400, maxValue = 400, step = 10,
+		formatter     = function(value) return value end,
+    })
 
-    do
-        local name = L["options.race-tracker.background-type.name"]
-        local tooltip = L["options.race-tracker.background-type.tooltip"]
-        local variable = "background-type"
-        local defaultValue = 0
+    -- Hide Area Names
+    AWL.Settings:AddCheckbox(category, {
+        variableTable = PER.options.raceTracker,
+        settingKey    = addonName .. "_hide-area-names",
+        variableName  = "hide-area-names",
+        name          = L["options.race-tracker.hide-area-names.name"],
+        tooltip       = L["options.race-tracker.hide-area-names.tooltip"],
+        default       = false
+    })
 
-        local function GetOptions()
-            local container = Settings.CreateControlTextContainer()
-            container:Add(0, L["options.race-tracker.background-type.value.0"])
-            container:Add(1, L["options.race-tracker.background-type.value.1"])
-			container:Add(2, L["options.race-tracker.background-type.value.2"])
-			container:Add(3, L["options.race-tracker.background-type.value.3"])
-			container:Add(4, L["options.race-tracker.background-type.value.4"])
-			container:Add(7, L["options.race-tracker.background-type.value.7"])
-			container:Add(5, L["options.race-tracker.background-type.value.5"])
-			container:Add(6, L["options.race-tracker.background-type.value.6"])
-			container:Add(9, L["options.race-tracker.background-type.value.9"])
-			container:Add(8, L["options.race-tracker.background-type.value.8"])
-            return container:GetData()
-        end
+    -- Result Display
+    AWL.Settings:AddCheckboxSliderCombo(category, layout, {
+        variableTable      = PER.options.raceTracker,
+        checkboxSettingKey = addonName .. "_result-display",
+        checkboxVarName    = "result-display",
+        checkboxName       = L["options.race-tracker.result-display.name"],
+        checkboxTooltip    = L["options.race-tracker.result-display.tooltip"],
+        checkboxDefault    = false,
 
-        local setting = Settings.RegisterAddOnSetting(category, addonName .. "_" .. variable, variable, variableTableRaceTracker, Settings.VarType.Number, name, defaultValue)
-        Settings.CreateDropdown(category, setting, GetOptions, tooltip)
-    end
+        sliderSettingKey   = addonName .. "_fadeout-delay",
+        sliderVariableName = "fadeout-delay",
+        sliderName         = L["options.race-tracker.fadeout-delay.name"],
+        sliderTooltip      = L["options.race-tracker.fadeout-delay.tooltip"],
+        sliderDefault      = 3, sliderMin = 1, sliderMax = 10, sliderStep = 1,
+        sliderFormatter    = function(value) return value .. " " .. L["race.seconds-short"] end
+    })
 
-    do
-        local name = L["options.race-tracker.horizontal-shift.name"]
-        local tooltip = L["options.race-tracker.horizontal-shift.tooltip"]
-        local variable = "horizontal-shift"
-        local defaultValue = 0
+    -- Speed Display (Parent for the next two sliders)
+    local initializerSpeed, settingSpeed = AWL.Settings:AddCheckbox(category, {
+        variableTable = PER.options.raceTracker,
+        settingKey    = addonName .. "_speed-display",
+        variableName  = "speed-display",
+        name          = L["options.race-tracker.speed-display.name"],
+        tooltip       = L["options.race-tracker.speed-display.tooltip"],
+        default       = false
+    })
 
-        local minValue = -500
-        local maxValue = 500
-        local step = 10
+    -- Speed Display: Horizontal Shift
+    AWL.Settings:AddSlider(category, {
+        variableTable   = PER.options.raceTracker,
+        settingKey      = addonName .. "_speed-display-horizontal-shift",
+        variableName    = "speed-display-horizontal-shift",
+        name            = L["options.race-tracker.speed-display-horizontal-shift.name"],
+        tooltip         = L["options.race-tracker.speed-display-horizontal-shift.tooltip"],
+        default         = 0, minValue = -500, maxValue = 500, step = 10,
+		formatter    	= function(value) return value end,
+        parentInit      = initializerSpeed,
+        parentCondition = function() return GetVal(settingSpeed) end
+    })
 
-        local setting = Settings.RegisterAddOnSetting(category, addonName .. "_" .. variable, variable, variableTableRaceTracker, Settings.VarType.Number, name, defaultValue)
-
-		local options = Settings.CreateSliderOptions(minValue, maxValue, step)
-        options:SetLabelFormatter(MinimalSliderWithSteppersMixin.Label.Right)
-
-        Settings.CreateSlider(category, setting, options, tooltip)
-    end
-
-    do
-        local name = L["options.race-tracker.vertical-shift.name"]
-        local tooltip = L["options.race-tracker.vertical-shift.tooltip"]
-        local variable = "vertical-shift"
-        local defaultValue = 200
-
-        local minValue = -400
-        local maxValue = 400
-        local step = 10
-
-        local setting = Settings.RegisterAddOnSetting(category, addonName .. "_" .. variable, variable, variableTableRaceTracker, Settings.VarType.Number, name, defaultValue)
-
-		local options = Settings.CreateSliderOptions(minValue, maxValue, step)
-        options:SetLabelFormatter(MinimalSliderWithSteppersMixin.Label.Right)
-
-        Settings.CreateSlider(category, setting, options, tooltip)
-    end
-
-    do
-        local name = L["options.race-tracker.hide-area-names.name"]
-        local tooltip = L["options.race-tracker.hide-area-names.tooltip"]
-        local variable = "hide-area-names"
-        local defaultValue = false
-
-        local setting = Settings.RegisterAddOnSetting(category, addonName .. "_" .. variable, variable, variableTableRaceTracker, Settings.VarType.Boolean, name, defaultValue)
-        Settings.CreateCheckbox(category, setting, tooltip)
-    end
-
-	do
-        local nameCheckbox = L["options.race-tracker.result-display.name"]
-        local tooltipCheckbox = L["options.race-tracker.result-display.tooltip"]
-        local variableCheckbox = "result-display"
-        local defaultValueCheckbox = false
-
-        local settingCheckbox = Settings.RegisterAddOnSetting(category, addonName .. "_" .. variableCheckbox, variableCheckbox, variableTableRaceTracker, Settings.VarType.Boolean, nameCheckbox, defaultValueCheckbox)
-
-        local nameSlider = L["options.race-tracker.fadeout-delay.name"]
-        local tooltipSlider = L["options.race-tracker.fadeout-delay.tooltip"]
-        local variableSlider = "fadeout-delay"
-        local defaultValueSlider = 3
-
-        local minValue = 1
-        local maxValue = 10
-        local step = 1
-
-        local settingSlider = Settings.RegisterAddOnSetting(category, addonName .. "_" .. variableSlider, variableSlider, variableTableRaceTracker, Settings.VarType.Number, nameSlider, defaultValueSlider)
-
-		local optionsSlider = Settings.CreateSliderOptions(minValue, maxValue, step)
-        optionsSlider:SetLabelFormatter(MinimalSliderWithSteppersMixin.Label.Right, function(value) return value .. " " .. L["race.seconds-short"] end)
-
-        local initializer = CreateSettingsCheckboxSliderInitializer(settingCheckbox, nameCheckbox, tooltipCheckbox, settingSlider, optionsSlider, nameSlider, tooltipSlider)
-
-        layout:AddInitializer(initializer)
-    end
-
-    do
-        local name = L["options.race-tracker.speed-display.name"]
-        local tooltip = L["options.race-tracker.speed-display.tooltip"]
-        local variable = "speed-display"
-        local defaultValue = false
-
-        local setting = Settings.RegisterAddOnSetting(category, addonName .. "_" .. variable, variable, variableTableRaceTracker, Settings.VarType.Boolean, name, defaultValue)
-        ParentCheckboxRaceTrackerSpeed = Settings.CreateCheckbox(category, setting, tooltip)
-    end
-
-    do
-        local name = L["options.race-tracker.speed-display-horizontal-shift.name"]
-        local tooltip = L["options.race-tracker.speed-display-horizontal-shift.tooltip"]
-        local variable = "speed-display-horizontal-shift"
-        local defaultValue = 0
-
-        local minValue = -500
-        local maxValue = 500
-        local step = 10
-
-        local setting = Settings.RegisterAddOnSetting(category, addonName .. "_" .. variable, variable, variableTableRaceTracker, Settings.VarType.Number, name, defaultValue)
-
-		local options = Settings.CreateSliderOptions(minValue, maxValue, step)
-        options:SetLabelFormatter(MinimalSliderWithSteppersMixin.Label.Right)
-
-        local slider = Settings.CreateSlider(category, setting, options, tooltip)
-		slider:SetParentInitializer(ParentCheckboxRaceTrackerSpeed, function() return PER.options.raceTracker["speed-display"] end)
-    end
-
-    do
-        local name = L["options.race-tracker.speed-display-vertical-shift.name"]
-        local tooltip = L["options.race-tracker.speed-display-vertical-shift.tooltip"]
-        local variable = "speed-display-vertical-shift"
-        local defaultValue = -100
-
-        local minValue = -400
-        local maxValue = 400
-        local step = 10
-
-        local setting = Settings.RegisterAddOnSetting(category, addonName .. "_" .. variable, variable, variableTableRaceTracker, Settings.VarType.Number, name, defaultValue)
-
-		local options = Settings.CreateSliderOptions(minValue, maxValue, step)
-        options:SetLabelFormatter(MinimalSliderWithSteppersMixin.Label.Right)
-
-        local slider = Settings.CreateSlider(category, setting, options, tooltip)
-		slider:SetParentInitializer(ParentCheckboxRaceTrackerSpeed, function() return PER.options.raceTracker["speed-display"] end)
-    end
+    -- Speed Display: Vertical Shift
+    AWL.Settings:AddSlider(category, {
+        variableTable   = PER.options.raceTracker,
+        settingKey      = addonName .. "_speed-display-vertical-shift",
+        variableName    = "speed-display-vertical-shift",
+        name            = L["options.race-tracker.speed-display-vertical-shift.name"],
+        tooltip         = L["options.race-tracker.speed-display-vertical-shift.tooltip"],
+        default         = -100, minValue = -400, maxValue = 400, step = 10,
+		formatter    	= function(value) return value end,
+        parentInit      = initializerSpeed,
+        parentCondition = function() return GetVal(settingSpeed) end
+    })
 
     layout:AddInitializer(CreateSettingsListSectionHeaderInitializer(L["options.race-time-overview"]))
 
-    do
-        local name = L["options.race-time-overview.active.name"]
-        local tooltip = L["options.race-time-overview.active.tooltip"]
-        local variable = "active"
-        local defaultValue = true
-
-        local setting = Settings.RegisterAddOnSetting(category, addonName .. "_race-time-overview_" .. variable, variable, variableTableRaceTimeOverview, Settings.VarType.Boolean, name, defaultValue)
-        Settings.CreateCheckbox(category, setting, tooltip)
-    end
+    -- Race Time Overview: Active
+    AWL.Settings:AddCheckbox(category, {
+        variableTable = PER.options.raceTimeOverview,
+        settingKey    = addonName .. "_race-time-overview-active",
+        variableName  = "active",
+        name          = L["options.race-time-overview.active.name"],
+        tooltip       = L["options.race-time-overview.active.tooltip"],
+        default       = true
+    })
 
     layout:AddInitializer(CreateSettingsListSectionHeaderInitializer(L["options.other"]))
 
-    do
-        local name = L["options.other.debug-mode.name"]
-        local tooltip = L["options.other.debug-mode.tooltip"]
-        local variable = "debug-mode"
-        local defaultValue = false
+    -- Debug Mode
+    AWL.Settings:AddCheckbox(category, {
+        variableTable = PER.options.other,
+        settingKey    = addonName .. "_debug-mode",
+        variableName  = "debug-mode",
+        name          = L["options.other.debug-mode.name"],
+        tooltip       = L["options.other.debug-mode.tooltip"],
+        default       = false
+    })
 
-        local setting = Settings.RegisterAddOnSetting(category, addonName .. "_" .. variable, variable, variableTableOther, Settings.VarType.Boolean, name, defaultValue)
-        Settings.CreateCheckbox(category, setting, tooltip)
-    end
+    layout:AddInitializer(CreateSettingsListSectionHeaderInitializer(L["options.about"]))
 
-	layout:AddInitializer(CreateSettingsListSectionHeaderInitializer(L["options.about"]))
+    -- Game Version
+    AWL.Settings:AddInfoText(layout, {
+        leftText  = L["options.about.game-version"],
+        rightText = PER.GAME_VERSION .. " (" .. PER.GAME_FLAVOR .. ")"
+    })
 
-	do
-		layout:AddInitializer(Settings.CreateElementInitializer("ArcaneWizardLibrary_SettingsPanelTextNormal", {
-			leftText = L["options.about.game-version"],
-			rightText = PER.GAME_VERSION .. " (" .. PER.GAME_FLAVOR .. ")",
-		}))
-	end
+    -- Addon Version
+    AWL.Settings:AddInfoText(layout, {
+        leftText  = L["options.about.addon-version"],
+        rightText = PER.ADDON_VERSION .. " (" .. PER.ADDON_BUILD_DATE .. ")"
+    })
 
-	do
-		layout:AddInitializer(Settings.CreateElementInitializer("ArcaneWizardLibrary_SettingsPanelTextNormal", {
-			leftText = L["options.about.addon-version"],
-			rightText = PER.ADDON_VERSION .. " (" .. PER.ADDON_BUILD_DATE .. ")"
-		}))
-	end
+    -- Library Version
+    AWL.Settings:AddInfoText(layout, {
+        leftText  = L["options.about.lib-version"],
+        rightText = AWL.ADDON_VERSION .. " (" .. AWL.ADDON_BUILD_DATE .. ")"
+    })
 
-	do
-		layout:AddInitializer(Settings.CreateElementInitializer("ArcaneWizardLibrary_SettingsPanelTextNormal", {
-			leftText = L["options.about.lib-version"],
-			rightText = AWL.ADDON_VERSION .. " (" .. AWL.ADDON_BUILD_DATE .. ")"
-		}))
-	end
+    -- Author
+    AWL.Settings:AddInfoText(layout, {
+        leftText  = L["options.about.author"],
+        rightText = PER.ADDON_AUTHOR,
+        height    = 30
+    })
 
-	do
-		layout:AddInitializer(Settings.CreateElementInitializer("ArcaneWizardLibrary_SettingsPanelTextLarge", {
-			leftText = L["options.about.author"],
-			rightText = PER.ADDON_AUTHOR
-		}))
-	end
-
-	do
-        local name = L["options.about.button-github.name"]
-        local tooltip = L["options.about.button-github.tooltip"]
-		local buttonText = L["options.about.button-github.button"]
-
-        local function OnButtonClick()
-            AWL.Dialogs:ShowLinkDialog(PER.LINK_GITHUB)
-        end
-
-        local buttonInitializer = CreateSettingsButtonInitializer(name, buttonText, OnButtonClick, tooltip, true)
-        layout:AddInitializer(buttonInitializer)
-    end
+    -- GitHub Link
+    AWL.Settings:AddButton(layout, {
+        name       = L["options.about.button-github.name"],
+        buttonText = L["options.about.button-github.button"],
+        tooltip    = L["options.about.button-github.tooltip"],
+        onClick    = function()
+			AWL.Dialogs:ShowLinkDialog(PER.LINK_GITHUB)
+		end
+    })
 
     Settings.RegisterAddOnCategory(category)
 
-	PER.MAIN_CATEGORY_ID = category:GetID()
+    PER.MAIN_CATEGORY_ID = category:GetID()
 end
 
 PER.options = Options
