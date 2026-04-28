@@ -1,3 +1,6 @@
+**v2.2 (2026-04-28)**
+- Adapted to the latest version of Arcane Wizard: Library to ensure full compatibility
+
 **v2.1 (2026-04-20)**
 - Added: zhCN localization
 - Minor code adjustments
