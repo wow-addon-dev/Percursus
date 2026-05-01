@@ -60,7 +60,11 @@ end
 
 local function SlashCommand(msg, editbox)
     if not msg or msg:trim() == "" then
-        Settings.OpenToCategory(PER.MAIN_CATEGORY_ID)
+		if not InCombatLockdown() then
+			Settings.OpenToCategory(PER.MAIN_CATEGORY_ID)
+		else
+			Utils:PrintDebug("In combat. The options menu cannot be opened.")
+		end
 	else
         Utils:PrintDebug("No arguments will be accepted.")
 	end

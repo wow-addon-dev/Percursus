@@ -2,6 +2,8 @@ local addonName, PER = ...
 
 local L = PER.localization
 
+local Utils = PER.Utils
+
 ---------------------
 --- Main Funtions ---
 ---------------------
@@ -24,6 +26,10 @@ end
 
 function Percursus_CompartmentOnClick(_, button)
     if button == "RightButton" then
-        Settings.OpenToCategory(PER.MAIN_CATEGORY_ID)
+		if not InCombatLockdown() then
+			Settings.OpenToCategory(PER.MAIN_CATEGORY_ID)
+		else
+			Utils:PrintDebug("In combat. The options menu cannot be opened.")
+		end
     end
 end
