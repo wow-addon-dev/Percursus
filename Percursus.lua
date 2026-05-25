@@ -1,10 +1,9 @@
 local addonName, PER = ...
 
-local L = PER.localization
-local Utils = PER.utils
 local Options = PER.options
-local RaceTracker = PER.raceTracker
 local RaceTimeOverview = PER.raceTimeOverview
+local RaceTracker = PER.raceTracker
+local Utils = PER.utils
 
 local raceDataTable = PER.RACE_DATA
 
