@@ -30,7 +30,7 @@ PER.RACE_TRACKER_BACKGROUNDS = {
 			timer = 5,
 			info = -15
 		}
-  	},
+	},
 	[4] = {
 		type = "atlas",
 		width = 350,
@@ -40,7 +40,7 @@ PER.RACE_TRACKER_BACKGROUNDS = {
 			timer = 10,
 			info = -10
 		}
-  	},
+	},
 	[5] = {
 		type = "atlas",
 		width = 350,
@@ -50,7 +50,7 @@ PER.RACE_TRACKER_BACKGROUNDS = {
 			timer = 6,
 			info = -14
 		}
-  	},
+	},
 	[6] = {
 		type = "atlas",
 		width = 350,
@@ -60,7 +60,7 @@ PER.RACE_TRACKER_BACKGROUNDS = {
 			timer = 9,
 			info = -11
 		}
-  	},
+	},
 	[7] = {
 		type = "atlas",
 		width = 467,
@@ -70,7 +70,7 @@ PER.RACE_TRACKER_BACKGROUNDS = {
 			timer = 7,
 			info = -13
 		}
-  	},
+	},
 	[8] = {
 		type = "atlas",
 		width = 330,
@@ -80,7 +80,7 @@ PER.RACE_TRACKER_BACKGROUNDS = {
 			timer = -5,
 			info = -25
 		}
-  	},
+	},
 	[9] = {
 		type = "atlas",
 		width = 319,
@@ -90,5 +90,5 @@ PER.RACE_TRACKER_BACKGROUNDS = {
 			timer = 10,
 			info = -10
 		}
-  	}
+	}
 }

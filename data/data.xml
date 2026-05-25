@@ -1,12 +1,12 @@
 <Ui xmlns="http://www.blizzard.com/wow/ui/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.blizzard.com/wow/ui/
 ..\FrameXML\UI.xsd">
-    <Script file="event\EasternKingdomCupData.lua" />
-    <Script file="event\KalimdorCupData.lua" />
-    <Script file="event\OutlandCupData.lua" />
-    <Script file="expansion\DragonflightData.lua" />
-    <Script file="expansion\TheWarWithinData.lua" />
+	<Script file="event\EasternKingdomCupData.lua" />
+	<Script file="event\KalimdorCupData.lua" />
+	<Script file="event\OutlandCupData.lua" />
+	<Script file="expansion\DragonflightData.lua" />
+	<Script file="expansion\TheWarWithinData.lua" />
 	<Script file="expansion\Midnight.lua" />
-    <Script file="CoreData.lua" />
+	<Script file="CoreData.lua" />
 	<Script file="CommonData.lua" />
 	<Script file="RaceTrackerData.lua" />
 </Ui>

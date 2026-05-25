@@ -1,9 +1,9 @@
 local _, PER = ...
 
 PER.localization = setmetatable({},{__index=function(self,key)
-        geterrorhandler()("Percursus (Debug): Missing entry for '" .. tostring(key) .. "'")
-        return key
-    end})
+		geterrorhandler()("Percursus (Debug): Missing entry for '" .. tostring(key) .. "'")
+		return key
+	end})
 
 local L = PER.localization
 

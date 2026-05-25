@@ -12,8 +12,8 @@ PER.SORTED_RACE_DATA = {}
 local sortedRaceDataTable = PER.SORTED_RACE_DATA
 
 for raceID, dataWrapper in pairs(raceDataTable) do
-    local order, zoneID, count, modes = unpack(dataWrapper)
-    table.insert(sortedRaceDataTable, {raceID = raceID, order = order, zoneID = zoneID, count = count, modes = modes})
+	local order, zoneID, count, modes = unpack(dataWrapper)
+	table.insert(sortedRaceDataTable, {raceID = raceID, order = order, zoneID = zoneID, count = count, modes = modes})
 end
 
 table.sort(sortedRaceDataTable, function(a, b) return a.order < b.order end)

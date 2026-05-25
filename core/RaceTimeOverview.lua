@@ -24,18 +24,18 @@ local globalOverviewFrame
 ----------------------
 
 local function UpdateRaceOverview(npcID, scrollFrame)
-    if scrollFrame.rows then
-        for _, row in ipairs(scrollFrame.rows) do
-            for _, element in ipairs(row) do
-                element:Hide()
-                element:SetParent(nil)
-            end
-        end
-    end
+	if scrollFrame.rows then
+		for _, row in ipairs(scrollFrame.rows) do
+			for _, element in ipairs(row) do
+				element:Hide()
+				element:SetParent(nil)
+			end
+		end
+	end
 
-    scrollFrame.rows = {}
+	scrollFrame.rows = {}
 
-    local offsetY = 0
+	local offsetY = 0
 
 	local zoneID = raceDataTable[npcID][2]
 	local count = raceDataTable[npcID][3]
@@ -227,180 +227,180 @@ local function UpdateRaceOverview(npcID, scrollFrame)
 
 
 
-    return zoneID
+	return zoneID
 end
 
 local function UpdateZoneOverview(zoneID, scrollFrame)
-    if scrollFrame.rows then
-        for _, row in ipairs(scrollFrame.rows) do
-            for _, element in ipairs(row) do
-                element:Hide()
-                element:SetParent(nil)
-            end
-        end
-    end
+	if scrollFrame.rows then
+		for _, row in ipairs(scrollFrame.rows) do
+			for _, element in ipairs(row) do
+				element:Hide()
+				element:SetParent(nil)
+			end
+		end
+	end
 
-    scrollFrame.rows = {}
+	scrollFrame.rows = {}
 
-    local zone = scrollFrame:CreateFontString(nil, "OVERLAY", "Fancy16Font")
-    zone:SetPoint("TOP", 5, 40)
-    zone:SetText("|cnNORMAL_FONT_COLOR:".. C_Map.GetMapInfo(zoneID).name .. "|r")
-    table.insert(scrollFrame.rows, {zone})
+	local zone = scrollFrame:CreateFontString(nil, "OVERLAY", "Fancy16Font")
+	zone:SetPoint("TOP", 5, 40)
+	zone:SetText("|cnNORMAL_FONT_COLOR:".. C_Map.GetMapInfo(zoneID).name .. "|r")
+	table.insert(scrollFrame.rows, {zone})
 
-    local offsetY = 0
-    local count = 1
+	local offsetY = 0
+	local count = 1
 
-    for _, raceData in ipairs(sortedRaceDataTable) do
-        if raceData.zoneID == zoneID and raceData.count == 0 then
-            local modes = raceData.modes
-            local questID = modes.NORMAL[1]
+	for _, raceData in ipairs(sortedRaceDataTable) do
+		if raceData.zoneID == zoneID and raceData.count == 0 then
+			local modes = raceData.modes
+			local questID = modes.NORMAL[1]
 
-            local header = scrollFrame.scrollView:CreateFontString(nil, "OVERLAY", "GameFontNormal")
-            header:SetPoint("TOPLEFT", 0, offsetY)
-            header:SetJustifyH("LEFT")
-            table.insert(scrollFrame.rows, {header})
+			local header = scrollFrame.scrollView:CreateFontString(nil, "OVERLAY", "GameFontNormal")
+			header:SetPoint("TOPLEFT", 0, offsetY)
+			header:SetJustifyH("LEFT")
+			table.insert(scrollFrame.rows, {header})
 
-            QuestEventListener:AddCallback(questID, function()
-                local name = C_QuestLog.GetTitleForQuestID(questID)
-                header:SetText(count .. ". " .. name)
-                count = count + 1
-            end)
+			QuestEventListener:AddCallback(questID, function()
+				local name = C_QuestLog.GetTitleForQuestID(questID)
+				header:SetText(count .. ". " .. name)
+				count = count + 1
+			end)
 
-            offsetY = offsetY - 20
+			offsetY = offsetY - 20
 
-            for _, mode in ipairs(PER.DIFFICULTY_ORDER) do
-                local data = modes[mode]
+			for _, mode in ipairs(PER.DIFFICULTY_ORDER) do
+				local data = modes[mode]
 
-                if data then
-                    local time = "-"
-                    local difficulty
-                    local racePersonalTime = -1
-                    local raceGoldTime = data[4]
-                    local raceSilverTime = data[5]
+				if data then
+					local time = "-"
+					local difficulty
+					local racePersonalTime = -1
+					local raceGoldTime = data[4]
+					local raceSilverTime = data[5]
 
-                    if data[2] ~= 0 then
-                        racePersonalTime = C_CurrencyInfo.GetCurrencyInfo(data[2]).quantity / 1000
-                    end
+					if data[2] ~= 0 then
+						racePersonalTime = C_CurrencyInfo.GetCurrencyInfo(data[2]).quantity / 1000
+					end
 
-                    if mode == "NORMAL" then
-                        difficulty = L["race.type-normal"]
-                    elseif mode == "ADVANCED" then
-                        difficulty = L["race.type-advanced"]
-                    elseif mode == "REVERSE" then
-                        difficulty = L["race.type-reverse"]
-                    elseif mode == "CHALLENGE" then
-                        difficulty = L["race.type-challenge"]
-                    elseif mode == "CHALLENGE_REVERSE" then
-                        difficulty = L["race.type-challenge-reverse"]
-                    elseif mode == "STORM_GRYPHON" then
-                        difficulty = L["race.type-storm-gryphon"]
-                    end
+					if mode == "NORMAL" then
+						difficulty = L["race.type-normal"]
+					elseif mode == "ADVANCED" then
+						difficulty = L["race.type-advanced"]
+					elseif mode == "REVERSE" then
+						difficulty = L["race.type-reverse"]
+					elseif mode == "CHALLENGE" then
+						difficulty = L["race.type-challenge"]
+					elseif mode == "CHALLENGE_REVERSE" then
+						difficulty = L["race.type-challenge-reverse"]
+					elseif mode == "STORM_GRYPHON" then
+						difficulty = L["race.type-storm-gryphon"]
+					end
 
-                    local text = scrollFrame.scrollView:CreateFontString(nil, "OVERLAY", "GameFontWhite")
-                    text:SetPoint("TOPLEFT", 0, offsetY)
-                    text:SetJustifyH("LEFT")
-                    table.insert(scrollFrame.rows, {text})
+					local text = scrollFrame.scrollView:CreateFontString(nil, "OVERLAY", "GameFontWhite")
+					text:SetPoint("TOPLEFT", 0, offsetY)
+					text:SetJustifyH("LEFT")
+					table.insert(scrollFrame.rows, {text})
 
-                    if racePersonalTime > 0 then
-                        if racePersonalTime <= raceGoldTime then
-                            time = "|T616373:0|t |cnGOLD_FONT_COLOR:" .. racePersonalTime .. "|r"
-                        elseif racePersonalTime <= raceSilverTime then
-                            time = "|T616375:0|t |c" .. PER.COLOR_SILVER .. racePersonalTime .. "|r"
-                        else
-                            time = "|T616372:0|t |c" .. PER.COLOR_BRONZE .. racePersonalTime .. "|r"
-                        end
+					if racePersonalTime > 0 then
+						if racePersonalTime <= raceGoldTime then
+							time = "|T616373:0|t |cnGOLD_FONT_COLOR:" .. racePersonalTime .. "|r"
+						elseif racePersonalTime <= raceSilverTime then
+							time = "|T616375:0|t |c" .. PER.COLOR_SILVER .. racePersonalTime .. "|r"
+						else
+							time = "|T616372:0|t |c" .. PER.COLOR_BRONZE .. racePersonalTime .. "|r"
+						end
 
-                        text:SetText(difficulty .. ": " .. time .. " " .. L["race.seconds-short"])
-                    else
-                        text:SetText(difficulty .. ": " .. time)
-                    end
+						text:SetText(difficulty .. ": " .. time .. " " .. L["race.seconds-short"])
+					else
+						text:SetText(difficulty .. ": " .. time)
+					end
 
-                    offsetY = offsetY - 16
-                end
-            end
+					offsetY = offsetY - 16
+				end
+			end
 
-            offsetY = offsetY - 16
-        end
-    end
+			offsetY = offsetY - 16
+		end
+	end
 end
 
 local function InitializeFrames()
-    do
-        raceOverviewFrame = CreateFrame("Frame", nil, GossipFrame, "PortraitFrameTemplate")
-        raceOverviewFrame:SetPoint("TOPLEFT", GossipFrame, "TOPRIGHT", 15, 0)
-        raceOverviewFrame:SetSize(338, 430)
+	do
+		raceOverviewFrame = CreateFrame("Frame", nil, GossipFrame, "PortraitFrameTemplate")
+		raceOverviewFrame:SetPoint("TOPLEFT", GossipFrame, "TOPRIGHT", 15, 0)
+		raceOverviewFrame:SetSize(338, 430)
 		raceOverviewFrame:SetFrameStrata("MEDIUM")
-        raceOverviewFrame:SetTitle(addonName)
-        raceOverviewFrame:Hide()
+		raceOverviewFrame:SetTitle(addonName)
+		raceOverviewFrame:Hide()
 
-        raceOverviewFrame.portrait = raceOverviewFrame:GetPortrait()
-        raceOverviewFrame.portrait:SetPoint('TOPLEFT', -5, 8)
-        raceOverviewFrame.portrait:SetTexture(PER.MEDIA_PATH .. "icon-round.blp")
+		raceOverviewFrame.portrait = raceOverviewFrame:GetPortrait()
+		raceOverviewFrame.portrait:SetPoint('TOPLEFT', -5, 8)
+		raceOverviewFrame.portrait:SetTexture(PER.MEDIA_PATH .. "icon-round.blp")
 
-        local background = CreateFrame("Frame", nil, raceOverviewFrame, "InsetFrameTemplate4")
-        background:SetSize(322, 330)
-        background:SetPoint("BOTTOM", raceOverviewFrame, "BOTTOM", 0, 37)
-        background.texture = background:CreateTexture(nil, "BACKGROUND")
-        background.texture:SetAllPoints(background)
-        background.texture:SetPoint("CENTER")
-        background.texture:SetAtlas("character-panel-background", false)
+		local background = CreateFrame("Frame", nil, raceOverviewFrame, "InsetFrameTemplate4")
+		background:SetSize(322, 330)
+		background:SetPoint("BOTTOM", raceOverviewFrame, "BOTTOM", 0, 37)
+		background.texture = background:CreateTexture(nil, "BACKGROUND")
+		background.texture:SetAllPoints(background)
+		background.texture:SetPoint("CENTER")
+		background.texture:SetAtlas("character-panel-background", false)
 
-        raceOverviewFrame.scrollFrame = CreateFrame("ScrollFrame", nil, raceOverviewFrame, "PercursusOverviewScrollFrameTemplate")
-        raceOverviewFrame.scrollFrame:SetPoint("TOPLEFT", background, "TOPLEFT", 15, -15)
-        raceOverviewFrame.scrollFrame:SetPoint("BOTTOMRIGHT", background, "BOTTOMRIGHT", -25, 15)
+		raceOverviewFrame.scrollFrame = CreateFrame("ScrollFrame", nil, raceOverviewFrame, "PercursusOverviewScrollFrameTemplate")
+		raceOverviewFrame.scrollFrame:SetPoint("TOPLEFT", background, "TOPLEFT", 15, -15)
+		raceOverviewFrame.scrollFrame:SetPoint("BOTTOMRIGHT", background, "BOTTOMRIGHT", -25, 15)
 
-        raceOverviewFrame.scrollFrame.scrollView = CreateFrame("Frame")
-        raceOverviewFrame.scrollFrame.scrollView:SetSize(1, 1)
-        raceOverviewFrame.scrollFrame:SetScrollChild(raceOverviewFrame.scrollFrame.scrollView)
+		raceOverviewFrame.scrollFrame.scrollView = CreateFrame("Frame")
+		raceOverviewFrame.scrollFrame.scrollView:SetSize(1, 1)
+		raceOverviewFrame.scrollFrame:SetScrollChild(raceOverviewFrame.scrollFrame.scrollView)
 
-        raceOverviewFrame.openButton = CreateFrame("Button", nil, raceOverviewFrame, "UIPanelButtonTemplate")
-        raceOverviewFrame.openButton:SetPoint("TOPRIGHT", background, "BOTTOMRIGHT", -5, -5)
-        raceOverviewFrame.openButton:SetSize(130, 22)
-        raceOverviewFrame.openButton:SetText(L["race.button.zone-overview"])
+		raceOverviewFrame.openButton = CreateFrame("Button", nil, raceOverviewFrame, "UIPanelButtonTemplate")
+		raceOverviewFrame.openButton:SetPoint("TOPRIGHT", background, "BOTTOMRIGHT", -5, -5)
+		raceOverviewFrame.openButton:SetSize(130, 22)
+		raceOverviewFrame.openButton:SetText(L["race.button.zone-overview"])
 
-        raceOverviewFrame.openButton:SetScript("OnClick", function()
-            if zoneOverviewFrame:IsShown() then
-                zoneOverviewFrame:Hide()
-            else
-                zoneOverviewFrame:Show()
+		raceOverviewFrame.openButton:SetScript("OnClick", function()
+			if zoneOverviewFrame:IsShown() then
+				zoneOverviewFrame:Hide()
+			else
+				zoneOverviewFrame:Show()
 				zoneOverviewFrame.scrollFrame:SetVerticalScroll(0)
-            end
-        end)
-    end
+			end
+		end)
+	end
 
-    do
-        zoneOverviewFrame = CreateFrame("Frame", nil, raceOverviewFrame, "DefaultPanelTemplate")
-        zoneOverviewFrame:SetPoint("TOPLEFT", raceOverviewFrame, "TOPRIGHT", 10, 0)
+	do
+		zoneOverviewFrame = CreateFrame("Frame", nil, raceOverviewFrame, "DefaultPanelTemplate")
+		zoneOverviewFrame:SetPoint("TOPLEFT", raceOverviewFrame, "TOPRIGHT", 10, 0)
 		zoneOverviewFrame:SetPoint("CENTER")
-        zoneOverviewFrame:SetSize(343, 430)
-        zoneOverviewFrame:SetTitle(L["race.title.zone-overview"])
-        zoneOverviewFrame:Hide()
+		zoneOverviewFrame:SetSize(343, 430)
+		zoneOverviewFrame:SetTitle(L["race.title.zone-overview"])
+		zoneOverviewFrame:Hide()
 
-        local background = CreateFrame("Frame", nil, zoneOverviewFrame, "InsetFrameTemplate4")
-        background:SetSize(322, 330)
-        background:SetPoint("BOTTOM", zoneOverviewFrame, "BOTTOM", 2.5, 37)
-        background.texture = background:CreateTexture(nil, "BACKGROUND")
-        background.texture:SetAllPoints(background)
-        background.texture:SetPoint("CENTER")
-        background.texture:SetAtlas("character-panel-background", false)
+		local background = CreateFrame("Frame", nil, zoneOverviewFrame, "InsetFrameTemplate4")
+		background:SetSize(322, 330)
+		background:SetPoint("BOTTOM", zoneOverviewFrame, "BOTTOM", 2.5, 37)
+		background.texture = background:CreateTexture(nil, "BACKGROUND")
+		background.texture:SetAllPoints(background)
+		background.texture:SetPoint("CENTER")
+		background.texture:SetAtlas("character-panel-background", false)
 
-        zoneOverviewFrame.scrollFrame = CreateFrame("ScrollFrame", nil, zoneOverviewFrame, "PercursusOverviewScrollFrameTemplate")
-        zoneOverviewFrame.scrollFrame:SetPoint("TOPLEFT", background, "TOPLEFT", 15, -15)
-        zoneOverviewFrame.scrollFrame:SetPoint("BOTTOMRIGHT", background, "BOTTOMRIGHT", -25, 15)
+		zoneOverviewFrame.scrollFrame = CreateFrame("ScrollFrame", nil, zoneOverviewFrame, "PercursusOverviewScrollFrameTemplate")
+		zoneOverviewFrame.scrollFrame:SetPoint("TOPLEFT", background, "TOPLEFT", 15, -15)
+		zoneOverviewFrame.scrollFrame:SetPoint("BOTTOMRIGHT", background, "BOTTOMRIGHT", -25, 15)
 
-        zoneOverviewFrame.scrollFrame.scrollView = CreateFrame("Frame")
-        zoneOverviewFrame.scrollFrame.scrollView:SetSize(1, 1)
-        zoneOverviewFrame.scrollFrame:SetScrollChild(zoneOverviewFrame.scrollFrame.scrollView)
+		zoneOverviewFrame.scrollFrame.scrollView = CreateFrame("Frame")
+		zoneOverviewFrame.scrollFrame.scrollView:SetSize(1, 1)
+		zoneOverviewFrame.scrollFrame:SetScrollChild(zoneOverviewFrame.scrollFrame.scrollView)
 
-        zoneOverviewFrame.closeButton = CreateFrame("Button", nil, zoneOverviewFrame, "UIPanelButtonTemplate")
-        zoneOverviewFrame.closeButton:SetPoint("TOPRIGHT", background, "BOTTOMRIGHT", -5, -5)
-        zoneOverviewFrame.closeButton:SetSize(100, 22)
-        zoneOverviewFrame.closeButton:SetText(L["race.button.close"])
+		zoneOverviewFrame.closeButton = CreateFrame("Button", nil, zoneOverviewFrame, "UIPanelButtonTemplate")
+		zoneOverviewFrame.closeButton:SetPoint("TOPRIGHT", background, "BOTTOMRIGHT", -5, -5)
+		zoneOverviewFrame.closeButton:SetSize(100, 22)
+		zoneOverviewFrame.closeButton:SetText(L["race.button.close"])
 
-        zoneOverviewFrame.closeButton:SetScript("OnClick", function()
-            zoneOverviewFrame:Hide()
-        end)
-    end
+		zoneOverviewFrame.closeButton:SetScript("OnClick", function()
+			zoneOverviewFrame:Hide()
+		end)
+	end
 end
 
 ---------------------
@@ -408,19 +408,19 @@ end
 ---------------------
 
 function RaceTimeOverview:Initialize()
-    InitializeFrames()
+	InitializeFrames()
 end
 
 function RaceTimeOverview:ShowRaceOverview(npcID)
-    local zoneID = UpdateRaceOverview(npcID, raceOverviewFrame.scrollFrame)
-    UpdateZoneOverview(zoneID, zoneOverviewFrame.scrollFrame)
+	local zoneID = UpdateRaceOverview(npcID, raceOverviewFrame.scrollFrame)
+	UpdateZoneOverview(zoneID, zoneOverviewFrame.scrollFrame)
 
-    raceOverviewFrame:Show()
+	raceOverviewFrame:Show()
 	raceOverviewFrame.scrollFrame:SetVerticalScroll(0)
 end
 
 function RaceTimeOverview:HideRaceOverview()
-    zoneOverviewFrame:Hide()
+	zoneOverviewFrame:Hide()
 	raceOverviewFrame:Hide()
 end
 
