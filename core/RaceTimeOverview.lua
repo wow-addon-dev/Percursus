@@ -1,6 +1,6 @@
 local addonName, PER = ...
 
-local L = PER.localization
+local L = PER.Localization
 
 local RaceTimeOverview = {}
 
@@ -15,13 +15,9 @@ local raceOverviewFrame
 local zoneOverviewFrame
 local globalOverviewFrame
 
-----------------------
---- Local funtions ---
-----------------------
-
-----------------------
---- Frame Funtions ---
-----------------------
+-----------------------
+--- Frame Functions ---
+-----------------------
 
 local function UpdateRaceOverview(npcID, scrollFrame)
 	if scrollFrame.rows then
@@ -403,9 +399,9 @@ local function InitializeFrames()
 	end
 end
 
----------------------
---- Main funtions ---
----------------------
+------------------------
+--- Public Functions ---
+------------------------
 
 function RaceTimeOverview:Initialize()
 	InitializeFrames()
@@ -424,4 +420,4 @@ function RaceTimeOverview:HideRaceOverview()
 	raceOverviewFrame:Hide()
 end
 
-PER.raceTimeOverview = RaceTimeOverview
+PER.modules.RaceTimeOverview = RaceTimeOverview

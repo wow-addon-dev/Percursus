@@ -24,10 +24,7 @@ if PER.GAME_TYPE_VANILLA then
 elseif PER.GAME_TYPE_TBC then
 	PER.GAME_FLAVOR = "Burning Crusade - Classic Anniversary Edition"
 elseif PER.GAME_TYPE_MISTS then
-	PER.GAME_FLAVOR = "Mist of Pandaria - Classic"
+	PER.GAME_FLAVOR = "Mists of Pandaria - Classic"
 elseif PER.GAME_TYPE_MAINLINE then
 	PER.GAME_FLAVOR = "Retail"
 end
-
-PER.COLOR_SILVER = "ffC0C0C0"
-PER.COLOR_BRONZE = "ffCD7F32"

@@ -1,20 +1,20 @@
 local addonName, PER = ...
 
-local L = PER.localization
-local Utils = PER.utils
+local L = PER.Localization
+local Utils = PER.modules.Utils
 
 local AWL = ArcaneWizardLibrary
 
 local Options = {}
 
-----------------------
---- Local Funtions ---
-----------------------
+-----------------------
+--- Local Functions ---
+-----------------------
 
 local minimapButtonProxy = setmetatable({}, {
 	__index = function(_, key)
 		if key == "hide" then
-			return not PER.options.general["minimap-button"]["hide"]
+			return not PER.settings.general["minimap-button"]["hide"]
 		end
 	end,
 	__newindex = function(_, key, value)
@@ -22,7 +22,7 @@ local minimapButtonProxy = setmetatable({}, {
 			return
 		end
 
-		PER.options.general["minimap-button"]["hide"] = not value
+		PER.settings.general["minimap-button"]["hide"] = not value
 
 		if value then
 			Utils.minimapButton:Show("Percursus")
@@ -34,9 +34,9 @@ local minimapButtonProxy = setmetatable({}, {
 
 local function GetVal(setting) return setting:GetValue() end
 
----------------------
---- Main Funtions ---
----------------------
+------------------------
+--- Public Functions ---
+------------------------
 
 function Options:Initialize()
 	local category, layout = Settings.RegisterVerticalLayoutCategory(addonName)
@@ -53,11 +53,21 @@ function Options:Initialize()
 		default       = true
 	})
 
+	-- Debug Mode
+	AWL.Settings:AddCheckbox(category, {
+		variableTable = PER.settings.general,
+		settingKey    = addonName .. "_debug-mode",
+		variableName  = "debug-mode",
+		name          = L["options.general.debug-mode.name"],
+		tooltip       = L["options.general.debug-mode.tooltip"],
+		default       = false
+	})
+
 	layout:AddInitializer(CreateSettingsListSectionHeaderInitializer(L["options.race-tracker"]))
 
 	-- Race Tracker: Active
 	AWL.Settings:AddCheckbox(category, {
-		variableTable = PER.options.raceTracker,
+		variableTable = PER.settings.raceTracker,
 		settingKey    = addonName .. "_race-tracker-active",
 		variableName  = "active",
 		name          = L["options.race-tracker.active.name"],
@@ -67,7 +77,7 @@ function Options:Initialize()
 
 	-- Mode
 	AWL.Settings:AddDropdown(category, {
-		variableTable = PER.options.raceTracker,
+		variableTable = PER.settings.raceTracker,
 		settingKey    = addonName .. "_mode",
 		variableName  = "mode",
 		name          = L["options.race-tracker.mode.name"],
@@ -82,7 +92,7 @@ function Options:Initialize()
 
 	-- Background Type
 	AWL.Settings:AddDropdown(category, {
-		variableTable = PER.options.raceTracker,
+		variableTable = PER.settings.raceTracker,
 		settingKey    = addonName .. "_background-type",
 		variableName  = "background-type",
 		name          = L["options.race-tracker.background-type.name"],
@@ -104,7 +114,7 @@ function Options:Initialize()
 
 	-- Horizontal Shift
 	AWL.Settings:AddSlider(category, {
-		variableTable = PER.options.raceTracker,
+		variableTable = PER.settings.raceTracker,
 		settingKey    = addonName .. "_horizontal-shift",
 		variableName  = "horizontal-shift",
 		name          = L["options.race-tracker.horizontal-shift.name"],
@@ -115,7 +125,7 @@ function Options:Initialize()
 
 	-- Vertical Shift
 	AWL.Settings:AddSlider(category, {
-		variableTable = PER.options.raceTracker,
+		variableTable = PER.settings.raceTracker,
 		settingKey    = addonName .. "_vertical-shift",
 		variableName  = "vertical-shift",
 		name          = L["options.race-tracker.vertical-shift.name"],
@@ -126,7 +136,7 @@ function Options:Initialize()
 
 	-- Hide Area Names
 	AWL.Settings:AddCheckbox(category, {
-		variableTable = PER.options.raceTracker,
+		variableTable = PER.settings.raceTracker,
 		settingKey    = addonName .. "_hide-area-names",
 		variableName  = "hide-area-names",
 		name          = L["options.race-tracker.hide-area-names.name"],
@@ -136,7 +146,7 @@ function Options:Initialize()
 
 	-- Result Display
 	AWL.Settings:AddCheckboxSliderCombo(category, layout, {
-		variableTable      = PER.options.raceTracker,
+		variableTable      = PER.settings.raceTracker,
 		checkboxSettingKey = addonName .. "_result-display",
 		checkboxVarName    = "result-display",
 		checkboxName       = L["options.race-tracker.result-display.name"],
@@ -153,7 +163,7 @@ function Options:Initialize()
 
 	-- Speed Display (Parent for the next two sliders)
 	local initializerSpeed, settingSpeed = AWL.Settings:AddCheckbox(category, {
-		variableTable = PER.options.raceTracker,
+		variableTable = PER.settings.raceTracker,
 		settingKey    = addonName .. "_speed-display",
 		variableName  = "speed-display",
 		name          = L["options.race-tracker.speed-display.name"],
@@ -163,7 +173,7 @@ function Options:Initialize()
 
 	-- Speed Display: Horizontal Shift
 	AWL.Settings:AddSlider(category, {
-		variableTable   = PER.options.raceTracker,
+		variableTable   = PER.settings.raceTracker,
 		settingKey      = addonName .. "_speed-display-horizontal-shift",
 		variableName    = "speed-display-horizontal-shift",
 		name            = L["options.race-tracker.speed-display-horizontal-shift.name"],
@@ -176,7 +186,7 @@ function Options:Initialize()
 
 	-- Speed Display: Vertical Shift
 	AWL.Settings:AddSlider(category, {
-		variableTable   = PER.options.raceTracker,
+		variableTable   = PER.settings.raceTracker,
 		settingKey      = addonName .. "_speed-display-vertical-shift",
 		variableName    = "speed-display-vertical-shift",
 		name            = L["options.race-tracker.speed-display-vertical-shift.name"],
@@ -191,7 +201,7 @@ function Options:Initialize()
 
 	-- Race Time Overview: Active
 	AWL.Settings:AddCheckbox(category, {
-		variableTable = PER.options.raceTimeOverview,
+		variableTable = PER.settings.raceTimeOverview,
 		settingKey    = addonName .. "_race-time-overview-active",
 		variableName  = "active",
 		name          = L["options.race-time-overview.active.name"],
@@ -199,55 +209,27 @@ function Options:Initialize()
 		default       = true
 	})
 
-	layout:AddInitializer(CreateSettingsListSectionHeaderInitializer(L["options.other"]))
-
-	-- Debug Mode
-	AWL.Settings:AddCheckbox(category, {
-		variableTable = PER.options.other,
-		settingKey    = addonName .. "_debug-mode",
-		variableName  = "debug-mode",
-		name          = L["options.other.debug-mode.name"],
-		tooltip       = L["options.other.debug-mode.tooltip"],
-		default       = false
-	})
-
-	layout:AddInitializer(CreateSettingsListSectionHeaderInitializer(L["options.about"]))
-
-	-- Game Version
-	AWL.Settings:AddInfoText(layout, {
-		leftText  = L["options.about.game-version"],
-		rightText = PER.GAME_VERSION .. " (" .. PER.GAME_FLAVOR .. ")",
-		height    = "compact"
-	})
-
-	-- Addon Version
-	AWL.Settings:AddInfoText(layout, {
-		leftText  = L["options.about.addon-version"],
-		rightText = PER.ADDON_VERSION .. " (" .. PER.ADDON_BUILD_DATE .. ")",
-		height    = "compact"
-	})
-
-	-- Library Version
-	AWL.Settings:AddInfoText(layout, {
-		leftText  = L["options.about.lib-version"],
-		rightText = AWL.ADDON_VERSION .. " (" .. AWL.ADDON_BUILD_DATE .. ")",
-		height    = "compact"
-	})
-
-	-- Author
-	AWL.Settings:AddInfoText(layout, {
-		leftText  = L["options.about.author"],
-		rightText = PER.ADDON_AUTHOR
-	})
-
-	-- GitHub Link
-	AWL.Settings:AddButton(layout, {
-		name       = L["options.about.button-github.name"],
-		buttonText = L["options.about.button-github.button"],
-		tooltip    = L["options.about.button-github.tooltip"],
-		onClick    = function()
-			AWL.Dialogs:ShowLinkDialog(PER.LINK_GITHUB)
+	-- Profiles Section
+	AWL.Settings:AddProfilesSection(layout, {
+		useAccountProfile = Utils:IsAccountProfile(),
+		onSwitchProfile = function()
+			Utils:ToggleProfileMode()
+			ReloadUI()
+		end,
+		onDeleteCharacterProfiles = function()
+			Utils:ResetAllCharacterProfiles()
+			ReloadUI()
 		end
+	})
+
+	-- About Section
+	AWL.Settings:AddAboutSection(layout, {
+		gameVersion    = PER.GAME_VERSION,
+		gameFlavor     = PER.GAME_FLAVOR,
+		addonVersion   = PER.ADDON_VERSION,
+		addonBuildDate = PER.ADDON_BUILD_DATE,
+		addonAuthor    = PER.ADDON_AUTHOR,
+		githubLink     = PER.LINK_GITHUB
 	})
 
 	Settings.RegisterAddOnCategory(category)
@@ -255,4 +237,4 @@ function Options:Initialize()
 	PER.MAIN_CATEGORY_ID = category:GetID()
 end
 
-PER.options = Options
+PER.modules.Options = Options

@@ -2,13 +2,15 @@ local _, PER = ...
 
 if GetLocale() ~= "deDE" then return end
 
-local L = PER.localization
+local L = PER.Localization
 
 -- Options
 
 L["options.general"] = "Allgemeine Einstellungen"
-L["options.general.minimap-button.name"] = "Minimap Button"
-L["options.general.minimap-button.tooltip"] = "Bei Aktivierung wird der Minimap Button angezeigt."
+L["options.general.minimap-button.name"] = "Minimap-Button"
+L["options.general.minimap-button.tooltip"] = "Bei Aktivierung wird der Minimap-Button angezeigt."
+L["options.general.debug-mode.name"] = "Debugmodus"
+L["options.general.debug-mode.tooltip"] = "Die Aktivierung des Debugmodus zeigt zusätzliche Informationen im Chat an."
 
 L["options.race-time-overview"] = "Rennzeitenübersicht"
 L["options.race-time-overview.active.name"] = "Rennzeitenübersicht aktivieren"
@@ -35,11 +37,11 @@ L["options.race-tracker.background-type.value.7"] = "Legion"
 L["options.race-tracker.background-type.value.8"] = "N'Zoth"
 L["options.race-tracker.background-type.value.9"] = "Midnight"
 L["options.race-tracker.horizontal-shift.name"] = "Horizontale Verschiebung"
-L["options.race-tracker.horizontal-shift.tooltip"] = "Gibt die relative horizontale Position des Race-Tracker zur Bildschirmmitte an."
+L["options.race-tracker.horizontal-shift.tooltip"] = "Gibt die relative horizontale Position des Race-Trackers zur Bildschirmmitte an."
 L["options.race-tracker.vertical-shift.name"] = "Vertikale Verschiebung"
-L["options.race-tracker.vertical-shift.tooltip"] = "Gibt die relative vertikale Position des Race-Tracker zur Bildschirmmitte an."
-L["options.race-tracker.result-display.name"] = "Rennergebniss anzeigen"
-L["options.race-tracker.result-display.tooltip"] = "Legt fest, ob nach dem Rennen der Race Tracker weiter angezeigt werden soll und damit das Rennergebniss präsentiert wird."
+L["options.race-tracker.vertical-shift.tooltip"] = "Gibt die relative vertikale Position des Race-Trackers zur Bildschirmmitte an."
+L["options.race-tracker.result-display.name"] = "Rennergebnis anzeigen"
+L["options.race-tracker.result-display.tooltip"] = "Legt fest, ob nach dem Rennen der Race-Tracker weiter angezeigt werden soll und damit das Rennergebnis präsentiert wird."
 L["options.race-tracker.fadeout-delay.name"] = "Ausblendeverzögerung"
 L["options.race-tracker.fadeout-delay.tooltip"] = "Bestimmt die Zeit nach einem Rennen, bis der Race-Tracker ausgeblendet wird."
 L["options.race-tracker.hide-area-names.name"] = "Gebietsnamen ausblenden"
@@ -50,20 +52,6 @@ L["options.race-tracker.speed-display-horizontal-shift.name"] = "Horizontale Ver
 L["options.race-tracker.speed-display-horizontal-shift.tooltip"] = "Gibt die relative horizontale Position der Renngeschwindigkeitsanzeige zur Bildschirmmitte an."
 L["options.race-tracker.speed-display-vertical-shift.name"] = "Vertikale Verschiebung"
 L["options.race-tracker.speed-display-vertical-shift.tooltip"] = "Gibt die relative vertikale Position der Renngeschwindigkeitsanzeige zur Bildschirmmitte an."
-
-L["options.other"] = "Sonstige Einstellungen"
-L["options.other.debug-mode.name"] = "Debugmodus"
-L["options.other.debug-mode.tooltip"] = "Die Aktivierung des Debugmodus zeigt zusätzliche Informationen im Chat an."
-
-L["options.about"] = "Über"
-L["options.about.game-version"] = "Spielversion"
-L["options.about.addon-version"] = "Addonversion"
-L["options.about.lib-version"] = "Bibliotheksversion"
-L["options.about.author"] = "Autor"
-
-L["options.about.button-github.name"] = "Feedback & Hilfe"
-L["options.about.button-github.tooltip"] = "Öffnet ein Popup-Fenster mit einem Link zu GitHub."
-L["options.about.button-github.button"] = "GitHub"
 
 -- General
 

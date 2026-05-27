@@ -1,6 +1,6 @@
 # Percursus
 
-[![GitHub Release](https://img.shields.io/github/v/release/wow-addon-dev/Percursus?color=blue&logo=github&cacheSeconds=600)](https://github.com/wow-addon-dev/Percursus/releases) [![GitHub Release Date](https://img.shields.io/github/release-date/wow-addon-dev/Percursus?color=blue&logo=github&cacheSeconds=600)](https://github.com/wow-addon-dev/Percursus/releases) [![Static Badge](https://img.shields.io/badge/buy_me_a_coffe-donate-yellow?logo=buy-me-a-coffee&logoColor=white)](https://buymeacoffee.com/diomsg)
+[![GitHub Release](https://img.shields.io/github/v/release/wow-addon-dev/Percursus?color=blue&logo=github&cacheSeconds=600)](https://github.com/wow-addon-dev/Percursus/releases) [![GitHub Release Date](https://img.shields.io/github/release-date/wow-addon-dev/Percursus?color=blue&logo=github&cacheSeconds=600)](https://github.com/wow-addon-dev/Percursus/releases) [![Static Badge](https://img.shields.io/badge/buy_me_a_coffee-donate-yellow?logo=buy-me-a-coffee&logoColor=white)](https://buymeacoffee.com/diomsg)
 
 _Master every course. Beat your time._
 
@@ -19,6 +19,7 @@ Percursus is a World of Warcraft addon that displays a live timer during a race 
 * The position of the Race Tracker can be moved and positioned according to your own preferences.
 * All race times of the current zone can be viewed in the Race Time Overview.
 * Both key features can be activated or deactivated separately.
+* Supports an account profile and character profiles.
 
 ## Supported Languages & Flavors
 

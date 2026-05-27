@@ -1,15 +1,39 @@
 local addonName, PER = ...
 
-local L = PER.localization
+local L = PER.Localization
+
+local AWL = ArcaneWizardLibrary
 
 local Utils = {}
 
----------------------
---- Main Funtions ---
----------------------
+-----------------------
+--- Local Functions ---
+-----------------------
+
+local function CopyTable(source)
+	local target = {}
+
+	for key, value in pairs(source) do
+		if type(value) == "table" then
+			target[key] = CopyTable(value)
+		else
+			target[key] = value
+		end
+	end
+
+	return target
+end
+
+local function GetCharacterRealmKey()
+	return AWL.Utils:GetCharacterRealmKey()
+end
+
+------------------------
+--- Public Functions ---
+------------------------
 
 function Utils:PrintDebug(msg)
-	if PER.options.other["debug-mode"] then
+	if PER.settings.general["debug-mode"] then
 		DEFAULT_CHAT_FRAME:AddMessage(ORANGE_FONT_COLOR:WrapTextInColorCode(addonName .. " (Debug): ")  .. msg)
 	end
 end
@@ -18,25 +42,83 @@ function Utils:PrintMessage(msg)
 	DEFAULT_CHAT_FRAME:AddMessage(NORMAL_FONT_COLOR:WrapTextInColorCode(addonName .. ": ") .. msg)
 end
 
+function Utils:IsAccountProfile()
+	local characterRealmKey = GetCharacterRealmKey()
+
+	return Percursus_Options_v3.profileKeys[characterRealmKey]["use-account"]
+end
+
+function Utils:OpenSettingsOnLoading()
+	local characterRealmKey = GetCharacterRealmKey()
+
+	if Percursus_Options_v3.profileKeys[characterRealmKey]["open-settings"] then
+		Settings.OpenToCategory(PER.MAIN_CATEGORY_ID)
+
+		Percursus_Options_v3.profileKeys[characterRealmKey]["open-settings"] = false
+	end
+end
+
+function Utils:ToggleProfileMode()
+	local characterRealmKey = GetCharacterRealmKey()
+	local useAccountProfile = self:IsAccountProfile()
+
+	Percursus_Options_v3.profileKeys[characterRealmKey]["use-account"] = not useAccountProfile
+	Percursus_Options_v3.profileKeys[characterRealmKey]["open-settings"] = true
+end
+
+function Utils:ResetAllCharacterProfiles()
+	local characterRealmKey = GetCharacterRealmKey()
+
+	Percursus_Options_v3.profiles = {}
+	Percursus_Options_v3.profileKeys = {}
+
+	Percursus_Options_v3.profileKeys[characterRealmKey] = {
+		["use-account"] = true,
+		["open-settings"] = true
+	}
+end
+
 function Utils:InitializeDatabase()
-	if (not Percursus_Options_v2) then
-		Percursus_Options_v2 = {
-			["general"] = {
-				["minimap-button"] = {
-					["hide"] = false
-				}
-			},
-			["race-time-overview"] = {},
-			["race-tracker"] = {},
-			["other"] = {}
+	local characterRealmKey = GetCharacterRealmKey()
+
+	local defaults = {
+		["general"] = {
+			["minimap-button"] = {
+				["hide"] = false
+			}
+		},
+		["race-time-overview"] = {},
+		["race-tracker"] = {}
+	}
+
+	if not Percursus_Options_v3 then
+		Percursus_Options_v3 = {
+			["account"] = CopyTable(defaults),
+			["profiles"] = {},
+			["profileKeys"] = {}
 		}
 	end
 
-	PER.options = {}
-	PER.options.general = Percursus_Options_v2["general"]
-	PER.options.raceTracker = Percursus_Options_v2["race-tracker"]
-	PER.options.raceTimeOverview = Percursus_Options_v2["race-time-overview"]
-	PER.options.other = Percursus_Options_v2["other"]
+	if not Percursus_Options_v3.profiles[characterRealmKey] then
+		Percursus_Options_v3.profiles[characterRealmKey] = CopyTable(defaults)
+	end
+
+	if not Percursus_Options_v3.profileKeys[characterRealmKey] then
+		Percursus_Options_v3.profileKeys[characterRealmKey] = {
+			["use-account"] = true,
+			["open-settings"] = false
+		}
+	end
+
+	if Percursus_Options_v3.profileKeys[characterRealmKey]["use-account"] then
+		PER.settings.general = Percursus_Options_v3.account["general"]
+		PER.settings.raceTimeOverview = Percursus_Options_v3.account["race-time-overview"]
+		PER.settings.raceTracker = Percursus_Options_v3.account["race-tracker"]
+	else
+		PER.settings.general = Percursus_Options_v3.profiles[characterRealmKey]["general"]
+		PER.settings.raceTimeOverview = Percursus_Options_v3.profiles[characterRealmKey]["race-time-overview"]
+		PER.settings.raceTracker = Percursus_Options_v3.profiles[characterRealmKey]["race-tracker"]
+	end
 end
 
 function Utils:InitializeMinimapButton()
@@ -62,8 +144,7 @@ function Utils:InitializeMinimapButton()
 	})
 
 	self.minimapButton = LibStub("LibDBIcon-1.0")
-	self.minimapButton:Register("Percursus", LDB, PER.options.general["minimap-button"])
+	self.minimapButton:Register("Percursus", LDB, PER.settings.general["minimap-button"])
 end
 
-
-PER.utils = Utils
+PER.modules.Utils = Utils

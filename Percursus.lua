@@ -1,9 +1,9 @@
 local addonName, PER = ...
 
-local Options = PER.options
-local RaceTimeOverview = PER.raceTimeOverview
-local RaceTracker = PER.raceTracker
-local Utils = PER.utils
+local Options = PER.modules.Options
+local RaceTimeOverview = PER.modules.RaceTimeOverview
+local RaceTracker = PER.modules.RaceTracker
+local Utils = PER.modules.Utils
 
 local raceDataTable = PER.RACE_DATA
 
@@ -18,11 +18,11 @@ local racePersonalTime = -1
 --- Frames ---
 --------------
 
-local percursusFrame = CreateFrame("Frame", "Percursus")
+local PercursusFrame = CreateFrame("Frame", "Percursus")
 
-----------------------
---- Local funtions ---
-----------------------
+-----------------------
+--- Local Functions ---
+-----------------------
 
 local function CheckRaceQuest(questID)
 	for _, dataWrapper in pairs(raceDataTable) do
@@ -69,15 +69,15 @@ local function SlashCommand(msg, editbox)
 	end
 end
 
----------------------
---- Main funtions ---
----------------------
+------------------------
+--- Public Functions ---
+------------------------
 
-function percursusFrame:OnEvent(event, ...)
+function PercursusFrame:OnEvent(event, ...)
 	self[event](self, event, ...)
 end
 
-function percursusFrame:ADDON_LOADED(_, addOnName)
+function PercursusFrame:ADDON_LOADED(_, addOnName)
 	if addOnName == addonName then
 		Utils:InitializeDatabase()
 		Utils:InitializeMinimapButton()
@@ -85,19 +85,24 @@ function percursusFrame:ADDON_LOADED(_, addOnName)
 		RaceTracker:Initialize()
 		RaceTimeOverview:Initialize()
 
+		Utils:OpenSettingsOnLoading()
+
 		Utils:PrintDebug("Addon fully loaded.")
 	end
 end
 
-function percursusFrame:QUEST_ACCEPTED(_, questID)
+function PercursusFrame:QUEST_ACCEPTED(_, questID)
 	local result = GetRaceData(questID)
 
-	--Utils:PrintDebug("questID: " .. questID)
+	--Utils:PrintDebug(string.format("questID=%s", tostring(questID)))
 
 	if result ~= nil then
-		Utils:PrintDebug("Event 'QUEST_ACCEPTED' fired. Payload: " .. C_QuestLog.GetTitleForQuestID(questID) .. " (" .. questID ..")")
+		Utils:PrintDebug(string.format(
+			"Event 'QUEST_ACCEPTED' fired. Payload: questID=%s, questName=%s",
+			tostring(questID), tostring(C_QuestLog.GetTitleForQuestID(questID))
+		))
 
-		if PER.options.raceTracker["active"] then
+		if PER.settings.raceTracker["active"] then
 			activeTracker = true
 			raceQuestID = result.questID
 			raceSpellID = result.spellID
@@ -108,9 +113,9 @@ function percursusFrame:QUEST_ACCEPTED(_, questID)
 				racePersonalTime = C_CurrencyInfo.GetCurrencyInfo(result.raceTime).quantity / 1000
 			end
 
-			if PER.options.raceTracker["hide-area-names"] then
-				percursusFrame:RegisterEvent("ZONE_CHANGED")
-				percursusFrame:RegisterEvent("ZONE_CHANGED_NEW_AREA")
+			if PER.settings.raceTracker["hide-area-names"] then
+				PercursusFrame:RegisterEvent("ZONE_CHANGED")
+				PercursusFrame:RegisterEvent("ZONE_CHANGED_NEW_AREA")
 			end
 
 			RaceTracker:Start(raceQuestID, raceSpellID, raceGoldTime, raceSilverTime, racePersonalTime)
@@ -120,9 +125,12 @@ function percursusFrame:QUEST_ACCEPTED(_, questID)
 	end
 end
 
-function percursusFrame:QUEST_REMOVED(_, questID)
+function PercursusFrame:QUEST_REMOVED(_, questID)
 	if CheckRaceQuest(questID) and activeTracker then
-		Utils:PrintDebug("Event 'QUEST_REMOVED' fired. Payload: " .. C_QuestLog.GetTitleForQuestID(questID) .. " (" .. questID ..")")
+		Utils:PrintDebug(string.format(
+			"Event 'QUEST_REMOVED' fired. Payload: questID=%s, questName=%s",
+			tostring(questID), tostring(C_QuestLog.GetTitleForQuestID(questID))
+		))
 
 		activeTracker = false
 		raceQuestID = -1
@@ -133,29 +141,29 @@ function percursusFrame:QUEST_REMOVED(_, questID)
 
 		RaceTracker:Stop()
 
-		if PER.options.raceTracker["result-display"] then
+		if PER.settings.raceTracker["result-display"] then
 			RaceTracker:ShowResultTracker()
 
-			local delay = PER.options.raceTracker["fadeout-delay"]
+			local delay = PER.settings.raceTracker["fadeout-delay"]
 
 			C_Timer.After(delay, function()
 				RaceTracker:HideResultTracker()
 			end)
 		end
 
-		percursusFrame:UnregisterEvent("ZONE_CHANGED")
-		percursusFrame:UnregisterEvent("ZONE_CHANGED_NEW_AREA")
+		PercursusFrame:UnregisterEvent("ZONE_CHANGED")
+		PercursusFrame:UnregisterEvent("ZONE_CHANGED_NEW_AREA")
 	end
 end
 
-function percursusFrame:ZONE_CHANGED()
+function PercursusFrame:ZONE_CHANGED()
 	Utils:PrintDebug("Event 'ZONE_CHANGED' fired. No payload.")
 
 	ZoneTextFrame:Hide()
 	SubZoneTextFrame:Hide()
 end
 
-function percursusFrame:ZONE_CHANGED_NEW_AREA()
+function PercursusFrame:ZONE_CHANGED_NEW_AREA()
 	Utils:PrintDebug("Event 'ZONE_CHANGED_NEW_AREA' fired. No payload.")
 
 	ZoneTextFrame:Hide()
@@ -174,11 +182,11 @@ hooksecurefunc(GossipFrame, "HandleShow", function ()
 		return
 	end
 
-	if PER.options.raceTimeOverview["active"] then
+	if PER.settings.raceTimeOverview["active"] then
 		local npcID = select(6, strsplit("-", tostring(unitGUID)))
 		npcID = tonumber(npcID)
 
-		--Utils:PrintDebug("npcID: " .. npcID)
+		--Utils:PrintDebug(string.format("npcID=%s", tostring(npcID)))
 
 		if raceDataTable[npcID] ~= nil then
 			RaceTimeOverview:ShowRaceOverview(npcID)
@@ -190,11 +198,11 @@ hooksecurefunc(GossipFrame, "Hide", function ()
 	RaceTimeOverview:HideRaceOverview()
 end)
 
-percursusFrame:RegisterEvent("ADDON_LOADED")
-percursusFrame:RegisterEvent("QUEST_ACCEPTED")
-percursusFrame:RegisterEvent("QUEST_REMOVED")
-percursusFrame:SetScript("OnEvent", percursusFrame.OnEvent)
+PercursusFrame:RegisterEvent("ADDON_LOADED")
+PercursusFrame:RegisterEvent("QUEST_ACCEPTED")
+PercursusFrame:RegisterEvent("QUEST_REMOVED")
+PercursusFrame:SetScript("OnEvent", PercursusFrame.OnEvent)
 
-SLASH_Percursus1, SLASH_Percursus2 = '/per', '/Percursus'
+SLASH_Percursus1, SLASH_Percursus2 = '/per', '/percursus'
 
 SlashCmdList["Percursus"] = SlashCommand

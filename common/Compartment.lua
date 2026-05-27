@@ -1,12 +1,12 @@
 local addonName, PER = ...
 
-local L = PER.localization
+local L = PER.Localization
 
-local Utils = PER.Utils
+local Utils = PER.modules.Utils
 
----------------------
---- Main Funtions ---
----------------------
+------------------------
+--- Public Functions ---
+------------------------
 
 function Percursus_CompartmentOnEnter(self, button)
 	GameTooltip:ClearAllPoints()

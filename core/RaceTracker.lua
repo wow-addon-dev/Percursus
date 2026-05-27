@@ -1,7 +1,8 @@
 local _, PER = ...
 
-local L = PER.localization
-local Utils = PER.utils
+local L = PER.Localization
+
+local Utils = PER.modules.Utils
 
 local RaceTracker = {}
 
@@ -16,13 +17,9 @@ local raceTrackerFrame
 local resultTrackerFrame
 local speedDisplayFrame
 
-----------------------
---- Local funtions ---
-----------------------
-
-----------------------
---- Frame Funtions ---
-----------------------
+-----------------------
+--- Frame Functions ---
+-----------------------
 
 local function ShowRaceTracker(raceQuestID, raceGoldTime, racePersonalTime)
 	resultTrackerFrame:HideFrame()
@@ -31,12 +28,12 @@ local function ShowRaceTracker(raceQuestID, raceGoldTime, racePersonalTime)
 	resultTrackerFrame:ClearAllPoints()
 	speedDisplayFrame:ClearAllPoints()
 
-	raceTrackerFrame:SetPoint("CENTER", PER.options.raceTracker["horizontal-shift"], PER.options.raceTracker["vertical-shift"])
-	resultTrackerFrame:SetPoint("CENTER", PER.options.raceTracker["horizontal-shift"], PER.options.raceTracker["vertical-shift"])
-	speedDisplayFrame:SetPoint("CENTER", PER.options.raceTracker["speed-display-horizontal-shift"], PER.options.raceTracker["speed-display-vertical-shift"])
+	raceTrackerFrame:SetPoint("CENTER", PER.settings.raceTracker["horizontal-shift"], PER.settings.raceTracker["vertical-shift"])
+	resultTrackerFrame:SetPoint("CENTER", PER.settings.raceTracker["horizontal-shift"], PER.settings.raceTracker["vertical-shift"])
+	speedDisplayFrame:SetPoint("CENTER", PER.settings.raceTracker["speed-display-horizontal-shift"], PER.settings.raceTracker["speed-display-vertical-shift"])
 
-	if PER.options.raceTracker["background-type"] ~= 0 then
-		local style = PER.RACE_TRACKER_BACKGROUNDS[PER.options.raceTracker["background-type"]]
+	if PER.settings.raceTracker["background-type"] ~= 0 then
+		local style = PER.RACE_TRACKER_BACKGROUNDS[PER.settings.raceTracker["background-type"]]
 
 		raceTrackerFrame:SetBackground(style)
 		resultTrackerFrame:SetBackground(style)
@@ -47,11 +44,11 @@ local function ShowRaceTracker(raceQuestID, raceGoldTime, racePersonalTime)
 
 	raceTrackerFrame:SetTimerText(C_QuestLog.GetTitleForQuestID(raceQuestID))
 
-	if PER.options.raceTracker["mode"] == 0 then
+	if PER.settings.raceTracker["mode"] == 0 then
 		raceTrackerFrame:SetInfoText(L["race.gold-time"]:format(raceGoldTime))
-	elseif PER.options.raceTracker["mode"] == 1 then
+	elseif PER.settings.raceTracker["mode"] == 1 then
 		raceTrackerFrame:SetInfoText(L["race.gold-time"]:format(raceGoldTime))
-	elseif PER.options.raceTracker["mode"] == 2 then
+	elseif PER.settings.raceTracker["mode"] == 2 then
 		if racePersonalTime == -1 then
 			raceTrackerFrame:SetInfoText(L["race.personal-best-time-not-available"])
 		elseif racePersonalTime == 0 then
@@ -62,18 +59,18 @@ local function ShowRaceTracker(raceQuestID, raceGoldTime, racePersonalTime)
 	end
 
 	C_Timer.After(5, function()
-		if PER.options.raceTracker["mode"] == 0 or (PER.options.raceTracker["mode"] == 2 and racePersonalTime <= 0) then
+		if PER.settings.raceTracker["mode"] == 0 or (PER.settings.raceTracker["mode"] == 2 and racePersonalTime <= 0) then
 			raceTrackerFrame:SetTimerText(string.format(L["race.time"], 0))
-		elseif PER.options.raceTracker["mode"] == 1 then
+		elseif PER.settings.raceTracker["mode"] == 1 then
 			raceTrackerFrame:SetTimerText(L["race.time"]:format(-raceGoldTime))
-		elseif PER.options.raceTracker["mode"] == 2 then
+		elseif PER.settings.raceTracker["mode"] == 2 then
 			raceTrackerFrame:SetTimerText(L["race.time"]:format(-racePersonalTime))
 		end
 
 		local _, c, _ = C_PlayerInfo.GetGlidingInfo()
 		canGlide = c
 
-		if PER.options.raceTracker["speed-display"] and canGlide then
+		if PER.settings.raceTracker["speed-display"] and canGlide then
 			speedDisplayFrame:SetSpeedBar(0)
 			speedDisplayFrame:ShowFrame()
 		end
@@ -88,9 +85,9 @@ local function InitializeFrames ()
 	speedDisplayFrame = CreateFrame("Frame", nil, UIParent, "Percursus_RaceTrackerSpeedDisplayTemplate")
 end
 
----------------------
---- Main funtions ---
----------------------
+------------------------
+--- Public Functions ---
+------------------------
 
 function RaceTracker:Initialize()
 	InitializeFrames()
@@ -120,17 +117,17 @@ function RaceTracker:Start(raceQuestID, raceSpellID, raceGoldTime, raceSilverTim
 			isInit = true
 			raceStartTime = -1
 
-			if PER.options.raceTracker["mode"] == 0 or (PER.options.raceTracker["mode"] == 2 and racePersonalTime <= 0) then
+			if PER.settings.raceTracker["mode"] == 0 or (PER.settings.raceTracker["mode"] == 2 and racePersonalTime <= 0) then
 				raceTrackerFrame:SetTimerText(string.format(L["race.time"], 0))
-			elseif PER.options.raceTracker["mode"] == 1 then
+			elseif PER.settings.raceTracker["mode"] == 1 then
 				raceTrackerFrame:SetTimerText(L["race.time"]:format(-raceGoldTime))
-			elseif PER.options.raceTracker["mode"] == 2 then
+			elseif PER.settings.raceTracker["mode"] == 2 then
 				raceTrackerFrame:SetTimerText(L["race.time"]:format(-racePersonalTime))
 			end
 
 			Utils:PrintDebug("The race was interrupted.")
 		elseif isRace and not isCountdown then
-			if PER.options.raceTracker["speed-display"] and canGlide then
+			if PER.settings.raceTracker["speed-display"] and canGlide then
 				local _, _, forwardSpeed = C_PlayerInfo.GetGlidingInfo()
 				local speed = 208 * Round(forwardSpeed) / 100
 
@@ -150,7 +147,7 @@ function RaceTracker:Start(raceQuestID, raceSpellID, raceGoldTime, raceSilverTim
 
 			local elapsedTime = GetTime() - raceStartTime
 
-			if PER.options.raceTracker["mode"] == 0 then
+			if PER.settings.raceTracker["mode"] == 0 then
 				raceTrackerFrame:SetTimerText(L["race.time"]:format(elapsedTime))
 
 				if elapsedTime <= raceGoldTime then
@@ -160,7 +157,7 @@ function RaceTracker:Start(raceQuestID, raceSpellID, raceGoldTime, raceSilverTim
 				else
 					raceTrackerFrame:SetInfoText(L["race.bronze-time"])
 				end
-			elseif PER.options.raceTracker["mode"] == 1 then
+			elseif PER.settings.raceTracker["mode"] == 1 then
 				if elapsedTime <= raceGoldTime then
 					local remainingTime = -(raceGoldTime - elapsedTime)
 					raceTrackerFrame:SetTimerText(L["race.time"]:format(remainingTime))
@@ -173,7 +170,7 @@ function RaceTracker:Start(raceQuestID, raceSpellID, raceGoldTime, raceSilverTim
 					raceTrackerFrame:SetTimerText(L["race.time"]:format(0))
 					raceTrackerFrame:SetInfoText(L["race.bronze-time"])
 				end
-			elseif PER.options.raceTracker["mode"] == 2 then
+			elseif PER.settings.raceTracker["mode"] == 2 then
 				if racePersonalTime == -1 then
 					raceTrackerFrame:SetTimerText(L["race.time"]:format(elapsedTime))
 					raceTrackerFrame:SetInfoText(L["race.personal-best-time-not-available"])
@@ -214,4 +211,4 @@ function RaceTracker:HideResultTracker()
 	resultTrackerFrame:HideFrame()
 end
 
-PER.raceTracker = RaceTracker
+PER.modules.RaceTracker = RaceTracker

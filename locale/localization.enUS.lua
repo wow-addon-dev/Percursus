@@ -1,17 +1,19 @@
 local _, PER = ...
 
-PER.localization = setmetatable({},{__index=function(self,key)
+PER.Localization = setmetatable({},{__index=function(self,key)
 		geterrorhandler()("Percursus (Debug): Missing entry for '" .. tostring(key) .. "'")
 		return key
 	end})
 
-local L = PER.localization
+local L = PER.Localization
 
 -- Options
 
 L["options.general"] = "General Options"
 L["options.general.minimap-button.name"] = "Minimap Button"
 L["options.general.minimap-button.tooltip"] = "When this is enabled, the minimap button is displayed."
+L["options.general.debug-mode.name"] = "Debug Mode"
+L["options.general.debug-mode.tooltip"] = "Enabling the debug mode displays additional information in the chat."
 
 L["options.race-time-overview"] = "Race Time Overview"
 L["options.race-time-overview.active.name"] = "Enable Race Time Overview"
@@ -38,9 +40,9 @@ L["options.race-tracker.background-type.value.7"] = "Legion"
 L["options.race-tracker.background-type.value.8"] = "N'Zoth"
 L["options.race-tracker.background-type.value.9"] = "Midnight"
 L["options.race-tracker.horizontal-shift.name"] = "Horizontal Shift"
-L["options.race-tracker.horizontal-shift.tooltip"] = "Indicates the relative horizontal position of the Race Tracker to the centre of the screen."
+L["options.race-tracker.horizontal-shift.tooltip"] = "Indicates the relative horizontal position of the Race Tracker to the center of the screen."
 L["options.race-tracker.vertical-shift.name"] = "Vertical Shift"
-L["options.race-tracker.vertical-shift.tooltip"] = "Indicates the relative vertical position of the Race Tracker to the centre of the screen."
+L["options.race-tracker.vertical-shift.tooltip"] = "Indicates the relative vertical position of the Race Tracker to the center of the screen."
 L["options.race-tracker.result-display.name"] = "Show Race Result"
 L["options.race-tracker.result-display.tooltip"] = "Determines whether the race tracker should continue to be displayed after the race and thus the race result is presented."
 L["options.race-tracker.fadeout-delay.name"] = "Fade-out Delay"
@@ -50,23 +52,9 @@ L["options.race-tracker.hide-area-names.tooltip"] = "Determines whether no area 
 L["options.race-tracker.speed-display.name"] = "Show Race Speed"
 L["options.race-tracker.speed-display.tooltip"] = "Determines whether the race speed should be displayed during the race. This display only works for dragon and skyrider races."
 L["options.race-tracker.speed-display-horizontal-shift.name"] = "Horizontal Shift"
-L["options.race-tracker.speed-display-horizontal-shift.tooltip"] = "Indicates the relative horizontal position of the race speed display to the centre of the screen."
+L["options.race-tracker.speed-display-horizontal-shift.tooltip"] = "Indicates the relative horizontal position of the race speed display to the center of the screen."
 L["options.race-tracker.speed-display-vertical-shift.name"] = "Vertical Shift"
-L["options.race-tracker.speed-display-vertical-shift.tooltip"] = "Indicates the relative vertical position of the race speed display to the centre of the screen."
-
-L["options.other"] = "Other Options"
-L["options.other.debug-mode.name"] = "Debug Mode"
-L["options.other.debug-mode.tooltip"] = "Enabling the debug mode displays additional information in the chat."
-
-L["options.about"] = "About"
-L["options.about.game-version"] = "Game Version"
-L["options.about.addon-version"] = "Addon Version"
-L["options.about.lib-version"] = "Library Version"
-L["options.about.author"] = "Author"
-
-L["options.about.button-github.name"] = "Feedback & Help"
-L["options.about.button-github.tooltip"] = "Opens a popup window with a link to GitHub."
-L["options.about.button-github.button"] = "GitHub"
+L["options.race-tracker.speed-display-vertical-shift.tooltip"] = "Indicates the relative vertical position of the race speed display to the center of the screen."
 
 -- General
 
