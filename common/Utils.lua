@@ -33,7 +33,9 @@ end
 ------------------------
 
 function Utils:PrintDebug(msg)
-	if PER.settings.general["debug-mode"] then
+	local debugMode = PER.settings and PER.settings.general	and PER.settings.general["debug-mode"]
+
+	if debugMode ~= false then
 		DEFAULT_CHAT_FRAME:AddMessage(ORANGE_FONT_COLOR:WrapTextInColorCode(addonName .. " (Debug): ")  .. msg)
 	end
 end
@@ -81,6 +83,11 @@ end
 function Utils:InitializeDatabase()
 	local characterRealmKey = GetCharacterRealmKey()
 
+	local hadDb = Percursus_Options_v3 ~= nil
+	local createdDb = false
+	local createdProfile = false
+	local createdProfileKey = false
+
 	local defaults = {
 		["general"] = {
 			["minimap-button"] = {
@@ -97,10 +104,12 @@ function Utils:InitializeDatabase()
 			["profiles"] = {},
 			["profileKeys"] = {}
 		}
+		createdDb = true
 	end
 
 	if not Percursus_Options_v3.profiles[characterRealmKey] then
 		Percursus_Options_v3.profiles[characterRealmKey] = CopyTable(defaults)
+		createdProfile = true
 	end
 
 	if not Percursus_Options_v3.profileKeys[characterRealmKey] then
@@ -108,9 +117,12 @@ function Utils:InitializeDatabase()
 			["use-account"] = true,
 			["open-settings"] = false
 		}
+		createdProfileKey = true
 	end
 
-	if Percursus_Options_v3.profileKeys[characterRealmKey]["use-account"] then
+	local useAccountProfile = Percursus_Options_v3.profileKeys[characterRealmKey]["use-account"]
+
+	if useAccountProfile then
 		PER.settings.general = Percursus_Options_v3.account["general"]
 		PER.settings.raceTimeOverview = Percursus_Options_v3.account["race-time-overview"]
 		PER.settings.raceTracker = Percursus_Options_v3.account["race-tracker"]
@@ -119,6 +131,11 @@ function Utils:InitializeDatabase()
 		PER.settings.raceTimeOverview = Percursus_Options_v3.profiles[characterRealmKey]["race-time-overview"]
 		PER.settings.raceTracker = Percursus_Options_v3.profiles[characterRealmKey]["race-tracker"]
 	end
+
+	self:PrintDebug(string.format(
+		"InitializeDatabase: key=%s, hadDb=%s, createdDb=%s, createdProfile=%s, createdProfileKey=%s, activeProfile=%s",
+		characterRealmKey, tostring(hadDb), tostring(createdDb), tostring(createdProfile), tostring(createdProfileKey), useAccountProfile and "account" or "character"
+	))
 end
 
 function Utils:InitializeMinimapButton()
