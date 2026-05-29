@@ -79,7 +79,7 @@ end
 
 function PercursusFrame:ADDON_LOADED(_, addOnName)
 	if addOnName == addonName then
-		Utils:InitializeDatabase()
+		local dbInit = Utils:InitializeDatabase()
 		Utils:InitializeMinimapButton()
 		Options:Initialize()
 		RaceTracker:Initialize()
@@ -87,6 +87,10 @@ function PercursusFrame:ADDON_LOADED(_, addOnName)
 
 		Utils:OpenSettingsOnLoading()
 
+		Utils:PrintDebug(string.format(
+			"InitializeDatabase: key=%s, createdProfile=%s, createdProfileKey=%s, activeProfile=%s",
+			tostring(dbInit.characterRealmKey), tostring(dbInit.createdProfile), tostring(dbInit.createdProfileKey), tostring(dbInit.activeProfile)
+		))
 		Utils:PrintDebug("Addon fully loaded.")
 	end
 end
