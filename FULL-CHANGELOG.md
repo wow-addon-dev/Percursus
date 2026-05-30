@@ -1,3 +1,8 @@
+**v2.7 (2026-05-30)**
+- Added: Profile settings with account profile and character profile selection
+- Updated: deDE, enUS, zhCN localization
+- Minor code adjustments
+
 **v2.6 (2026-05-26)**
 - Minor code adjustments
 
