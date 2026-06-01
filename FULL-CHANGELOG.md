@@ -1,3 +1,6 @@
+**v2.8 (2026-06-01)**
+- Adapted to the latest version of Arcane Wizard: Library to ensure full compatibility
+
 **v2.7 (2026-05-30)**
 - Added: Profile settings with account profile and character profile selection
 - Updated: deDE, enUS, zhCN localization
