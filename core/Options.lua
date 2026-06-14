@@ -150,7 +150,7 @@ function Options:Initialize()
 	AWL.Settings:AddCheckboxSliderCombo(category, layout, {
 		variableTable      = PER.settings.raceTracker,
 		checkboxSettingKey = addonName .. "_result-display",
-		checkboxVarName    = "result-display",
+		checkboxVariableName    = "result-display",
 		checkboxName       = L["options.race-tracker.result-display.name"],
 		checkboxTooltip    = L["options.race-tracker.result-display.tooltip"],
 		checkboxDefault    = false,
