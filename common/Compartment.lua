@@ -2,34 +2,25 @@ local addonName, PER = ...
 
 local L = PER.Localization
 
-local Utils = PER.modules.Utils
+local AWL = ArcaneWizardLibrary
+local Addon = AWL:GetAddon(addonName)
+
+local handlers = Addon:CreateCompartmentHandlers({
+	tooltip = L["minimap-button.tooltip"]
+})
 
 ------------------------
 --- Public Functions ---
 ------------------------
 
 function Percursus_CompartmentOnEnter(self, button)
-	GameTooltip:ClearAllPoints()
-	GameTooltip:SetOwner(button, "ANCHOR_LEFT")
-
-	GameTooltip_SetTitle(GameTooltip, addonName)
-	GameTooltip_AddNormalLine(GameTooltip, PER.ADDON_VERSION .. " (" .. PER.ADDON_BUILD_DATE .. ")")
-	GameTooltip_AddBlankLineToTooltip(GameTooltip)
-	GameTooltip_AddHighlightLine(GameTooltip, L["minimap-button.tooltip"])
-
-	GameTooltip:Show()
+	handlers.OnEnter(self, button)
 end
 
 function Percursus_CompartmentOnLeave()
-	GameTooltip:Hide()
+	handlers.OnLeave()
 end
 
-function Percursus_CompartmentOnClick(_, button)
-	if button == "RightButton" then
-		if not InCombatLockdown() then
-			Settings.OpenToCategory(PER.MAIN_CATEGORY_ID)
-		else
-			Utils:PrintDebug("In combat. The options menu cannot be opened.")
-		end
-	end
+function Percursus_CompartmentOnClick(self, button)
+	handlers.OnClick(self, button)
 end

@@ -1,9 +1,11 @@
 local addonName, PER = ...
 
 local L = PER.Localization
-local Utils = PER.modules.Utils
 
 local AWL = ArcaneWizardLibrary
+local Addon = AWL:GetAddon(addonName)
+
+local Utils = PER.modules.Utils
 
 local Options = {}
 
@@ -223,17 +225,11 @@ function Options:Initialize()
 	})
 
 	-- About Section
-	AWL.Settings:AddAboutSection(layout, {
-		addonVersion   = PER.ADDON_VERSION,
-		addonBuildDate = PER.ADDON_BUILD_DATE,
-		addonAuthor    = PER.ADDON_AUTHOR,
-		curseforgeLink = PER.LINK_CURSEFORGE,
-		githubLink     = PER.LINK_GITHUB
-	})
+	AWL.Settings:AddAboutSection(layout, addonName)
 
 	Settings.RegisterAddOnCategory(category)
 
-	PER.MAIN_CATEGORY_ID = category:GetID()
+	Addon:SetMainCategoryId(category:GetID())
 end
 
 PER.modules.Options = Options

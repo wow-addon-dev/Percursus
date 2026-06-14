@@ -1,5 +1,8 @@
 local addonName, PER = ...
 
+local AWL = ArcaneWizardLibrary
+local Addon = AWL:GetAddon(addonName)
+
 local L = PER.Localization
 
 local RaceTimeOverview = {}
@@ -10,7 +13,7 @@ local sortedRaceDataTable = PER.SORTED_RACE_DATA
 --------------
 --- Frames ---
 --------------
----
+
 local RaceOverviewFrame
 local ZoneOverviewFrame
 local GobalOverviewFrame
@@ -331,7 +334,7 @@ local function InitializeFrames()
 
 		RaceOverviewFrame.portrait = RaceOverviewFrame:GetPortrait()
 		RaceOverviewFrame.portrait:SetPoint('TOPLEFT', -5, 8)
-		RaceOverviewFrame.portrait:SetTexture(PER.MEDIA_PATH .. "icon-round.blp")
+		RaceOverviewFrame.portrait:SetTexture(Addon:GetMediaPath("icon-round.blp"))
 
 		local background = CreateFrame("Frame", nil, RaceOverviewFrame, "InsetFrameTemplate4")
 		background:SetSize(322, 330)

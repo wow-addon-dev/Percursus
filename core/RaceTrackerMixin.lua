@@ -1,4 +1,7 @@
-local _, PER = ...
+local addonName, PER = ...
+
+local AWL = ArcaneWizardLibrary
+local Addon = AWL:GetAddon(addonName)
 
 Percursus_RaceTrackerMixin = {}
 
@@ -22,7 +25,7 @@ function Percursus_RaceTrackerMixin:SetBackground(style)
 	self:SetSize(style.width, style.height)
 
 	if style.type == "file" then
-		self.Background:SetTexture(PER.MEDIA_PATH .. style.texture)
+		self.Background:SetTexture(Addon:GetMediaPath(style.texture))
 	elseif style.type == "atlas" then
 		self.Background:SetAtlas(style.texture)
 	end

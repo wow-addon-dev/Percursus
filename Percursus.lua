@@ -5,6 +5,9 @@ local RaceTimeOverview = PER.modules.RaceTimeOverview
 local RaceTracker = PER.modules.RaceTracker
 local Utils = PER.modules.Utils
 
+local AWL = ArcaneWizardLibrary
+local Addon = AWL:GetAddon(addonName)
+
 local raceDataTable = PER.RACE_DATA
 
 local activeTracker = false
@@ -59,11 +62,7 @@ end
 
 local function SlashCommand(msg, editbox)
 	if not msg or strtrim(msg) == "" then
-		if not InCombatLockdown() then
-			Settings.OpenToCategory(PER.MAIN_CATEGORY_ID)
-		else
-			Utils:PrintDebug("In combat. The options menu cannot be opened.")
-		end
+		Addon:OpenCategory()
 	else
 		Utils:PrintDebug("No arguments will be accepted.")
 	end
