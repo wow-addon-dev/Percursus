@@ -3,10 +3,10 @@ local addonName, PER = ...
 local AWL = ArcaneWizardLibrary
 local Addon = AWL:GetAddon(addonName)
 
-local Options = PER.modules.Options
-local RaceTimeOverview = PER.modules.RaceTimeOverview
-local RaceTracker = PER.modules.RaceTracker
-local Utils = PER.modules.Utils
+local Options = PER.Modules.Options
+local RaceTimeOverview = PER.Modules.RaceTimeOverview
+local RaceTracker = PER.Modules.RaceTracker
+local Utils = PER.Modules.Utils
 
 local raceDataTable = PER.RACE_DATA
 
@@ -105,7 +105,7 @@ function PercursusFrame:QUEST_ACCEPTED(_, questID)
 			tostring(questID), tostring(C_QuestLog.GetTitleForQuestID(questID))
 		))
 
-		if PER.settings.raceTracker["active"] then
+		if PER.Settings.raceTracker["active"] then
 			activeTracker = true
 			raceQuestID = result.questID
 			raceSpellID = result.spellID
@@ -116,7 +116,7 @@ function PercursusFrame:QUEST_ACCEPTED(_, questID)
 				racePersonalTime = C_CurrencyInfo.GetCurrencyInfo(result.raceTime).quantity / 1000
 			end
 
-			if PER.settings.raceTracker["hide-area-names"] then
+			if PER.Settings.raceTracker["hide-area-names"] then
 				PercursusFrame:RegisterEvent("ZONE_CHANGED")
 				PercursusFrame:RegisterEvent("ZONE_CHANGED_NEW_AREA")
 			end
@@ -144,10 +144,10 @@ function PercursusFrame:QUEST_REMOVED(_, questID)
 
 		RaceTracker:Stop()
 
-		if PER.settings.raceTracker["result-display"] then
+		if PER.Settings.raceTracker["result-display"] then
 			RaceTracker:ShowResultTracker()
 
-			local delay = PER.settings.raceTracker["fadeout-delay"]
+			local delay = PER.Settings.raceTracker["fadeout-delay"]
 
 			C_Timer.After(delay, function()
 				RaceTracker:HideResultTracker()
@@ -185,7 +185,7 @@ hooksecurefunc(GossipFrame, "HandleShow", function ()
 		return
 	end
 
-	if PER.settings.raceTimeOverview["active"] then
+	if PER.Settings.raceTimeOverview["active"] then
 		local npcID = select(6, strsplit("-", tostring(unitGUID)))
 		npcID = tonumber(npcID)
 

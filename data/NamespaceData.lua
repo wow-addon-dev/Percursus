@@ -1,14 +1,14 @@
 local addonName, PER = ...
 
-PER.settings = PER.settings or {}
-PER.data = PER.data or {}
-PER.state = PER.state or {}
-PER.modules = PER.modules or {}
+PER.Settings = PER.Settings or {}
+PER.Data = PER.Data or {}
+PER.State = PER.State or {}
+PER.Modules = PER.Modules or {}
 
 local AWL = ArcaneWizardLibrary
 
 AWL:NewAddon(addonName, {
 	debugEnabled = function()
-		return PER.settings.general and PER.settings.general["debug-mode"]
+		return PER.Settings.general and PER.Settings.general["debug-mode"]
 	end
 })

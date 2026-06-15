@@ -4,7 +4,7 @@ local AWL = ArcaneWizardLibrary
 local Addon = AWL:GetAddon(addonName)
 
 local L = PER.Localization
-local Utils = PER.modules.Utils
+local Utils = PER.Modules.Utils
 
 local Options = {}
 
@@ -15,7 +15,7 @@ local Options = {}
 local minimapButtonProxy = setmetatable({}, {
 	__index = function(_, key)
 		if key == "hide" then
-			return not PER.settings.general["minimap-button"]["hide"]
+			return not PER.Settings.general["minimap-button"]["hide"]
 		end
 	end,
 	__newindex = function(_, key, value)
@@ -23,7 +23,7 @@ local minimapButtonProxy = setmetatable({}, {
 			return
 		end
 
-		PER.settings.general["minimap-button"]["hide"] = not value
+		PER.Settings.general["minimap-button"]["hide"] = not value
 
 		if value then
 			Utils.minimapButton:Show("Percursus")
@@ -56,7 +56,7 @@ function Options:Initialize()
 
 	-- Debug Mode
 	AWL.Settings:AddCheckbox(category, {
-		variableTable = PER.settings.general,
+		variableTable = PER.Settings.general,
 		settingKey    = addonName .. "_debug-mode",
 		variableName  = "debug-mode",
 		name          = L["options.general.debug-mode.name"],
@@ -68,7 +68,7 @@ function Options:Initialize()
 
 	-- Race Tracker: Active
 	AWL.Settings:AddCheckbox(category, {
-		variableTable = PER.settings.raceTracker,
+		variableTable = PER.Settings.raceTracker,
 		settingKey    = addonName .. "_race-tracker-active",
 		variableName  = "active",
 		name          = L["options.race-tracker.active.name"],
@@ -78,7 +78,7 @@ function Options:Initialize()
 
 	-- Mode
 	AWL.Settings:AddDropdown(category, {
-		variableTable = PER.settings.raceTracker,
+		variableTable = PER.Settings.raceTracker,
 		settingKey    = addonName .. "_mode",
 		variableName  = "mode",
 		name          = L["options.race-tracker.mode.name"],
@@ -93,7 +93,7 @@ function Options:Initialize()
 
 	-- Background Type
 	AWL.Settings:AddDropdown(category, {
-		variableTable = PER.settings.raceTracker,
+		variableTable = PER.Settings.raceTracker,
 		settingKey    = addonName .. "_background-type",
 		variableName  = "background-type",
 		name          = L["options.race-tracker.background-type.name"],
@@ -115,7 +115,7 @@ function Options:Initialize()
 
 	-- Horizontal Shift
 	AWL.Settings:AddSlider(category, {
-		variableTable = PER.settings.raceTracker,
+		variableTable = PER.Settings.raceTracker,
 		settingKey    = addonName .. "_horizontal-shift",
 		variableName  = "horizontal-shift",
 		name          = L["options.race-tracker.horizontal-shift.name"],
@@ -126,7 +126,7 @@ function Options:Initialize()
 
 	-- Vertical Shift
 	AWL.Settings:AddSlider(category, {
-		variableTable = PER.settings.raceTracker,
+		variableTable = PER.Settings.raceTracker,
 		settingKey    = addonName .. "_vertical-shift",
 		variableName  = "vertical-shift",
 		name          = L["options.race-tracker.vertical-shift.name"],
@@ -137,7 +137,7 @@ function Options:Initialize()
 
 	-- Hide Area Names
 	AWL.Settings:AddCheckbox(category, {
-		variableTable = PER.settings.raceTracker,
+		variableTable = PER.Settings.raceTracker,
 		settingKey    = addonName .. "_hide-area-names",
 		variableName  = "hide-area-names",
 		name          = L["options.race-tracker.hide-area-names.name"],
@@ -147,7 +147,7 @@ function Options:Initialize()
 
 	-- Result Display
 	AWL.Settings:AddCheckboxSliderCombo(category, layout, {
-		variableTable      = PER.settings.raceTracker,
+		variableTable      = PER.Settings.raceTracker,
 		checkboxSettingKey = addonName .. "_result-display",
 		checkboxVariableName    = "result-display",
 		checkboxName       = L["options.race-tracker.result-display.name"],
@@ -164,7 +164,7 @@ function Options:Initialize()
 
 	-- Speed Display (Parent for the next two sliders)
 	local initializerSpeed, settingSpeed = AWL.Settings:AddCheckbox(category, {
-		variableTable = PER.settings.raceTracker,
+		variableTable = PER.Settings.raceTracker,
 		settingKey    = addonName .. "_speed-display",
 		variableName  = "speed-display",
 		name          = L["options.race-tracker.speed-display.name"],
@@ -174,7 +174,7 @@ function Options:Initialize()
 
 	-- Speed Display: Horizontal Shift
 	AWL.Settings:AddSlider(category, {
-		variableTable   = PER.settings.raceTracker,
+		variableTable   = PER.Settings.raceTracker,
 		settingKey      = addonName .. "_speed-display-horizontal-shift",
 		variableName    = "speed-display-horizontal-shift",
 		name            = L["options.race-tracker.speed-display-horizontal-shift.name"],
@@ -187,7 +187,7 @@ function Options:Initialize()
 
 	-- Speed Display: Vertical Shift
 	AWL.Settings:AddSlider(category, {
-		variableTable   = PER.settings.raceTracker,
+		variableTable   = PER.Settings.raceTracker,
 		settingKey      = addonName .. "_speed-display-vertical-shift",
 		variableName    = "speed-display-vertical-shift",
 		name            = L["options.race-tracker.speed-display-vertical-shift.name"],
@@ -202,7 +202,7 @@ function Options:Initialize()
 
 	-- Race Time Overview: Active
 	AWL.Settings:AddCheckbox(category, {
-		variableTable = PER.settings.raceTimeOverview,
+		variableTable = PER.Settings.raceTimeOverview,
 		settingKey    = addonName .. "_race-time-overview-active",
 		variableName  = "active",
 		name          = L["options.race-time-overview.active.name"],
@@ -231,4 +231,4 @@ function Options:Initialize()
 	Addon:SetMainCategoryId(category:GetID())
 end
 
-PER.modules.Options = Options
+PER.Modules.Options = Options

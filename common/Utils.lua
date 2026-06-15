@@ -107,13 +107,13 @@ function Utils:InitializeDatabase()
 	local useAccountProfile = Percursus_Options_v3.profileKeys[characterRealmKey]["use-account"]
 
 	if useAccountProfile then
-		PER.settings.general = Percursus_Options_v3.account["general"]
-		PER.settings.raceTimeOverview = Percursus_Options_v3.account["race-time-overview"]
-		PER.settings.raceTracker = Percursus_Options_v3.account["race-tracker"]
+		PER.Settings.general = Percursus_Options_v3.account["general"]
+		PER.Settings.raceTimeOverview = Percursus_Options_v3.account["race-time-overview"]
+		PER.Settings.raceTracker = Percursus_Options_v3.account["race-tracker"]
 	else
-		PER.settings.general = Percursus_Options_v3.profiles[characterRealmKey]["general"]
-		PER.settings.raceTimeOverview = Percursus_Options_v3.profiles[characterRealmKey]["race-time-overview"]
-		PER.settings.raceTracker = Percursus_Options_v3.profiles[characterRealmKey]["race-tracker"]
+		PER.Settings.general = Percursus_Options_v3.profiles[characterRealmKey]["general"]
+		PER.Settings.raceTimeOverview = Percursus_Options_v3.profiles[characterRealmKey]["race-time-overview"]
+		PER.Settings.raceTracker = Percursus_Options_v3.profiles[characterRealmKey]["race-tracker"]
 	end
 
 	return {
@@ -126,9 +126,9 @@ end
 
 function Utils:InitializeMinimapButton()
 	self.minimapButton = Addon:RegisterMinimapButton({
-		db = PER.settings.general["minimap-button"],
+		db = PER.Settings.general["minimap-button"],
 		tooltip = L["minimap-button.tooltip"]
 	})
 end
 
-PER.modules.Utils = Utils
+PER.Modules.Utils = Utils

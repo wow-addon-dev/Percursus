@@ -423,4 +423,4 @@ function RaceTimeOverview:HideRaceOverview()
 	RaceOverviewFrame:Hide()
 end
 
-PER.modules.RaceTimeOverview = RaceTimeOverview
+PER.Modules.RaceTimeOverview = RaceTimeOverview
