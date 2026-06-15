@@ -1,12 +1,12 @@
 local addonName, PER = ...
 
+local AWL = ArcaneWizardLibrary
+local Addon = AWL:GetAddon(addonName)
+
 local Options = PER.modules.Options
 local RaceTimeOverview = PER.modules.RaceTimeOverview
 local RaceTracker = PER.modules.RaceTracker
 local Utils = PER.modules.Utils
-
-local AWL = ArcaneWizardLibrary
-local Addon = AWL:GetAddon(addonName)
 
 local raceDataTable = PER.RACE_DATA
 

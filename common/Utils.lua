@@ -1,9 +1,9 @@
 local addonName, PER = ...
 
-local L = PER.Localization
-
 local AWL = ArcaneWizardLibrary
 local Addon = AWL:GetAddon(addonName)
+
+local L = PER.Localization
 
 local Utils = {}
 
