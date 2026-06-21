@@ -1,7 +1,12 @@
 local addonName, PER = ...
 
+-- Library
 local AWL = ArcaneWizardLibrary
 local Addon = AWL:GetAddon(addonName)
+
+-----------------------
+--- Mixin Functions ---
+-----------------------
 
 Percursus_RaceTrackerMixin = {}
 

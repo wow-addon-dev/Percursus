@@ -1,12 +1,16 @@
 local addonName, PER = ...
 
+-- Library
 local AWL = ArcaneWizardLibrary
 local Addon = AWL:GetAddon(addonName)
 
+-- Localization
 local L = PER.Localization
 
-local RaceTimeOverview = {}
+-- Current module
+local RaceTimeOverview = PER.Modules.RaceTimeOverview
 
+-- Variables
 local raceDataTable = PER.RACE_DATA
 local sortedRaceDataTable = PER.SORTED_RACE_DATA
 
@@ -224,8 +228,6 @@ local function UpdateRaceOverview(npcID, scrollFrame)
 		end
 	end
 
-
-
 	return zoneID
 end
 
@@ -403,7 +405,7 @@ local function InitializeFrames()
 end
 
 ------------------------
---- Public Functions ---
+--- Module Functions ---
 ------------------------
 
 function RaceTimeOverview:Initialize()
@@ -422,5 +424,3 @@ function RaceTimeOverview:HideRaceOverview()
 	ZoneOverviewFrame:Hide()
 	RaceOverviewFrame:Hide()
 end
-
-PER.Modules.RaceTimeOverview = RaceTimeOverview
