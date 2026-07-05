@@ -1,11 +1,10 @@
-local addonName, PER = ...
-
--- Library
-local AWL = ArcaneWizardLibrary
-local Addon = AWL:GetAddon(addonName)
+local _, PER = ...
 
 -- Localization
 local L = PER.Localization
+
+-- Module imports
+local Utils = PER.Modules.Utils
 
 -- Current module
 local RaceTracker = PER.Modules.RaceTracker
@@ -130,7 +129,7 @@ function RaceTracker:Start(raceQuestID, raceSpellID, raceGoldTime, raceSilverTim
 				RaceTrackerFrame:SetTimerText(L["race.time"]:format(-racePersonalTime))
 			end
 
-			Addon:PrintDebug("The race was interrupted.")
+			Utils:PrintDebug("The race was interrupted.")
 		elseif isRace and not isCountdown then
 			if PER.Settings.raceTracker["speed-display"] and canGlide then
 				local _, _, forwardSpeed = C_PlayerInfo.GetGlidingInfo()
@@ -146,7 +145,7 @@ function RaceTracker:Start(raceQuestID, raceSpellID, raceGoldTime, raceSilverTim
 				if isFirstTry then
 					isFirstTry = false
 				else
-					Addon:PrintDebug("The race was restarted.")
+					Utils:PrintDebug("The race was restarted.")
 				end
 			end
 

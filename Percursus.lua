@@ -65,9 +65,11 @@ end
 
 local function SlashCommand(msg, editbox)
 	if not msg or strtrim(msg) == "" then
-		Addon:OpenCategory()
+		if not Addon:OpenCategory() then
+			Utils:PrintDebug("In combat. The options menu cannot be opened.")
+		end
 	else
-		Addon:PrintDebug("No arguments will be accepted.")
+		Utils:PrintDebug("No arguments will be accepted.")
 	end
 end
 
@@ -89,21 +91,21 @@ function PercursusFrame:ADDON_LOADED(_, addOnName)
 
 		Utils:OpenSettingsOnLoading()
 
-		Addon:PrintDebug(string.format(
+		Utils:PrintDebug(string.format(
 			"InitializeDatabase: key=%s, createdProfile=%s, createdProfileKey=%s, activeProfile=%s",
 			tostring(dbInit.characterRealmKey), tostring(dbInit.createdProfile), tostring(dbInit.createdProfileKey), tostring(dbInit.activeProfile)
 		))
-		Addon:PrintDebug("Addon fully loaded.")
+		Utils:PrintDebug("Addon fully loaded.")
 	end
 end
 
 function PercursusFrame:QUEST_ACCEPTED(_, questID)
 	local result = GetRaceData(questID)
 
-	--Addon:PrintDebug(string.format("questID=%s", tostring(questID)))
+	--Utils:PrintDebug(string.format("questID=%s", tostring(questID)))
 
 	if result ~= nil then
-		Addon:PrintDebug(string.format(
+		Utils:PrintDebug(string.format(
 			"Event 'QUEST_ACCEPTED' fired. Payload: questID=%s, questName=%s",
 			tostring(questID), tostring(C_QuestLog.GetTitleForQuestID(questID))
 		))
@@ -126,14 +128,14 @@ function PercursusFrame:QUEST_ACCEPTED(_, questID)
 
 			RaceTracker:Start(raceQuestID, raceSpellID, raceGoldTime, raceSilverTime, racePersonalTime)
 		else
-			Addon:PrintDebug("No race tracker requested.")
+			Utils:PrintDebug("No race tracker requested.")
 		end
 	end
 end
 
 function PercursusFrame:QUEST_REMOVED(_, questID)
 	if CheckRaceQuest(questID) and activeTracker then
-		Addon:PrintDebug(string.format(
+		Utils:PrintDebug(string.format(
 			"Event 'QUEST_REMOVED' fired. Payload: questID=%s, questName=%s",
 			tostring(questID), tostring(C_QuestLog.GetTitleForQuestID(questID))
 		))
@@ -163,14 +165,14 @@ function PercursusFrame:QUEST_REMOVED(_, questID)
 end
 
 function PercursusFrame:ZONE_CHANGED()
-	Addon:PrintDebug("Event 'ZONE_CHANGED' fired. No payload.")
+	Utils:PrintDebug("Event 'ZONE_CHANGED' fired. No payload.")
 
 	ZoneTextFrame:Hide()
 	SubZoneTextFrame:Hide()
 end
 
 function PercursusFrame:ZONE_CHANGED_NEW_AREA()
-	Addon:PrintDebug("Event 'ZONE_CHANGED_NEW_AREA' fired. No payload.")
+	Utils:PrintDebug("Event 'ZONE_CHANGED_NEW_AREA' fired. No payload.")
 
 	ZoneTextFrame:Hide()
 	SubZoneTextFrame:Hide()
@@ -192,7 +194,7 @@ hooksecurefunc(GossipFrame, "HandleShow", function ()
 		local npcID = select(6, strsplit("-", tostring(unitGUID)))
 		npcID = tonumber(npcID)
 
-		--Addon:PrintDebug(string.format("npcID=%s", tostring(npcID)))
+		--Utils:PrintDebug(string.format("npcID=%s", tostring(npcID)))
 
 		if raceDataTable[npcID] ~= nil then
 			RaceTimeOverview:ShowRaceOverview(npcID)
