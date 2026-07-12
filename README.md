@@ -11,6 +11,12 @@ Percursus is a World of Warcraft addon that displays a live timer during a race 
 * **Race Tracker** - During the race, an overlay is shown that allows you to track your current race time.
 * **Race Time Overview** - Next to the quest window of each Bronze Timekeeper, your current race times, as well as the gold and silver medal times, are shown.
 
+## Installation & Quick Start
+
+> ⚠️ **Required Dependency:** This addon requires the **Arcane Wizard: Library**. If you install Percursus via the CurseForge client, the library will be downloaded automatically. If you install it manually, please ensure the library is also downloaded and enabled.
+
+To open the addon options menu, type `/per` or `/percursus` into your chat and press enter.
+
 ## Features
 
 * Three modes for the Race Tracker are available: current race time, countdown to medal time (gold or silver), and countdown to your personal best time.
@@ -25,12 +31,6 @@ Percursus is a World of Warcraft addon that displays a live timer during a race 
 
 * Languages: English, German, Simplified Chinese
 * Flavors: Retail
-
-## Installation & Quick Start
-
-> ⚠️ **Required Dependency:** This addon requires the **Arcane Wizard: Library**. If you install Percursus via the CurseForge client, the library will be downloaded automatically. If you install it manually, please ensure the library is also downloaded and enabled.
-
-To open the addon options menu, type `/per` or `/percursus` into your chat and press enter.
 
 ## Bugs & Feedback
 
