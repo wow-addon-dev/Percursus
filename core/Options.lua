@@ -28,9 +28,9 @@ local minimapButtonProxy = setmetatable({}, {
 		PER.Settings.general["minimap-button"]["hide"] = not value
 
 		if value then
-			Utils.minimapButton:Show("Percursus")
+			Utils.minimapButton:Show(addonName)
 		else
-			Utils.minimapButton:Hide("Percursus")
+			Utils.minimapButton:Hide(addonName)
 		end
 	end,
 })

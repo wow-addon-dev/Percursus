@@ -59,8 +59,10 @@ local function GetRaceData(questID)
 	return nil
 end
 
-local function SlashCommand(msg, editbox)
-	if not msg or strtrim(msg) == "" then
+local function SlashCommand(msg)
+	local command = strtrim(msg or "")
+
+	if command == "" then
 		Utils:OpenSettings()
 	else
 		Utils:PrintDebug("No arguments will be accepted.")
