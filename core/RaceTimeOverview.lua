@@ -372,7 +372,6 @@ local function InitializeFrames()
 	do
 		ZoneOverviewFrame = CreateFrame("Frame", nil, RaceOverviewFrame, "DefaultPanelTemplate")
 		ZoneOverviewFrame:SetPoint("TOPLEFT", RaceOverviewFrame, "TOPRIGHT", 10, 0)
-		ZoneOverviewFrame:SetPoint("CENTER")
 		ZoneOverviewFrame:SetSize(343, 430)
 		ZoneOverviewFrame:SetTitle(L["race.title.zone-overview"])
 		ZoneOverviewFrame:Hide()
