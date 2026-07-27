@@ -6,16 +6,12 @@ _Master every course. Beat your time._
 
 Percursus is a World of Warcraft addon that displays a live timer during a race (e.g., Dragonriding & Skyriding) and provides a detailed time overview of all completed races. It is compatible with all race types, including Skyriding, Dragonriding, Skyrocketing, and Breakneck (D.R.I.V.E.). It helps you track your performance in real-time and keep an eye on your records.
 
+> ⚠️ **Important!** This addon requires **Arcane Wizard: Library**. See [Installation & Quick Start](#installation--quick-start) for installation details.
+
 **Key Features**
 
 * **Race Tracker** - During the race, an overlay is shown that allows you to track your current race time.
 * **Race Time Overview** - Next to the quest window of each Bronze Timekeeper, your current race times, as well as the gold and silver medal times, are shown.
-
-## Installation & Quick Start
-
-> ⚠️ **Required Dependency:** This addon requires the **Arcane Wizard: Library**. If you install Percursus via the CurseForge client, the library will be downloaded automatically. If you install the addon manually, via Wago, or through another third-party updater that does not resolve dependencies, you must download and enable the library separately.
-
-To open the addon options menu, type `/per` or `/percursus` into your chat and press enter.
 
 ## Features
 
@@ -31,6 +27,12 @@ To open the addon options menu, type `/per` or `/percursus` into your chat and p
 
 * Languages: English, German, Simplified Chinese
 * Flavors: Retail
+
+## Installation & Quick Start
+
+> **Required Dependency:** This addon requires the **Arcane Wizard: Library**. If you install Percursus via the CurseForge client, the library will be downloaded automatically. If you install the addon manually, via Wago, or through another third-party updater that does not resolve dependencies, you must download and enable the library separately.
+
+To open the addon options menu, type `/per` or `/percursus` into your chat and press enter.
 
 ## Bugs & Feedback
 
