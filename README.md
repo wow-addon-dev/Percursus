@@ -6,7 +6,7 @@ _Master every course. Beat your time._
 
 Percursus is a World of Warcraft addon that displays a live timer during a race (e.g., Dragonriding & Skyriding) and provides a detailed time overview of all completed races. It is compatible with all race types, including Skyriding, Dragonriding, Skyrocketing, and Breakneck (D.R.I.V.E.). It helps you track your performance in real-time and keep an eye on your records.
 
-> ⚠️ **Important!** This addon requires **Arcane Wizard: Library**. See [Installation & Quick Start](#installation--quick-start) for installation details.
+> ⚠️ **Important!** This addon requires **Arcane Wizard: Library**. See Installation & Quick Start for installation details.
 
 **Key Features**
 
