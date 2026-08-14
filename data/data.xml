@@ -4,6 +4,7 @@
 
 	<Script file="event\EasternKingdomCupData.lua" />
 	<Script file="event\KalimdorCupData.lua" />
+	<Script file="event\NorthrendCupData.lua" />
 	<Script file="event\OutlandCupData.lua" />
 	<Script file="expansion\DragonflightData.lua" />
 	<Script file="expansion\TheWarWithinData.lua" />
