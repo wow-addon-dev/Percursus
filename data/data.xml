@@ -12,4 +12,5 @@
 
 	<Script file="RaceTrackerData.lua" />
 	<Script file="CommonData.lua" />
+	<Script file="ChangelogData.lua" />
 </Ui>

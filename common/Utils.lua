@@ -128,31 +128,12 @@ function Utils:InitializeDatabase()
 		PER.Settings.raceTracker = Percursus_Options_v3.profiles[characterRealmKey]["race-tracker"]
 	end
 
-	if not Percursus_Options_v3["update-notice"] then
-		Percursus_Options_v3["update-notice"] = {}
-	end
-
-	PER.Data.updateNotice = Percursus_Options_v3["update-notice"]
-
 	return {
 		characterRealmKey = characterRealmKey,
 		createdProfile = createdProfile,
 		createdProfileKey = createdProfileKey,
 		activeProfile = useAccountProfile and "account" or "character"
 	}
-end
-
-function Utils:InitializeUpdateNotice()
-	local data = PER.Data.updateNotice
-
-	if data.lastVersion ~= Addon.version then
-		data.lastVersion = Addon.version
-		data.show = PER.SHOW_UPDATE_NOTICE
-	end
-
-	if Addon:ShowUpdateNotice(data.show == true) then
-		data.show = false
-	end
 end
 
 function Utils:InitializeMinimapButton()

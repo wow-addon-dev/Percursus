@@ -1,8 +1,5 @@
 local _, PER = ...
 
--- Enable only for releases with new features or important changes.
-PER.SHOW_UPDATE_NOTICE = false
-
 PER.RACE_ORDER = {"RACE_1", "RACE_2", "RACE_3", "RACE_4", "RACE_5", "RACE_6"}
 PER.DIFFICULTY_ORDER = {"NORMAL", "ADVANCED", "REVERSE", "CHALLENGE", "CHALLENGE_REVERSE", "STORM_GRYPHON"}
 
