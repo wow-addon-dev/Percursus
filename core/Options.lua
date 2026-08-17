@@ -47,7 +47,7 @@ local function GetVal(setting) return setting:GetValue() end
 
 function Options:Initialize()
 	local category, layout = Settings.RegisterVerticalLayoutCategory(addonName)
-	Addon:SetChangelog(PER.CHANGELOG_TEXT)
+	Addon:SetChangelog(PER.CHANGELOG)
 
 	layout:AddInitializer(CreateSettingsListSectionHeaderInitializer(L["options.general"]))
 
