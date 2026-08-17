@@ -47,7 +47,6 @@ local function GetVal(setting) return setting:GetValue() end
 
 function Options:Initialize()
 	local category, layout = Settings.RegisterVerticalLayoutCategory(addonName)
-	Addon:SetChangelog(PER.CHANGELOG)
 
 	layout:AddInitializer(CreateSettingsListSectionHeaderInitializer(L["options.general"]))
 
@@ -231,8 +230,7 @@ function Options:Initialize()
 	})
 
 	-- About Section
-	AWL.Settings:AddAboutSection(layout, addonName)
-	Addon:AddChangelogButton(layout)
+	AWL.Settings:AddAboutSection(layout, addonName, PER.CHANGELOG)
 
 	Settings.RegisterAddOnCategory(category)
 

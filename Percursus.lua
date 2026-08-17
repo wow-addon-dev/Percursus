@@ -1,5 +1,8 @@
 local addonName, PER = ...
 
+-- Library
+local AWL = ArcaneWizardLibrary
+
 -- Module imports
 local Options = PER.Modules.Options
 local RaceTimeOverview = PER.Modules.RaceTimeOverview
@@ -64,6 +67,8 @@ local function SlashCommand(msg)
 
 	if command == "" then
 		Utils:OpenSettings()
+	elseif command == "changelog" then
+		AWL.Frames:OpenChangelog(addonName, PER.CHANGELOG)
 	else
 		Utils:PrintDebug("No arguments will be accepted.")
 	end

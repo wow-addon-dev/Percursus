@@ -32,7 +32,9 @@ Percursus is a World of Warcraft addon that displays a live timer during a race 
 
 > **Required Dependency:** This addon requires the **Arcane Wizard: Library**. If you install Percursus via the CurseForge client, the library will be downloaded automatically. If you install the addon manually, via Wago, or through another third-party updater that does not resolve dependencies, you must download and enable the library separately.
 
-To open the addon options menu, type `/per` or `/percursus` into your chat and press enter.
+To manage the addon, use the following commands in your chat and press enter:
+* Type `/per` or `/percursus` to access the addon options menu.
+* Type `/per changelog` or `/percursus changelog` to open the changelog.
 
 ## Bugs & Feedback
 
