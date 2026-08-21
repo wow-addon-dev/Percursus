@@ -8,6 +8,13 @@ PER.CHANGELOG = {
 		version = version,
 		date = buildDate ~= "" and buildDate or nil,
 		entries = {
+			"No changes available"
+		}
+	},
+	{
+		version = "v2.23",
+		date = "2026-08-18",
+		entries = {
 			"Added: Changelog window available from the options menu",
 			"Added: Changelog window available through the 'changelog' slash command",
 			"Removed: Version notice chat messages",
@@ -41,6 +48,34 @@ PER.CHANGELOG = {
 		date = "2026-07-21",
 		entries = {
 			"Minor code adjustments"
+		}
+	},
+	{
+		version = "v2.18",
+		date = "2026-07-18",
+		entries = {
+			"Minor code adjustments"
+		}
+	},
+	{
+		version = "v2.17",
+		date = "2026-07-12",
+		entries = {
+			"Added: Wago project page button"
+		}
+	},
+	{
+		version = "v2.16",
+		date = "2026-07-09",
+		entries = {
+			"Minor code adjustments"
+		}
+	},
+	{
+		version = "v2.15",
+		date = "2026-07-06",
+		entries = {
+			"Adapted to the latest version of Arcane Wizard: Library to ensure full compatibility"
 		}
 	}
 }
