@@ -8,7 +8,7 @@ PER.CHANGELOG = {
 		version = version,
 		date = buildDate ~= "" and buildDate or nil,
 		entries = {
-			"Undocumented changes available"
+			"Minor code adjustments"
 		}
 	},
 	{
