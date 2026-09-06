@@ -8,6 +8,13 @@ PER.CHANGELOG = {
 		version = version,
 		date = buildDate ~= "" and buildDate or nil,
 		entries = {
+			"Added: TOC version for patch 12.1.5 [retail]"
+		}
+	},
+	{
+		version = "v2.24",
+		date = "2026-08-30",
+		entries = {
 			"Minor code adjustments"
 		}
 	},
@@ -69,13 +76,6 @@ PER.CHANGELOG = {
 		date = "2026-07-09",
 		entries = {
 			"Minor code adjustments"
-		}
-	},
-	{
-		version = "v2.15",
-		date = "2026-07-06",
-		entries = {
-			"Adapted to the latest version of Arcane Wizard: Library to ensure full compatibility"
 		}
 	}
 }
